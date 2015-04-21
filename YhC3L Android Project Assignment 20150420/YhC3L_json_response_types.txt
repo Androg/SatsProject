@@ -1,0 +1,128 @@
+Types
+
+GET /v1.0/se/training/activities/types HTTP/1.1
+Accept-Encoding: gzip
+Content-Type: application/json
+Accept: application/json, application/json
+Content-Length: 0
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 5.0.1; Nexus 4 Build/LRX22C)
+Host: api2.sats.com
+Connection: Keep-Alive
+
+{
+	"url": "https:\/\/api2.sats.com\/v1.0\/se\/training\/activities\/types",
+	"userId": "",
+	"types": [{
+	"name": "Gruppträning",
+	"subType": "GROUP",
+	"type": "GROUP"
+	}, {
+	"name": "Styrketräning",
+	"subType": "gym",
+	"type": "GYM"
+	}, {
+	"name": "Badminton",
+	"subType": "badminton",
+	"type": "OTHER"
+	}, {
+	"name": "Basket",
+	"subType": "basketball",
+	"type": "OTHER"
+	}, {
+	"name": "Cirkelträning",
+	"subType": "Circuittraining",
+	"type": "OTHER"
+	}, {
+	"name": "Crosstrainer",
+	"subType": "crosstrainer",
+	"type": "OTHER"
+	}, {
+	"name": "Cykling",
+	"subType": "cycle",
+	"type": "OTHER"
+	}, {
+	"name": "Dans",
+	"subType": "dance",
+	"type": "OTHER"
+	}, {
+	"name": "Fotboll",
+	"subType": "football",
+	"type": "OTHER"
+	}, {
+	"name": "Golf",
+	"subType": "golf",
+	"type": "OTHER"
+	}, {
+	"name": "Inlines",
+	"subType": "inlines",
+	"type": "OTHER"
+	}, {
+	"name": "Innebandy",
+	"subType": "floorball",
+	"type": "OTHER"
+	}, {
+	"name": "Kajak",
+	"subType": "kayak",
+	"type": "OTHER"
+	}, {
+	"name": "Kampsport",
+	"subType": "martialarts",
+	"type": "OTHER"
+	}, {
+	"name": "Klättring",
+	"subType": "climbing",
+	"type": "OTHER"
+	}, {
+	"name": "Längdskidor",
+	"subType": "crosscountryskiing",
+	"type": "OTHER"
+	}, {
+	"name": "Löpning",
+	"subType": "running",
+	"type": "OTHER"
+	}, {
+	"name": "Promenad",
+	"subType": "walking",
+	"type": "OTHER"
+	}, {
+	"name": "Ridsport",
+	"subType": "riding",
+	"type": "OTHER"
+	}, {
+	"name": "Rodd",
+	"subType": "rowing",
+	"type": "OTHER"
+	}, {
+	"name": "Simning",
+	"subType": "swimming",
+	"type": "OTHER"
+	}, {
+	"name": "Skridskor",
+	"subType": "skates",
+	"type": "OTHER"
+	}, {
+	"name": "Squash",
+	"subType": "squash",
+	"type": "OTHER"
+	}, {
+	"name": "Tennis",
+	"subType": "tennis",
+	"type": "OTHER"
+	}, {
+	"name": "Utförsåkning",
+	"subType": "downhill",
+	"type": "OTHER"
+	}, {
+	"name": "Volleyboll",
+	"subType": "volleyball",
+	"type": "OTHER"
+	}, {
+	"name": "Yoga",
+	"subType": "yoga",
+	"type": "OTHER"
+	}, {
+	"name": "Övrig träning",
+	"subType": "other",
+	"type": "OTHER"
+	}]
+}

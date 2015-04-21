@@ -1,0 +1,791 @@
+Centers
+
+GET /v1.0/se/centers HTTP/1.1
+Accept-Encoding: gzip
+Content-Type: application/json
+Accept: application/json, application/json
+Content-Length: 0
+User-Agent: Dalvik/2.1.0 (Linux; U; Android 5.0.1; Nexus 4 Build/LRX22C)
+Host: api2.sats.com
+Connection: Keep-Alive
+
+{
+	"url": "https:\/\/api2.sats.com\/v1.0\/se\/centers",
+	"userId": "",
+	"regions": [{
+	"centers": [{
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till ett av Stockholms trevligaste familjecenter.",
+	"filterId": "533",
+	"id": "109",
+	"isElixia": false,
+	"lat": 59.442326389884713,
+	"long": 18.096241794738717,
+	"name": "Viggbyholm (tidigare Täby)",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/taby\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Södra Station har en personlig atmosfär och är beläget mitt på Södermalm. Vi erbjuder en härlig blandning av träning fördelat på 1800 kvm.",
+	"filterId": "554",
+	"id": "110",
+	"isElixia": false,
+	"lat": 59.311907200703565,
+	"long": 18.057875476989693,
+	"name": "Södra Station",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/sodra-station\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Träningscentret ligger beläget på övre plan, bredvid Åhlens, vid delen av Gallerian som vetter mot Science Tower.",
+	"filterId": "521",
+	"id": "111",
+	"isElixia": false,
+	"lat": 59.401637911577481,
+	"long": 17.946526251945443,
+	"name": "Kista",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/kista\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Vi har SATS största och första Prformance-anläggning med över 300 kvm för funktionell träning.",
+	"filterId": "506",
+	"id": "112",
+	"isElixia": false,
+	"lat": 59.333184252094547,
+	"long": 18.067767463836617,
+	"name": "Regeringsgatan",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/regeringsgatan\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS modernaste center, beläget mitt i centrala Stockholm.",
+	"filterId": "530",
+	"id": "113",
+	"isElixia": false,
+	"lat": 59.332379831032469,
+	"long": 18.060246549758858,
+	"name": "Zenit",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/zenit\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": false,
+	"description": "Välkommen till SATS Arlanda.",
+	"filterId": "535",
+	"id": "228",
+	"isElixia": false,
+	"lat": 59.648977789232383,
+	"long": 17.930148683700509,
+	"name": "Arlanda",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/arlanda\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till vårt lilla hemtrevliga center som ligger på Alviks Torg.",
+	"filterId": "536",
+	"id": "230",
+	"isElixia": false,
+	"lat": 59.332336052468996,
+	"long": 17.98205479255671,
+	"name": "Bromma",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/bromma\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Farsta är ett center med familjär anda.",
+	"filterId": "529",
+	"id": "232",
+	"isElixia": false,
+	"lat": 59.24130812226781,
+	"long": 18.094181858215279,
+	"name": "Farsta",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/farsta\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Fridhemsplan är beläget mitt i hjärtat av Kungsholmen.",
+	"filterId": "510",
+	"id": "235",
+	"isElixia": false,
+	"lat": 59.333632968493362,
+	"long": 18.032035075340218,
+	"name": "Fridhemsplan ",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/fridhemsplan\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Slakthuset erbjuder en storslagen miljö. I en historisk byggnad lovar vi ett toppmodernt center i unik design med öppna ytor, stora fönster och en takhöjd på upp till 12 meter.\u000d\u000a",
+	"filterId": "504",
+	"id": "237",
+	"isElixia": false,
+	"lat": 59.292871378409828,
+	"long": 18.079274140510506,
+	"name": "Slakthuset ",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/globen\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Gärdet öppnade 2007 och är ett av två center som erbjuder våra medlemmar möjligheten att spela squash.",
+	"filterId": "549",
+	"id": "239",
+	"isElixia": false,
+	"lat": 59.342110952780388,
+	"long": 18.112951956901497,
+	"name": "Gärdet",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/gardet\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Haninge är beläget i närheten av Haninge Centrum.",
+	"filterId": "552",
+	"id": "241",
+	"isElixia": false,
+	"lat": 59.175741632989727,
+	"long": 18.142998062286324,
+	"name": "Haninge",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/haninge\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Hornstull har nya, ljusa och handikappanpassade lokaler på hela 2300 kvm. Centret erbjuder ett brett träningsutbud och MiniSats.",
+	"filterId": "551",
+	"id": "249",
+	"isElixia": false,
+	"lat": 59.3158384642584,
+	"long": 18.03248032203669,
+	"name": "Hornstull",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/hornstull\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Huddinge är Sveriges senast öppnade träningscenter.",
+	"filterId": "563",
+	"id": "252",
+	"isElixia": false,
+	"lat": 59.235655380174627,
+	"long": 17.981386922512,
+	"name": "Huddinge",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/huddinge\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till ett av Stockholms mest centrala center som öppnar redan kl. 05:00.",
+	"filterId": "513",
+	"id": "255",
+	"isElixia": false,
+	"lat": 59.334779357258341,
+	"long": 18.064682923469491,
+	"name": "Hötorget",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/hotorget\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Jakobsberg är ett träningscenter på 1300 kvm beläget på 2 våningar.",
+	"filterId": "558",
+	"id": "258",
+	"isElixia": false,
+	"lat": 59.424807139759139,
+	"long": 17.83372863403315,
+	"name": "Jakobsberg",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/jakobsberg\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Kungens Kurva är beläget i Heron city. Här erbjuder vi träning för hela familjen.",
+	"filterId": "545",
+	"id": "260",
+	"isElixia": false,
+	"lat": 59.267613518002591,
+	"long": 17.910010658416695,
+	"name": "Kungens Kurva",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/kungens-kurva\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Lidingö är beläget i AGA-området på den södra delen av Lidingö.",
+	"filterId": "548",
+	"id": "264",
+	"isElixia": false,
+	"lat": 59.346019578357129,
+	"long": 18.154917799148507,
+	"name": "Lidingö\/Dalénum",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/lidingo\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Liljeholmstorget är beläget mitt i Liljeholmstorgets galleria med ett brett utbud av träning i form av styrke-, konditions- och gruppträning för hela familjen",
+	"filterId": "557",
+	"id": "268",
+	"isElixia": false,
+	"lat": 59.309815451833927,
+	"long": 18.022051893386788,
+	"name": "Liljeholmstorget",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/liljeholmstorget\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Marievik ligger beläget nere vid vattnet (Milleniumhuset) centralt i Liljeholmen. ",
+	"filterId": "538",
+	"id": "269",
+	"isElixia": false,
+	"lat": 59.309856521440125,
+	"long": 18.029009543571419,
+	"name": "Marievik",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/marievik\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS Medborgarplatsen, ett av Stockholms populäraste och mest välbesökta träningscenter.",
+	"filterId": "509",
+	"id": "272",
+	"isElixia": false,
+	"lat": 59.313738744246969,
+	"long": 18.075948201332039,
+	"name": "Medborgarplatsen",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/medborgarplatsen\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS Märsta. ",
+	"filterId": "539",
+	"id": "274",
+	"isElixia": false,
+	"lat": 59.619332197100285,
+	"long": 17.85095914474482,
+	"name": "Märsta",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/marsta\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Här uppmärksammar vi träningen som en del i den stora helheten, där välbefinnande står i fokus.",
+	"filterId": "540",
+	"id": "277",
+	"isElixia": false,
+	"lat": 59.316210760921294,
+	"long": 18.162460170898385,
+	"name": "Nacka Strand",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/nacka-strand\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Odenplan är Sveriges största center och har öppet mellan 06:00–24:00.",
+	"filterId": "511",
+	"id": "280",
+	"isElixia": false,
+	"lat": 59.342999937937378,
+	"long": 18.052060447845406,
+	"name": "Odenplan",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/odenplan\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS S:t Eriksbron är beläget i Polarstudions före detta lokaler.",
+	"filterId": "556",
+	"id": "284",
+	"isElixia": false,
+	"lat": 59.336538537340054,
+	"long": 18.035280548248238,
+	"name": "S:t Eriksbron",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/st-eriksbron\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Sickla ligger beläget i Sickla Köpkvarter. Ett ljust och luftigt träningscenter med mycket generösa ytor och fönster från golv till tak. ",
+	"filterId": "522",
+	"id": "286",
+	"isElixia": false,
+	"lat": 59.305582278417191,
+	"long": 18.128331743392891,
+	"name": "Sickla",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/sickla\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": false,
+	"description": "Vill du träna där historien talar sitt tydliga språk? Besök då vårat träningscenter i Sigtuna.\u000d\u000a",
+	"filterId": "541",
+	"id": "288",
+	"isElixia": false,
+	"lat": 59.616776439429181,
+	"long": 17.722266756210274,
+	"name": "Sigtuna",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/sigtuna\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "På SATS Sollentuna hittar du 2 000 kvm handikappvänlig träningsyta med den senaste utrustningen i ljusa lokaler.",
+	"filterId": "562",
+	"id": "289",
+	"isElixia": false,
+	"lat": 59.428654404361488,
+	"long": 17.953204952392525,
+	"name": "Sollentuna",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/sollentuna\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Stadion är beläget i närheten av elljusspåren i Lill-jansskogen på Gärdet, så du kan enkelt kombinera inomhusträning med utomhusträning.",
+	"filterId": "531",
+	"id": "292",
+	"isElixia": false,
+	"lat": 59.34294523183047,
+	"long": 18.083839260253853,
+	"name": "Stadion",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/stadion\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Sats Stadshagen är beläget vid Lindhagen på Kungsholmen.",
+	"filterId": "550",
+	"id": "295",
+	"isElixia": false,
+	"lat": 59.339493098263752,
+	"long": 18.012492500457711,
+	"name": "Stadshagen",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/stadshagen\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till ett av Stockholms populäraste och mest välbesökta träningscenter. ",
+	"filterId": "512",
+	"id": "296",
+	"isElixia": false,
+	"lat": 59.333917517285251,
+	"long": 18.075213276061959,
+	"name": "Stureplan",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/stureplan\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS Signalfabriken!",
+	"filterId": "508",
+	"id": "297",
+	"isElixia": false,
+	"lat": 59.362379499559431,
+	"long": 17.965687953147835,
+	"name": "Signalfabriken (Sundbyberg)",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/sundbyberg\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Telefonplan ligger beläget i samma byggnad som Konstfack.",
+	"filterId": "544",
+	"id": "299",
+	"isElixia": false,
+	"lat": 59.299749164747645,
+	"long": 17.9919950591659,
+	"name": "Telefonplan",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/telefonplan\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Tule är beläget i utkanten av Vasastan.",
+	"filterId": "501",
+	"id": "301",
+	"isElixia": false,
+	"lat": 59.346342313895924,
+	"long": 18.057993494186348,
+	"name": "Tule",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/tule\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Mitt i city kan du kombinera styrke- och konditionsträning med avkoppling.",
+	"filterId": "534",
+	"id": "303",
+	"isElixia": false,
+	"lat": 59.330910482172328,
+	"long": 18.058870576534218,
+	"name": "Vasagatan",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/vasagatan\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS i Vällingby Centrum!",
+	"filterId": "517",
+	"id": "305",
+	"isElixia": false,
+	"lat": 59.36383108558848,
+	"long": 17.871923290405221,
+	"name": "Vällingby C",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/vallingby-c\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS Vällingby Parken.",
+	"filterId": "542",
+	"id": "307",
+	"isElixia": false,
+	"lat": 59.358172009600153,
+	"long": 17.874584041747994,
+	"name": "Vällingby Parken",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/vallingby-parken\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Norr om Stockholm hittar du familjära SATS Väsby.",
+	"filterId": "543",
+	"id": "308",
+	"isElixia": false,
+	"lat": 59.497364819785545,
+	"long": 17.924553595695443,
+	"name": "Väsby",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/vasby\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Älvsjö är ett ljust center, fördelat på 1400 kvm.",
+	"filterId": "547",
+	"id": "310",
+	"isElixia": false,
+	"lat": 59.280835332012145,
+	"long": 18.013651214752144,
+	"name": "Älvsjö",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/alvsjo\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Mitt i centrala Stockholm, på Birger Jarlsgatan 57D, ligger Nordens häftigaste träningscenter.",
+	"filterId": "564",
+	"id": "1489",
+	"isElixia": false,
+	"lat": 59.341632258826579,
+	"long": 18.064296685371346,
+	"name": "Spårvagnshallarna",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/sparvagnshallarna\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Danderyd ligger beläget mitt i Mörby, beläget i norra Stockholm, några minuters promenad ifrån Mörby Centrum.",
+	"filterId": "567",
+	"id": "2321",
+	"isElixia": false,
+	"lat": 59.400267133216417,
+	"long": 18.038756691131539,
+	"name": "Danderyd",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/danderyd\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Centret ligger strategiskt beläget i Värmdö köpcentrum.",
+	"filterId": "572",
+	"id": "2795",
+	"isElixia": false,
+	"lat": 59.311804532786631,
+	"long": 18.421642028007454,
+	"name": "Värmdö",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/varmdo\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS har öppnat ett nytt center på Lumaparksvägen 5 i Hammarby Sjöstad.",
+	"filterId": "573",
+	"id": "3221",
+	"isElixia": false,
+	"lat": 59.305089377926379,
+	"long": 18.0951581822967,
+	"name": "Sjöstaden",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/sjostaden\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS nya träningscenter, beläget i Täby Centrum, har en yta på ca 2 330 kvadratmeter i två plan.",
+	"filterId": "575",
+	"id": "3469",
+	"isElixia": false,
+	"lat": 59.444639060533753,
+	"long": 18.071307979736275,
+	"name": "Täby Centrum ",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/taby-centrum\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Den 6 oktober öppnar SATS Sveavägen som kommer erbjuda ett starkt gruppträningsutbud med extra fokus på yoga, cykel och löpning. ",
+	"filterId": "576",
+	"id": "3701",
+	"isElixia": false,
+	"lat": 59.339613463815908,
+	"long": 18.059527717742867,
+	"name": "Sveavägen ",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/sveavagen\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS Tuletorget (Sundbyberg), ett träningscenter som erbjuder det lilla extra. Här kan du välja på ett unikt utbud av gruppträning.",
+	"filterId": "577",
+	"id": "3713",
+	"isElixia": false,
+	"lat": 59.364487149294348,
+	"long": 17.975005947265572,
+	"name": "Tuletorget (Sundbyberg)",
+	"regionId": "108",
+	"url": "http:\/\/www.sats.se\/vara-center\/stockholm\/tuletorget\/?mobile=1"
+	}],
+	"id": "108",
+	"name": "Stockholm"
+	}, {
+	"centers": [{
+	"availableForOnlineBooking": true,
+	"description": "SATS Kompassen är Göteborgs mest centrala träningscenter.",
+	"filterId": "516",
+	"id": "117",
+	"isElixia": false,
+	"lat": 57.705526143449141,
+	"long": 11.970178328666634,
+	"name": "Kompassen",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/kompassen\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": false,
+	"description": "SATS Frölunda erbjuder inspirerande träning på två plan.",
+	"filterId": "528",
+	"id": "118",
+	"isElixia": false,
+	"lat": 57.652049164456237,
+	"long": 11.911421857986397,
+	"name": "Frölunda",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/frolunda\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Kungsgatan är beläget mitt på Göteborgs shoppingstråk.",
+	"filterId": "518",
+	"id": "312",
+	"isElixia": false,
+	"lat": 57.703863795118522,
+	"long": 11.962442837867684,
+	"name": "Kungsgatan",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/kungsgatan\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Landala är beläget vid Kapellplatsen i stora och ljusa lokaler.",
+	"filterId": "561",
+	"id": "313",
+	"isElixia": false,
+	"lat": 57.693326171518763,
+	"long": 11.971084915313668,
+	"name": "Landala",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/landala\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Mölnlycke erbjuder 1450 kvm ljusa träningsytor med det senaste inom tränings- och konditionsmaskiner.",
+	"filterId": "555",
+	"id": "314",
+	"isElixia": false,
+	"lat": 57.656233796001786,
+	"long": 12.117125831756539,
+	"name": "Mölnlycke",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/molnlycke\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Valhalla är beläget intill Svenska mässan och Scandinavium.",
+	"filterId": "507",
+	"id": "316",
+	"isElixia": false,
+	"lat": 57.700214959602512,
+	"long": 11.99001058212275,
+	"name": "Valhalla",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/valhalla\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Torpavallen ligger beläget i den nybyggda handelsplatsen Torpavallen, i de östra delarna av Göteborg.\u000d\u000a\u000d\u000a",
+	"filterId": "568",
+	"id": "2516",
+	"isElixia": false,
+	"lat": 57.723993138213459,
+	"long": 12.027593694839425,
+	"name": "Torpavallen",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/torpavallen\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "I mars 2013 slog vi upp dörrarna till vårt 8:e träningscenter i Göteborg, SATS Eriksberg. ",
+	"filterId": "569",
+	"id": "2661",
+	"isElixia": false,
+	"lat": 57.70933492628216,
+	"long": 11.921356760177559,
+	"name": "Eriksberg ",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/eriksberg\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Sisjön är ett nytt center i centralt i Sisjön.",
+	"filterId": "574",
+	"id": "3423",
+	"isElixia": false,
+	"lat": 57.636203178009566,
+	"long": 11.958371244583077,
+	"name": "Sisjön",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/sisjon\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkomna till SATS Masthugget, ett träningscenter i hjärtat av Göteborg. Här är det en hög puls och mycket träningsglädje. Centret erbjuder ett unikt utbud av gruppträning med erfarna och engagerade instruktörer.",
+	"filterId": "580",
+	"id": "3718",
+	"isElixia": false,
+	"lat": 57.698334504918854,
+	"long": 11.942374550018258,
+	"name": "Masthugget",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/masthugget\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Torslanda är ett komplett träningscenter i stora lokaler. Här kan du välja på ett unikt utbud av gruppträning. Centret erbjuder dessutom simhall med motionssim och vattenklassen Aqua.",
+	"filterId": "579",
+	"id": "3720",
+	"isElixia": false,
+	"lat": 57.719850703520976,
+	"long": 11.849999271545357,
+	"name": "Torslanda",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/torslanda\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkomna till SATS Askim, ett modernt träningscenter i toppskick. Centret har ett stort gruppträningsutbud och erbjuder Hot MOJO, ett populärt yogakoncept i 38-gradig värme.",
+	"filterId": "578",
+	"id": "3722",
+	"isElixia": false,
+	"lat": 57.640876302792805,
+	"long": 11.9478033410644,
+	"name": "Askim - fd. ELIXIA Sisjön",
+	"regionId": "116",
+	"url": "http:\/\/www.sats.se\/vara-center\/goteborg\/askim\/?mobile=1"
+	}],
+	"id": "116",
+	"name": "Göteborg"
+	}, {
+	"centers": [{
+	"availableForOnlineBooking": true,
+	"description": "SATS Malmö City är beläget mitt i centrala Malmö.",
+	"filterId": "515",
+	"id": "120",
+	"isElixia": false,
+	"lat": 55.60348154493731,
+	"long": 13.004987977657265,
+	"name": "Malmö City",
+	"regionId": "119",
+	"url": "http:\/\/www.sats.se\/vara-center\/malmo\/Malmo-City\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Entré är ett stort och fräscht gym med ljusa lokaler.",
+	"filterId": "532",
+	"id": "317",
+	"isElixia": false,
+	"lat": 55.607839090289289,
+	"long": 13.025579296264596,
+	"name": "Entré",
+	"regionId": "119",
+	"url": "http:\/\/www.sats.se\/vara-center\/malmo\/entre\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Västra Hamnen erbjuder träning i öppna och luftiga lokaler. Varierad och utmanande träning för alla.",
+	"filterId": "560",
+	"id": "318",
+	"isElixia": false,
+	"lat": 55.613383806114733,
+	"long": 12.985710941467232,
+	"name": "Västra Hamnen",
+	"regionId": "119",
+	"url": "http:\/\/www.sats.se\/vara-center\/malmo\/vastra-hamnen\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS Mobilia, som ligger beläget i Mobilia köpcentrum. ",
+	"filterId": "566",
+	"id": "2323",
+	"isElixia": false,
+	"lat": 55.580212911066859,
+	"long": 13.003520809326119,
+	"name": "Mobilia",
+	"regionId": "119",
+	"url": "http:\/\/www.sats.se\/vara-center\/malmo\/mobilia\/?mobile=1"
+	}],
+	"id": "119",
+	"name": "Malmö"
+	}, {
+	"centers": [{
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS Norrköping som ligger centralt beläget i Norrköping. Vi erbjuder gruppträning, personliga tränare samt nya styrke- och konditionsmaskiner.",
+	"filterId": "505",
+	"id": "220",
+	"isElixia": false,
+	"lat": 58.591816062021017,
+	"long": 16.190864883575387,
+	"name": "Norrköping",
+	"regionId": "124",
+	"url": "http:\/\/www.sats.se\/vara-center\/ovriga-sverige\/norrkoping\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Helsingborg är beläget vid Stattena Centrum.",
+	"filterId": "514",
+	"id": "221",
+	"isElixia": false,
+	"lat": 56.05703817381125,
+	"long": 12.701278768691964,
+	"name": "Helsingborg",
+	"regionId": "124",
+	"url": "http:\/\/www.sats.se\/vara-center\/ovriga-sverige\/helsingborg\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Halmstad är det lilla träningscentret med det stora hjärtat.",
+	"filterId": "519",
+	"id": "222",
+	"isElixia": false,
+	"lat": 56.670465922615115,
+	"long": 12.870751463088936,
+	"name": "Halmstad",
+	"regionId": "124",
+	"url": "http:\/\/www.sats.se\/vara-center\/ovriga-sverige\/halmstad\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "SATS Bålsta är ett mindre center med familjär atmosfär där du medan du tränar kan njuta av en fantastisk sjöutsikt!",
+	"filterId": "537",
+	"id": "223",
+	"isElixia": false,
+	"lat": 59.552463162885751,
+	"long": 17.556012712631173,
+	"name": "Bålsta",
+	"regionId": "124",
+	"url": "http:\/\/www.sats.se\/vara-center\/ovriga-sverige\/balsta\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Välkommen till SATS City, Karlstads mest centrala träningscenter med sina moderna och nyrenoverade faciliteter samt utrustning.",
+	"filterId": "571",
+	"id": "1239",
+	"isElixia": false,
+	"lat": 59.383010244836392,
+	"long": 13.502969585571236,
+	"name": "Karlstad",
+	"regionId": "124",
+	"url": "http:\/\/www.sats.se\/vara-center\/ovriga-sverige\/karlstad\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Du hittar oss i nybyggda lokaler vägg i vägg med Löfbergs Lila Arena, i Färjestad BK center.",
+	"filterId": "570",
+	"id": "1244",
+	"isElixia": false,
+	"lat": 59.407529988573664,
+	"long": 13.500652156982369,
+	"name": "Färjestad",
+	"regionId": "124",
+	"url": "http:\/\/www.sats.se\/vara-center\/ovriga-sverige\/farjestad\/?mobile=1"
+	}, {
+	"availableForOnlineBooking": true,
+	"description": "Ett familjecenter med MiniSats, barnklasser samt ungdomsträning 11-15 år. Ett brett utbud för hela familjen och företag när det gäller kondition\/styrketräning samt gruppträning. Fri parkering utanför center samt bra kommunikationer med buss samt cykel.",
+	"filterId": "581",
+	"id": "5403",
+	"isElixia": false,
+	"lat": 59.381234346327588,
+	"long": 13.52483495346064,
+	"name": "Lamberget ",
+	"regionId": "124",
+	"url": "http:\/\/www.sats.se\/vara-center\/ovriga-sverige\/lamberget\/?mobile=1"
+	}],
+	"id": "124",
+	"name": "Övriga Sverige"
+	}]
+}
