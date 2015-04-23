@@ -34,7 +34,6 @@ public class SATSAdapter extends ArrayAdapter<SATSClass> {
 
         SATSClass sats = data[position];
 
-        // get the TextView and then set the text (item name) and tag (item ID) values
         TextView textViewItem = (TextView) convertView.findViewById(R.id.class_name);
         TextView textViewItem2 = (TextView) convertView.findViewById(R.id.class_description);
         textViewItem.setText(sats.getName());

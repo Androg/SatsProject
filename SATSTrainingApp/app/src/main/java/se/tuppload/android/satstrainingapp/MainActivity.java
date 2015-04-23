@@ -12,7 +12,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SATSClass[] satsClasses = new SATSClass[4];
+        SATSClass[] satsClasses = new SATSClass[10];
 
         satsClasses[0] = new SATSClass("curling", "throwing stones on ice");
         satsClasses[1] = new SATSClass("Ice hockey", "throwing pucks on ice");
