@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/ericlantz/.gradle/caches/modules-2/files-2.1/com.loopj.android/android-async-http/1.4.5/77bf7cacf9cefe19dc105e5425d2eb1bb5285881/android-async-http-1.4.5.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77bf7cacf9cefe19dc105e5425d2eb1bb5285881">
+        <dex dex="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/pre-dexed/debug/android-async-http-1.4.5-913944d3614bf8a33c94f66d354b45190c92a3ce.jar" />
+    </item>
+    <item
+        jar="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d84409890828e07d344a3b9b1da545dba9897b51">
+        <dex dex="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/pre-dexed/debug/classes-17591fde84ec62e3d1e60b48fcb723c929ef6a4f.jar" />
+    </item>
+    <item
+        jar="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-495c974c01231625605ac67723cdd3e6f9b2aead.jar" />
+    </item>
+    <item
+        jar="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/libs/svg-android.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="da90ccda68d4c02a84b9cb01526da382522c7b0d">
+        <dex dex="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/pre-dexed/debug/svg-android-b8357dfc554f0301209a878878b6f862af279133.jar" />
+    </item>
+    <item
+        jar="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/pre-dexed/debug/classes-af77ef0f0d06b8afc62dd487a3d0e777e846604f.jar" />
+    </item>
+    <item
+        jar="/Users/ericlantz/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/ericlantz/Documents/Kurser/Android/Projekt/stort_projekt/satsproject/SATSTrainingApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-240476382780663bff52b915459053b4538dd4c8.jar" />
+    </item>
+
+</items>
