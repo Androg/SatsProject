@@ -20,7 +20,7 @@ public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
             UpcomingWorkout upcomingWorkout = getItem(position);
 
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_main, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_adapter, parent, false);
             }
 
 

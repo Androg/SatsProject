@@ -52,21 +52,6 @@ public class MainActivity extends ActionBarActivity {
 
         searchList.setAdapter(adapter);
 
-//            searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                    final UpcomingWorkout upcomingWorkout;
-//                    upcomingWorkout = upcomingWorkouts[position];
-//
-//                    //Insert function "openNewWindow(upcomingWorkout)" here
-//                }
-//            });
-
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-
-//    }
 
 //    private UpcomingWorkout[] getSearchResults(String rawJsonResponse) throws JSONException {
 //        final UpcomingWorkout[] tempUpcomingWorkout = new UpcomingWorkout[10];
