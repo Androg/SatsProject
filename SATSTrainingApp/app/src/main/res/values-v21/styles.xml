@@ -1,5 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppTheme.Base">
         <!-- Customize your theme here. -->
@@ -9,8 +9,5 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <item name="colorAccent">@color/accentColor</item>
-    </style>
-    <style name="MyCustomToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
-        <item name="android:textColorPrimary">#000000</item>
     </style>
 </resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primaryColor"
+    app:theme="@style/MyCustomToolBarTheme"
+    android:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView android:id="@+id/refresh"
+            android:layout_marginTop="1dp"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:background="@drawable/refresh_icon"
+                   android:layout_alignTop="@+id/imageView"
+                   android:layout_alignParentRight="true"
+                   android:layout_alignParentEnd="true"/>
+
+        <ImageView android:id="@+id/meny_icon"
+            android:layout_marginLeft="-2dp"
+            android:layout_width="15dp"
+            android:layout_height="35dp"
+            android:background="@drawable/meny_icon"
+                   android:layout_alignTop="@+id/imageView"
+                   android:layout_alignParentLeft="true"
+                   android:layout_alignParentStart="true"/>
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:background="@drawable/sats_logo"
+            android:id="@+id/imageView"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/meny_icon"
+            android:layout_toEndOf="@+id/meny_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:text="Min Träning"
+            android:textColor="#626262"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>
+
+

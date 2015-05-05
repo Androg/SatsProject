@@ -11,6 +11,8 @@ public class SatsRestClient {
 
     public static void get(String url, RequestParams params,
                            AsyncHttpResponseHandler responseHandler) {
+        client.addHeader("X-Parse-Application-Id", "23p8xhISFQKfAfDa0kdS8NYnuKwiXHolJmXWLMyi");
+        client.addHeader("X-Parse-REST-API-Key", "fKgzdx8dze90xyzlMY8e5uLcry6bT131ixcPcUfr");
         client.get(url, params, responseHandler);
     }
 }

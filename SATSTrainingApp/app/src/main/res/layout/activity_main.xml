@@ -1,17 +1,30 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:gravity="top"
+    tools:context=".se.tuppload.android.satstrainingapp">
 
-    <ListView
-        android:id="@+id/list_view"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:textSize="20sp"
-        android:layout_alignParentBottom="true"/>
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-</RelativeLayout>
+        <ListView
+            android:layout_gravity="bottom"
+            android:background="@drawable/rectangle48"
+            android:id="@+id/list_view"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:orientation="horizontal"
+            android:textSize="20sp"
+            android:dividerHeight="25dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
