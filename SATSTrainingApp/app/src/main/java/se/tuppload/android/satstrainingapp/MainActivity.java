@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         final ListView searchList = (ListView) findViewById(R.id.list_view);
-        RequestJson.getJsonData("https://api.parse.com/1/classes/activities/FvPfcRFXLS?include=bookingId.class.classTypeId", searchList, this);
+        RequestJson.getJsonData(searchList, this);
 
     }
 }

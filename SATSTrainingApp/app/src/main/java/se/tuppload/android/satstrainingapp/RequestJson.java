@@ -13,13 +13,13 @@ import org.json.JSONObject;
 
 public class RequestJson {
 
-    public static void getJsonData(String url,final ListView searchList, final Activity activity) {
+    public static void getJsonData(final ListView searchList, final Activity activity) {
 
-        SatsRestClient.get(url, null, new JsonHttpResponseHandler() {
+        SatsRestClient.get(null, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
-                UpcomingWorkout[] upcomingWorkouts = new UpcomingWorkout[5];
+                UpcomingWorkout[] upcomingWorkouts = new UpcomingWorkout[2];
 
                 try {
                     JSONArray resultArray = jsonResponse.getJSONArray("results");
@@ -27,13 +27,19 @@ public class RequestJson {
 
                     for (int i = 0; i < upcomingWorkouts.length; i++) {
                         JSONObject workoutObject = resultArray.getJSONObject(i);
-                        upcomingWorkouts[i] = new UpcomingWorkout(workoutObject.getInt("bookedPersonsCount"),
-                                workoutObject.getInt("centerId"),
-                                workoutObject.getString("durationInMinutes"),
+                        JSONObject subType = workoutObject.getJSONObject("classTypeId");
+                        Log.d("CenterId", subType.getString("subType"));
+                        upcomingWorkouts[i] = new UpcomingWorkout(workoutObject.getString("name"),
                                 workoutObject.getString("instructorId"),
-                                workoutObject.getInt("maxPersonsCount"),
-                                workoutObject.getString("name"),
-                                workoutObject.getJSONObject("startTime").getString("iso"));
+                                subType.getString("subType"),
+                                workoutObject.getInt("maxPersonsCount"));
+//                                workoutObject.getString("instructorId"),
+//                                workoutObject.getString("durationInMinutes"),
+//                                subType.getString("name"),
+//                                workoutObject.getInt("maxPersonCount"));
+//                                workoutObject.getInt("maxPersonsCount"),
+//                                workoutObject.getString("name"),
+//                                workoutObject.getJSONObject("startTime").getString("iso"));
                     }
 
                 } catch(JSONException e) {

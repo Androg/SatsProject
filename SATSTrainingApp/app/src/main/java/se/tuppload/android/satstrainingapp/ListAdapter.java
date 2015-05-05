@@ -34,7 +34,8 @@ public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
             workoutType.setText(upcomingWorkout.mWorkoutType);
             gymLocation.setText(upcomingWorkout.mGymLocation);
             instructorsName.setText(upcomingWorkout.mInstructorsName);
-            maxPersonCount.setText(upcomingWorkout.mMaxPersonCount);
+            maxPersonCount.setText(Integer.toString(upcomingWorkout.mMaxPersonCount));
+
 
 
         } catch (NullPointerException e) {
