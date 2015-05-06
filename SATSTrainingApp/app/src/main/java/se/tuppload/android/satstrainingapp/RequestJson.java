@@ -38,8 +38,9 @@ public class RequestJson {
                                 workoutObject.getString("instructorId"),
                                 subType.getString("subType"),
                                 workoutObject.getString("durationInMinutes"),
-                                workoutObject.getInt("maxPersonsCount"),
-                                startTime.getString("iso").substring(11,16)));
+                                workoutObject.getInt("waitingListCount"),
+                                startTime.getString("iso").substring(11,13),
+                                startTime.getString("iso").substring(14,16)));
 
                     }
 

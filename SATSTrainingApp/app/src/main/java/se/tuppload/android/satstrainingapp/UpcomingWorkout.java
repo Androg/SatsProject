@@ -5,27 +5,18 @@ public final class UpcomingWorkout {
     public final String mGymLocation;
     public final String mInstructorsName;
     public final String mWorkoutType;
-//    public final int mBookedPersonCount;
     public final String mDurationInMinutes;
-    public final int mMaxPersonCount;
-    public final String mStartTime;
+    public final int mWaitinglistCount;
+    public final String mStartTimeHour;
+    public final String mStartTimeMinutes;
 
-    public UpcomingWorkout(String mGymLocation, String mInstructorsName, String mWorkoutType, String mDurationInMinutes, int mMaxPersonCount, String mStartTime) {
+    public UpcomingWorkout(String mGymLocation, String mInstructorsName, String mWorkoutType, String mDurationInMinutes, int mWaitinglistCount, String mStartTimeHour, String mStartTimeMinutes) {
         this.mGymLocation = mGymLocation;
         this.mInstructorsName = mInstructorsName;
         this.mWorkoutType = mWorkoutType;
         this.mDurationInMinutes = mDurationInMinutes;
-        this.mMaxPersonCount = mMaxPersonCount;
-        this.mStartTime = mStartTime;
+        this.mWaitinglistCount = mWaitinglistCount;
+        this.mStartTimeHour = mStartTimeHour;
+        this.mStartTimeMinutes = mStartTimeMinutes;
     }
-
-    //    public UpcomingWorkout( int BookedPersonCount, int gymLocation, String durationInMinutes, String instructorsName, int maxPersonCount, String workoutType, String time) {
-//        this.mGymLocation = gymLocation;
-//        this.mInstructorsName = instructorsName;
-//        this.mWorkoutType = workoutType;
-//        this.mTime = time;
-//        this.mBookedPersonCount = BookedPersonCount;
-//        this.mDurationInMinutes = durationInMinutes;
-//        this.mMaxPersonCount = maxPersonCount;
-//    }
 }

@@ -2,20 +2,7 @@ package se.tuppload.android.satstrainingapp;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.apache.http.Header;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -26,6 +13,8 @@ public class MainActivity extends ActionBarActivity {
 
         final ListView searchList = (ListView) findViewById(R.id.list_view);
         RequestJson.getJsonData(searchList, this);
+
+
 
     }
 }
