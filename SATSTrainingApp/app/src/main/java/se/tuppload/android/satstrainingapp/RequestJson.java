@@ -97,7 +97,7 @@ public class RequestJson {
                         JSONObject subType = workoutObject.getJSONObject("classTypeId");
                         JSONObject startTime = workoutObject.getJSONObject("startTime");
                         Log.d("CenterId", subType.getString("subType"));
-                        final boolean lastRequest = (i == resultArray.length() - 1);
+//                        final boolean lastRequest = (i == resultArray.length() - 1);
 
                         final String centerId = workoutObject.getString("centerId");
                         final String instructorId = workoutObject.getString("instructorId");
@@ -120,10 +120,10 @@ public class RequestJson {
                                     String centerName = centerObject.getString("name");
                                     upcomingWorkouts.add(new UpcomingWorkout(centerName, instructorId, workoutType, durationInMinutes, waitingListCount, startTimeHours, startTimeMinutes));
 
-                                    if (lastRequest) {
+//                                    if (lastRequest) {
                                         ListAdapter adapter = new ListAdapter(activity, upcomingWorkouts);
                                         searchList.setAdapter(adapter);
-                                    }
+//                                    }
 
                                 } catch (JSONException e) {
                                     Log.e("ERROR", "COULD NOT FIND CENTER-NAME");
