@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
 
-    public ListAdapter(Context context, UpcomingWorkout[] upcomingWorkouts) {
+    public ListAdapter(Context context, ArrayList<UpcomingWorkout> upcomingWorkouts) {
         super(context,0, upcomingWorkouts);
     }
 
@@ -24,13 +26,19 @@ public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
             }
 
 
-            TextView satsCore = (TextView) convertView.findViewById(R.id.sats_core);
+            TextView workoutType = (TextView) convertView.findViewById(R.id.workout_type);
             TextView gymLocation = (TextView) convertView.findViewById(R.id.gym_location);
             TextView instructorsName = (TextView) convertView.findViewById(R.id.instructors_name);
+            TextView maxPersonCount = (TextView) convertView.findViewById(R.id.max_person_count);
+//            TextView time = (TextView) convertView.findViewById(R.id.time);
 
-            satsCore.setText(upcomingWorkout.mSatsCore);
+
+            workoutType.setText(upcomingWorkout.mWorkoutType);
             gymLocation.setText(upcomingWorkout.mGymLocation);
             instructorsName.setText(upcomingWorkout.mInstructorsName);
+            maxPersonCount.setText(Integer.toString(upcomingWorkout.mMaxPersonCount));
+
+
 
         } catch (NullPointerException e) {
 

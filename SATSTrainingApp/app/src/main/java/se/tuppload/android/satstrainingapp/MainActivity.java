@@ -25,16 +25,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         final ListView searchList = (ListView) findViewById(R.id.list_view);
-        final UpcomingWorkout[] upcomingWorkouts;
-
-        UpcomingWorkout[] uwo = new UpcomingWorkout[3];
-        uwo[0] = new UpcomingWorkout("Rådis", "Sven", "CORE");
-        uwo[1] = new UpcomingWorkout("Medis", "SvenneBanan", "CORE");
-        uwo[2] = new UpcomingWorkout("ODIS", "CORE", "SVENNIS");
-
-        ListAdapter adapter = new ListAdapter(this, uwo);
-
-        searchList.setAdapter(adapter);
+        RequestJson.getJsonData(searchList, this);
 
     }
 }

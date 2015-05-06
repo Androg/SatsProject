@@ -1,25 +1,56 @@
 package se.tuppload.android.satstrainingapp;
 
+import android.app.Activity;
+import android.util.Log;
+import android.widget.ListView;
+
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class RequestJson {
 
-    public String getJsonData(String url) {
-        final String[] rawJsonResponse = new String[1];
+    public static void getJsonData(final ListView searchList, final Activity activity) {
 
-       SatsRestClient.get(url, null, new JsonHttpResponseHandler() {
+        SatsRestClient.get(null, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
-                rawJsonResponse[0] = jsonResponse.toString();
+
+                ArrayList<UpcomingWorkout> upcomingWorkouts = new ArrayList<UpcomingWorkout>();
+
+                try {
+                    JSONArray resultArray = jsonResponse.getJSONArray("results");
+                    Log.d("RESULT RESULT", resultArray.toString());
+                    Log.d("resultArray.length", "" + resultArray.length());
+
+                    for (int i = 0; i < resultArray.length(); i++) {
+                        JSONObject workoutObject = resultArray.getJSONObject(i);
+                        JSONObject subType = workoutObject.getJSONObject("classTypeId");
+                        JSONObject startTime = workoutObject.getJSONObject("startTime");
+                        Log.d("CenterId", subType.getString("subType"));
+                          upcomingWorkouts.add(new UpcomingWorkout(workoutObject.getString("centerId"),
+                                workoutObject.getString("instructorId"),
+                                subType.getString("subType"),
+                                workoutObject.getString("durationInMinutes"),
+                                workoutObject.getInt("maxPersonsCount"),
+                                startTime.getString("iso").substring(11,16)));
+
+                    }
+
+                } catch(JSONException e) {
+                    Log.e("ERROR", "COULD NOT FIND ANY RESULTS");
+                }
+
+                ListAdapter adapter = new ListAdapter(activity, upcomingWorkouts);
+
+                searchList.setAdapter(adapter);
             }
         });
-
-        String tempRawJsonResponse = rawJsonResponse[0];
-        return tempRawJsonResponse;
-
     }
 }
