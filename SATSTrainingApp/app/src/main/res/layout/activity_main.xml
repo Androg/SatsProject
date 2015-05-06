@@ -1,28 +1,31 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
-    android:orientation="horizontal"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:gravity="top"
+    tools:context=".se.tuppload.android.satstrainingapp">
 
-    <View
-        android:id="@+id/empty_screen_space"
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:background="#ff0000"
-        android:layout_weight="0.4"/>
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
 
-    <ListView
-        android:id="@+id/list_item"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fastScrollEnabled="true"
-        android:scrollbarSize="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="309dp" />
+        <ListView
+            android:layout_marginLeft="5dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/rectangle48"
+            android:id="@+id/list_view"
+            android:layout_width="355dp"
+            android:layout_height="250dp"
+            android:orientation="horizontal"
+            android:textSize="20sp"
+            android:dividerHeight="25dp"/>/>
 
+    </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
