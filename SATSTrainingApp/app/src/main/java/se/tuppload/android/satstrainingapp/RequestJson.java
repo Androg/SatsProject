@@ -33,7 +33,7 @@ public class RequestJson {
                     for (int i = 0; i < resultArray.length(); i++) {
                         JSONObject workoutObject = resultArray.getJSONObject(i);
                         JSONObject subType = workoutObject.getJSONObject("classTypeId");
-                        JSONObject startTime = workoutObject.getJSONObject("startTime");
+                        JSONObject dateTime = workoutObject.getJSONObject("startTime");
                         Log.d("CenterId", subType.getString("subType"));
 
 
@@ -42,9 +42,7 @@ public class RequestJson {
                         final String workoutType = subType.getString("subType");
                         final String durationInMinutes = workoutObject.getString("durationInMinutes");
                         final int waitingListCount = workoutObject.getInt("waitingListCount");
-                        final String startTimeHours = startTime.getString("iso").substring(11, 13);
-                        final String startTimeMinutes = startTime.getString("iso").substring(14, 16);
-
+                        final String startTime = dateTime.getString("iso");
 
                         final String centerAbsoluteUrl = centerRelativeUrl + centerId;
 
@@ -56,10 +54,7 @@ public class RequestJson {
                                 try {
                                     JSONObject centerObject = jsonResponse.getJSONObject("center");
                                     String centerName = centerObject.getString("name");
-                                    upcomingWorkouts.add(new UpcomingWorkout(centerName, instructorId, workoutType, durationInMinutes, waitingListCount, startTimeHours, startTimeMinutes));
-
-                                        ListAdapter adapter = new ListAdapter(activity, upcomingWorkouts);
-                                        searchList.setAdapter(adapter);
+                                    upcomingWorkouts.add(new UpcomingWorkout(centerName, instructorId, workoutType, durationInMinutes, waitingListCount, startTime));
 
                                     ListAdapter adapter = new ListAdapter(activity, upcomingWorkouts);
                                     searchList.setAdapter(adapter);

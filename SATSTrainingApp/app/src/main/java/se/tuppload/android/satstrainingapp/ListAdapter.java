@@ -33,14 +33,17 @@ public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
             TextView startTimeHour = (TextView) convertView.findViewById(R.id.activity_starttime_hour);
             TextView startTimeMinutes = (TextView) convertView.findViewById(R.id.activity_starttime_minutes);
             TextView activityDuration = (TextView) convertView.findViewById(R.id.activity_length_time);
+            TextView activityDate = (TextView) convertView.findViewById(R.id.activity_date);
+
             ImageView img = (ImageView) convertView.findViewById(R.id.icon);
 
             workoutType.setText(upcomingWorkout.mWorkoutType);
             gymLocation.setText(upcomingWorkout.mCenterName);
             instructorsName.setText(upcomingWorkout.mInstructorsName);
             waitingListCount.setText(Integer.toString(upcomingWorkout.mWaitingListCount));
-            startTimeHour.setText(upcomingWorkout.mStartTimeHour);
-            startTimeMinutes.setText(upcomingWorkout.mStartTimeMinutes);
+            startTimeHour.setText(upcomingWorkout.mStartTime.substring(11, 13));
+            startTimeMinutes.setText(upcomingWorkout.mStartTime.substring(14, 16));
+            activityDate.setText(upcomingWorkout.mStartTime.substring(0, 10));
             activityDuration.setText(upcomingWorkout.mDurationInMinutes + " min");
 
 
