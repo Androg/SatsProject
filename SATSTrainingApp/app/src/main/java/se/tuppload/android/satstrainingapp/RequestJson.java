@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
@@ -22,7 +23,7 @@ public class RequestJson {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
 
-                ArrayList<UpcomingWorkout> upcomingWorkouts = new ArrayList<UpcomingWorkout>();
+                ArrayList<UpcomingWorkout> upcomingWorkouts = new ArrayList<>();
 
                 try {
                     JSONArray resultArray = jsonResponse.getJSONArray("results");
@@ -34,16 +35,17 @@ public class RequestJson {
                         JSONObject subType = workoutObject.getJSONObject("classTypeId");
                         JSONObject startTime = workoutObject.getJSONObject("startTime");
                         Log.d("CenterId", subType.getString("subType"));
-                          upcomingWorkouts.add(new UpcomingWorkout(workoutObject.getString("centerId"),
+                        upcomingWorkouts.add(new UpcomingWorkout(workoutObject.getString("centerId"),
                                 workoutObject.getString("instructorId"),
                                 subType.getString("subType"),
                                 workoutObject.getString("durationInMinutes"),
-                                workoutObject.getInt("maxPersonsCount"),
-                                startTime.getString("iso").substring(11,16)));
+                                workoutObject.getInt("waitingListCount"),
+                                startTime.getString("iso").substring(11, 12),
+                                startTime.getString("iso").substring(15, 16)));
 
                     }
 
-                } catch(JSONException e) {
+                } catch (JSONException e) {
                     Log.e("ERROR", "COULD NOT FIND ANY RESULTS");
                 }
 
@@ -53,4 +55,6 @@ public class RequestJson {
             }
         });
     }
+
+
 }
