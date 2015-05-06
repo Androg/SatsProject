@@ -7,9 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
 
-    public ListAdapter(Context context, UpcomingWorkout[] upcomingWorkouts) {
+    public ListAdapter(Context context, ArrayList<UpcomingWorkout> upcomingWorkouts) {
         super(context,0, upcomingWorkouts);
     }
 

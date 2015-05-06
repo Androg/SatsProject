@@ -11,6 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class RequestJson {
 
     public static void getJsonData(final ListView searchList, final Activity activity) {
@@ -19,33 +21,31 @@ public class RequestJson {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
-                UpcomingWorkout[] upcomingWorkouts = new UpcomingWorkout[2];
+
+                ArrayList<UpcomingWorkout> upcomingWorkouts = new ArrayList<UpcomingWorkout>();
 
                 try {
                     JSONArray resultArray = jsonResponse.getJSONArray("results");
                     Log.d("RESULT RESULT", resultArray.toString());
+                    Log.d("resultArray.length", "" + resultArray.length());
 
-                    for (int i = 0; i < upcomingWorkouts.length; i++) {
+                    for (int i = 0; i < resultArray.length(); i++) {
                         JSONObject workoutObject = resultArray.getJSONObject(i);
                         JSONObject subType = workoutObject.getJSONObject("classTypeId");
+                        JSONObject startTime = workoutObject.getJSONObject("startTime");
                         Log.d("CenterId", subType.getString("subType"));
-                        upcomingWorkouts[i] = new UpcomingWorkout(workoutObject.getString("name"),
+                          upcomingWorkouts.add(new UpcomingWorkout(workoutObject.getString("centerId"),
                                 workoutObject.getString("instructorId"),
                                 subType.getString("subType"),
-                                workoutObject.getInt("maxPersonsCount"));
-//                                workoutObject.getString("instructorId"),
-//                                workoutObject.getString("durationInMinutes"),
-//                                subType.getString("name"),
-//                                workoutObject.getInt("maxPersonCount"));
-//                                workoutObject.getInt("maxPersonsCount"),
-//                                workoutObject.getString("name"),
-//                                workoutObject.getJSONObject("startTime").getString("iso"));
+                                workoutObject.getString("durationInMinutes"),
+                                workoutObject.getInt("maxPersonsCount"),
+                                startTime.getString("iso").substring(11,16)));
+
                     }
 
                 } catch(JSONException e) {
                     Log.e("ERROR", "COULD NOT FIND ANY RESULTS");
                 }
-
 
                 ListAdapter adapter = new ListAdapter(activity, upcomingWorkouts);
 
