@@ -5,26 +5,27 @@
     android:baselineAligned="false"
     android:orientation="vertical"
     android:gravity="top"
+              android:layout_marginLeft="-13dp"
     tools:context=".se.tuppload.android.satstrainingapp">
 
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar"/>
     <LinearLayout
+        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
         <ListView
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="8dp"
             android:layout_gravity="bottom"
-            android:background="@drawable/rectangle48"
             android:id="@+id/list_view"
-            android:layout_width="355dp"
-            android:layout_height="250dp"
+            android:layout_width="wrap_content"
+            android:layout_height="260dp"
             android:orientation="horizontal"
             android:textSize="20sp"
-            android:dividerHeight="25dp"/>/>
+            android:dividerHeight="25dp"/>
 
     </LinearLayout>
 

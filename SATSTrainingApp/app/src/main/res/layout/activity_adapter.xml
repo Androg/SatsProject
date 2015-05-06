@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="122dp"
+                android:orientation="vertical"
+    android:background="@drawable/rectangle48">
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -12,10 +14,10 @@
 
         <TextView
             android:id="@+id/activity_starttime_hour"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:textSize="30dp"
-            android:layout_marginRight="5dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
+            android:textSize="20sp"
+            android:layout_marginRight="2dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="5dp"
             android:textColor="@color/white"
@@ -23,85 +25,16 @@
 
         <TextView
             android:id="@+id/activity_starttime_minutes"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="35dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="5dp"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:background="@drawable/activity_start_time" />
 
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/workout_type"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="5dp"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/gym_location"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/workout_type"
-        android:textSize="10sp" />
-
-    <TextView
-        android:id="@+id/instructors_name"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="105dp"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/gym_location"
-        android:textSize="10sp" />
-
-
-    <Button
-        android:id="@+id/button"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rectangle"
-        android:paddingBottom="9dp"
-        android:paddingRight="3dp"
-        android:text="@string/Avboka"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF" />
-
-    <TextView
-        android:id="@+id/waiting_list_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/icon"
-        android:layout_alignEnd="@+id/button"
-        android:layout_alignRight="@+id/button"
-        android:layout_gravity="right"
-        android:layout_marginRight="20dp"
-        android:text="22"
-        android:textColor="@color/pink"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="18dp"
-        android:layout_below="@+id/button"
-        android:layout_gravity="left"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@+id/waiting_list_count"
-        android:layout_toStartOf="@+id/waiting_list_count"
-        android:background="@drawable/icon_queue" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -113,57 +46,165 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_time"
-            android:layout_marginLeft="10dp"/>
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/ic_time"
+            android:layout_alignTop="@+id/icon"/>
 
 
         <TextView
             android:id="@+id/activity_length_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
             android:text="längd på passet"
             android:layout_above="@+id/divider_horizontal"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="5dp"/>
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/workout_type"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="5dp"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/gym_location"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="23dp"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/instructors_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="38dp"
+        android:textSize="10sp"/>
+
+    <Button
+        android:id="@+id/button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="14dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rectangle"
+        android:paddingBottom="9dp"
+        android:paddingRight="3dp"
+        android:text="@string/Avboka"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/waiting_list_count"
+        android:layout_width="20dp"
+        android:layout_height="17dp"
+        android:layout_alignBottom="@+id/icon"
+        android:layout_alignEnd="@+id/button"
+        android:layout_alignRight="@+id/button"
+        android:layout_marginRight="15dp"
+        android:text="20"
+        android:textColor="@color/pink"
+        android:textStyle="bold"/>
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="15dp"
+        android:layout_height="13dp"
+        android:layout_below="@+id/button"
+        android:layout_margin="5dp"
+        android:layout_toLeftOf="@+id/waiting_list_count"
+        android:layout_toStartOf="@+id/waiting_list_count"
+        android:background="@drawable/icon_queue"/>
+
     <View
         android:id="@+id/divider_horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/activity_length"
-        android:background="@android:color/black" />
-
-
-    <FrameLayout
-        android:id="@+id/kalender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="347dp"
+        android:layout_height="0.2dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/divider_horizontal"
-        android:background="@drawable/imageview_calendar_pressed"
-        android:clickable="true">
+        android:layout_below="@+id/button"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/divider_long"/>
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="115dp"
-            android:src="@drawable/ic_calender" />
-
-        <TextView
-            android:id="@+id/add_to_calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="35dp"
-            android:gravity="bottom"
-            android:text="Lägg till i kalendern" />
-
-    </FrameLayout>
+            android:layout_marginBottom="2dp"
+            android:layout_width="20dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/ic_calender"
+            android:id="@+id/imageView2"
+            android:layout_alignBottom="@+id/add_to_calendar"/>
 
 
 
+    <TextView
+        android:layout_marginTop="4dp"
+        android:id="@+id/add_to_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:textSize="10sp"
+        android:text="Lägg till i kalendern"
+        android:layout_marginLeft="8dp"
+        android:layout_alignTop="@+id/divider_horizontal"
+        android:layout_toRightOf="@+id/imageView2"
+        android:layout_toEndOf="@+id/imageView2"/>
+
+    <TextView
+        android:layout_width="20dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/ic_more"
+        android:layout_alignTop="@+id/divider_horizontal"
+        android:layout_toRightOf="@+id/add_to_calendar"
+        android:layout_toEndOf="@+id/add_to_calendar"
+        android:layout_marginLeft="64dp"
+        android:layout_marginStart="64dp"
+        android:id="@+id/textView3"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mer om passet"
+        android:textSize="9sp"
+        android:layout_marginRight="-10dp"
+        android:layout_alignTop="@+id/textView3"
+        android:layout_toLeftOf="@+id/button"
+        android:layout_toStartOf="@+id/button"
+        android:layout_marginEnd="28dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:background="@drawable/mid_divider"
+        android:layout_alignTop="@+id/divider_horizontal"
+        android:layout_toRightOf="@+id/add_to_calendar"
+        android:layout_toEndOf="@+id/add_to_calendar"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:id="@+id/imageView3"/>
+
+    <ImageView
+        android:layout_width="347dp"
+        android:layout_height="0.5dp"
+        android:background="@drawable/divider_long"
+        android:layout_below="@+id/imageView3"
+        android:id="@+id/imageView4" />
 
 </RelativeLayout>
