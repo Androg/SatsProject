@@ -10,7 +10,8 @@ public final class UpcomingWorkout {
     public final String mStartTimeHour;
     public final String mStartTimeMinutes;
 
-    public UpcomingWorkout(String mGymLocation, String mInstructorsName, String mWorkoutType, String mDurationInMinutes, int mWaitinglistCount, String mStartTimeHour, String mStartTimeMinutes) {
+    public UpcomingWorkout(String mGymLocation, String mInstructorsName, String mWorkoutType, String mDurationInMinutes,
+                           int mWaitingListCount, String mStartTimeHour, String mStartTimeMinutes) {
         this.mGymLocation = mGymLocation;
         this.mInstructorsName = mInstructorsName;
         this.mWorkoutType = mWorkoutType;
