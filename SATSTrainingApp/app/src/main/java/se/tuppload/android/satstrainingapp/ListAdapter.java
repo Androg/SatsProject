@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
@@ -38,9 +36,9 @@ public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
             ImageView img = (ImageView) convertView.findViewById(R.id.icon);
 
             workoutType.setText(upcomingWorkout.mWorkoutType);
-            gymLocation.setText(upcomingWorkout.mGymLocation);
+            gymLocation.setText(upcomingWorkout.mCenterName);
             instructorsName.setText(upcomingWorkout.mInstructorsName);
-            waitingListCount.setText(Integer.toString(upcomingWorkout.mWaitinglistCount));
+            waitingListCount.setText(Integer.toString(upcomingWorkout.mWaitingListCount));
             startTimeHour.setText(upcomingWorkout.mStartTimeHour);
             startTimeMinutes.setText(upcomingWorkout.mStartTimeMinutes);
             activityDuration.setText(upcomingWorkout.mDurationInMinutes + " min");
