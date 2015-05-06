@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="122dp"
                 android:orientation="vertical"
     android:background="@drawable/rectangle48">
@@ -17,7 +17,6 @@
             android:layout_width="30dp"
             android:layout_height="35dp"
             android:textSize="20sp"
-            android:layout_marginRight="2dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="5dp"
             android:textColor="@color/white"
@@ -27,6 +26,7 @@
             android:id="@+id/activity_starttime_minutes"
             android:layout_width="30dp"
             android:layout_height="35dp"
+            android:layout_marginLeft="2dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="5dp"
             android:textSize="20sp"
@@ -44,8 +44,8 @@
         android:id="@+id/activity_length">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
@@ -62,6 +62,7 @@
             android:text="längd på passet"
             android:layout_above="@+id/divider_horizontal"
             android:layout_alignParentLeft="true"
+            android:textSize="9sp"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="5dp"/>
 
@@ -146,7 +147,8 @@
             android:layout_marginBottom="2dp"
             android:layout_width="20dp"
             android:layout_height="10dp"
-            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/ic_calender"
             android:id="@+id/imageView2"
             android:layout_alignBottom="@+id/add_to_calendar"/>
@@ -161,7 +163,7 @@
         android:gravity="bottom"
         android:textSize="10sp"
         android:text="Lägg till i kalendern"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="-2dp"
         android:layout_alignTop="@+id/divider_horizontal"
         android:layout_toRightOf="@+id/imageView2"
         android:layout_toEndOf="@+id/imageView2"/>
@@ -174,7 +176,7 @@
         android:layout_alignTop="@+id/divider_horizontal"
         android:layout_toRightOf="@+id/add_to_calendar"
         android:layout_toEndOf="@+id/add_to_calendar"
-        android:layout_marginLeft="64dp"
+        android:layout_marginLeft="45dp"
         android:layout_marginStart="64dp"
         android:id="@+id/textView3"/>
 

@@ -5,6 +5,7 @@
     android:baselineAligned="false"
     android:orientation="vertical"
     android:gravity="top"
+    android:background="@color/white"
               android:layout_marginLeft="-13dp"
     tools:context=".se.tuppload.android.satstrainingapp">
 
