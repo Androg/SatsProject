@@ -9,14 +9,30 @@
               android:layout_marginLeft="-13dp"
     tools:context=".se.tuppload.android.satstrainingapp">
 
+
+
+
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar"/>
+
     <LinearLayout
-        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:orientation="vertical"></LinearLayout>
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:text="Kommande träning"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray_light"/>
 
         <ListView
             android:layout_marginLeft="8dp"
@@ -24,9 +40,9 @@
             android:id="@+id/list_view"
             android:layout_width="wrap_content"
             android:layout_height="260dp"
-            android:orientation="horizontal"
             android:textSize="20sp"
-            android:dividerHeight="25dp"/>
+            />
+
 
     </LinearLayout>
 
