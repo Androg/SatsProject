@@ -13,6 +13,8 @@ import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class RequestJson {
 
@@ -35,8 +37,7 @@ public class RequestJson {
                         JSONObject subType = workoutObject.getJSONObject("classTypeId");
                         JSONObject dateTime = workoutObject.getJSONObject("startTime");
                         Log.d("CenterId", subType.getString("subType"));
-
-
+                        
                         final String centerId = workoutObject.getString("centerId");
                         final String instructorId = workoutObject.getString("instructorId");
                         final String workoutType = subType.getString("subType");
@@ -55,10 +56,10 @@ public class RequestJson {
                                     JSONObject centerObject = jsonResponse.getJSONObject("center");
                                     String centerName = centerObject.getString("name");
                                     upcomingWorkouts.add(new UpcomingWorkout(centerName, instructorId, workoutType, durationInMinutes, waitingListCount, startTime));
+                                    Collections.sort(upcomingWorkouts);
 
                                     ListAdapter adapter = new ListAdapter(activity, upcomingWorkouts);
                                     searchList.setAdapter(adapter);
-
 
                                 } catch (JSONException e) {
                                     Log.e("ERROR", "COULD NOT FIND CENTER-NAME");
