@@ -21,12 +21,8 @@ public final class UpcomingWorkout implements  Comparable<UpcomingWorkout> {
         this.mStartTime = mStartTime;
     }
 
-    public String getmStartTime() {
-        return mStartTime;
-    }
-
     @Override
     public int compareTo(UpcomingWorkout other) {
-        return getmStartTime().compareTo(other.getmStartTime());
+        return mStartTime.compareTo(other.mStartTime);
     }
 }
