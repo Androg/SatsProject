@@ -35,22 +35,20 @@ public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
             TextView activityDuration = (TextView) convertView.findViewById(R.id.activity_length_time);
             TextView activityDate = (TextView) convertView.findViewById(R.id.activity_date);
 
-            ImageView img = (ImageView) convertView.findViewById(R.id.icon);
+            ImageView waitingListImg = (ImageView) convertView.findViewById(R.id.icon);
 
             workoutType.setText(upcomingWorkout.mWorkoutType);
             gymLocation.setText(upcomingWorkout.mCenterName);
             instructorsName.setText(upcomingWorkout.mInstructorsName);
-            waitingListCount.setText(Integer.toString(upcomingWorkout.mWaitingListCount));
             startTimeHour.setText(upcomingWorkout.mStartTime.substring(11, 13));
             startTimeMinutes.setText(upcomingWorkout.mStartTime.substring(14, 16));
             activityDate.setText(upcomingWorkout.mStartTime.substring(0, 10));
             activityDuration.setText(upcomingWorkout.mDurationInMinutes + " min");
-
-
+            waitingListCount.setText(Integer.toString(upcomingWorkout.mWaitingListCount));
 
             if(waitingListCount.getText().toString().equals("0")) {
                 waitingListCount.setVisibility(View.GONE);
-                img.setVisibility(View.GONE);
+                waitingListImg.setVisibility(View.GONE);
             }
 
 

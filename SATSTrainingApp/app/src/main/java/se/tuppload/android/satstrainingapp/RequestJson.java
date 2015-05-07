@@ -2,6 +2,7 @@ package se.tuppload.android.satstrainingapp;
 
 import android.app.Activity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -18,7 +19,7 @@ import java.util.Collections;
 
 public class RequestJson {
 
-    public static void getJsonData(final ListView searchList, final Activity activity) {
+    public static void getJsonData(final ListView searchList, final MainActivity activity) {
         final String classUrl = "https://api.parse.com/1/classes/class?include=classTypeId";
         final String centerRelativeUrl = "https://api2.sats.com/v1.0/se/centers/";
 
