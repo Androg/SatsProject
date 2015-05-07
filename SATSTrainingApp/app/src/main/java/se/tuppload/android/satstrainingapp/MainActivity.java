@@ -3,6 +3,8 @@ package se.tuppload.android.satstrainingapp;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -24,7 +26,12 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private View.OnClickListener refreshJson = new View.OnClickListener() {
-        public void onClick(View v) {
+        public void onClick(View view) {
+            ImageButton animationTarget = (ImageButton) view.findViewById(R.id.refresh);
+
+            Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.animator.refresh);
+            animationTarget.startAnimation(animation);
+
             RequestJson.getJsonData(searchList, MainActivity.this);
         }
     };

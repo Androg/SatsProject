@@ -35,7 +35,7 @@ public class ListAdapter extends ArrayAdapter<UpcomingWorkout> {
             TextView activityDuration = (TextView) convertView.findViewById(R.id.activity_length_time);
             TextView activityDate = (TextView) convertView.findViewById(R.id.activity_date);
 
-            ImageView waitingListImg = (ImageView) convertView.findViewById(R.id.icon);
+            ImageView waitingListImg = (ImageView) convertView.findViewById(R.id.queue_icon);
 
             workoutType.setText(upcomingWorkout.mWorkoutType);
             gymLocation.setText(upcomingWorkout.mCenterName);
