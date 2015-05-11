@@ -17,9 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+
 public class RequestJson {
 
-    public static void getJsonData(final ListView searchList, final MainActivity activity) {
+    public static void getJsonData(final StickyListHeadersListView searchList, final MainActivity activity) {
         final String classUrl = "https://api.parse.com/1/classes/class?include=classTypeId";
         final String centerRelativeUrl = "https://api2.sats.com/v1.0/se/centers/";
 
@@ -54,12 +56,16 @@ public class RequestJson {
                             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
 
                                 try {
+                                    Log.e("Testing", "Testing");
                                     JSONObject centerObject = jsonResponse.getJSONObject("center");
                                     String centerName = centerObject.getString("name");
                                     upcomingWorkouts.add(new UpcomingWorkout(centerName, instructorId, workoutType, durationInMinutes, waitingListCount, startTime));
+                                    Log.e("Erroooooor ---> ", String.valueOf(upcomingWorkouts.size()));
+
                                     Collections.sort(upcomingWorkouts);
 
-                                    ListAdapter adapter = new ListAdapter(activity, upcomingWorkouts);
+                                    TrainingListAdapter adapter = new TrainingListAdapter(activity, upcomingWorkouts);
+                                    Log.i("Infooo ----> ", String.valueOf(adapter.getCount()));
                                     searchList.setAdapter(adapter);
 
                                 } catch (JSONException e) {
