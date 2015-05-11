@@ -26,12 +26,7 @@ public class MainActivity extends ActionBarActivity {
 
         searchList = (StickyListHeadersListView) findViewById(R.id.sticky_list);
         RequestJson.getJsonData(searchList, this);
-        searchList.setOnStickyHeaderChangedListener(new StickyListHeadersListView.OnStickyHeaderChangedListener() {
-            @Override
-            public void onStickyHeaderChanged(StickyListHeadersListView stickyListHeadersListView, View view, int i, long l) {
 
-            }
-        });
     }
 
     private View.OnClickListener refreshJson = new View.OnClickListener() {

@@ -80,7 +80,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
             holder.activityDate = (TextView) view.findViewById(R.id.activity_date);
 
             //Get Waiting list image
-            ImageView waitingListImg = (ImageView) convertView.findViewById(R.id.queue_icon);
+            holder.waitingListImg = (ImageView) view.findViewById(R.id.queue_icon);
 
             //Set text to views in layout
             holder.workoutType.setText(upcomingWorkouts.get(position).mWorkoutType);
@@ -90,7 +90,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
             holder.startTimeHour.setText(upcomingWorkouts.get(position).mStartTime.substring(11, 13));
             holder.startTimeMinutes.setText(upcomingWorkouts.get(position).mStartTime.substring(14, 16));
             holder.activityDate.setText(upcomingWorkouts.get(position).mStartTime.substring(0, 10));
-            holder.activityDuration.setText(upcomingWorkouts.get(position).mDurationInMinutes);
+            holder.activityDuration.setText(upcomingWorkouts.get(position).mDurationInMinutes + " min");
 
             //Hide waiting list count img if no one in queue
             if(upcomingWorkouts.get(position).mWaitingListCount == 0) {
