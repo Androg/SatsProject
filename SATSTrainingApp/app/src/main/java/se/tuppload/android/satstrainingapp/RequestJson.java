@@ -17,9 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+
 public class RequestJson {
 
-    public static void getJsonData(final ListView searchList, final MainActivity activity) {
+    public static void getJsonData(final StickyListHeadersListView listView, final MainActivity activity) {
         final String classUrl = "https://api.parse.com/1/classes/class?include=classTypeId";
         final String centerRelativeUrl = "https://api2.sats.com/v1.0/se/centers/";
 
@@ -59,8 +61,8 @@ public class RequestJson {
                                     upcomingWorkouts.add(new UpcomingWorkout(centerName, instructorId, workoutType, durationInMinutes, waitingListCount, startTime));
                                     Collections.sort(upcomingWorkouts);
 
-                                    ListAdapter adapter = new ListAdapter(activity, upcomingWorkouts);
-                                    searchList.setAdapter(adapter);
+                                    TrainingListAdapter adapter = new TrainingListAdapter(activity, upcomingWorkouts);
+                                    listView.setAdapter(adapter);
 
                                 } catch (JSONException e) {
                                     Log.e("ERROR", "COULD NOT FIND CENTER-NAME");
