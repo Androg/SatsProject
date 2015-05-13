@@ -17,7 +17,6 @@ public class MainActivity extends ActionBarActivity
 {
 
     StickyListHeadersListView listView = null;
-    DateTime dateTime;
     long startEndDate = 0;
 
     @Override
@@ -49,11 +48,10 @@ public class MainActivity extends ActionBarActivity
             @Override
             public void onStickyHeaderChanged(StickyListHeadersListView stickyListHeadersListView, View header, int i, long l)
             {
-//                TextView txt = (TextView) findViewById(R.id.date_header);
-                dateTime = ISODateTimeFormat.dateTime().parseDateTime(TrainingListAdapter.getList().get(i).mStartTime);
-//                DateTime d = new DateTime(TrainingListAdapter.getList().get(i).mStartTime);
-//                startEndDate = d.getMillis();
-                if (dateTime.isBeforeNow()) {
+                TextView txt = (TextView) findViewById(R.id.date_header);
+                DateTime d = new DateTime(TrainingListAdapter.getList().get(i).mStartTime);
+                startEndDate = d.getMillis();
+                if (d.isBeforeNow()) {
                     txtStatus.setText("TIDIGARE TRÄNING");
                 } else {
                     txtStatus.setText("KOMMANDE TRÄNING");
