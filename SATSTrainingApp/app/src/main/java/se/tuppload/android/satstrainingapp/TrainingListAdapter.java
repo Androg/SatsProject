@@ -1,6 +1,5 @@
 package se.tuppload.android.satstrainingapp;
 
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,7 @@ import se.tuppload.android.satstrainingapp.Holders.ViewHolder;
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter
 {
 
-    private static ArrayList<UpcomingWorkout> upcomingWorkouts = new ArrayList<>();
+    private static ArrayList<Activity> activities = new ArrayList<>();
     private LayoutInflater inflater;
     private android.app.Activity activity;
     private final int numberOfPositions;
@@ -34,27 +33,27 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private int own = 2;
 
 
-    public TrainingListAdapter(Activity activity, ArrayList<UpcomingWorkout> upcomingWorkouts)
+    public TrainingListAdapter(android.app.Activity activity, ArrayList<Activity> activities)
     {
         inflater = LayoutInflater.from(activity);
-        this.upcomingWorkouts = upcomingWorkouts;
+        this.activities = activities;
         this.activity = activity;
         inflater = activity.getLayoutInflater();
-        numberOfPositions = upcomingWorkouts.size();
-        Collections.sort(upcomingWorkouts);
+        numberOfPositions = activities.size();
+        Collections.sort(activities);
     }
 
 
     @Override
     public int getCount()
     {
-        return upcomingWorkouts.size();
+        return activities.size();
     }
 
     @Override
-    public UpcomingWorkout getItem(int position)
+    public Activity getItem(int position)
     {
-        return upcomingWorkouts.get(position);
+        return activities.get(position);
     }
 
     @Override
@@ -77,29 +76,36 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
             holder.workoutType = (TextView) view.findViewById(R.id.pass);
             holder.gymLocation = (TextView) view.findViewById(R.id.center);
             holder.instructorsName = (TextView) view.findViewById(R.id.instructor);
-            holder.waitingListCount = (TextView) view.findViewById(R.id.number_participants);
+            holder.positionInQueue = (TextView) view.findViewById(R.id.number_participants);
             holder.startTimeHour = (TextView) view.findViewById(R.id.hour);
             holder.startTimeMinutes = (TextView) view.findViewById(R.id.minutes);
             holder.activityDuration = (TextView) view.findViewById(R.id.class_time);
             holder.activityDate = (TextView) view.findViewById(R.id.date_header);
 
             //Get Waiting list image
-            holder.waitingListImg = (ImageView) view.findViewById(R.id.img_participants);
+            holder.positionInQueueImg = (ImageView) view.findViewById(R.id.img_participants);
 
             //Set text to views in layout
-            holder.workoutType.setText(upcomingWorkouts.get(position).mWorkoutType);
-            holder.gymLocation.setText(upcomingWorkouts.get(position).mCenterName);
-            holder.instructorsName.setText(upcomingWorkouts.get(position).mInstructorsName);
-            holder.waitingListCount.setText(Integer.toString(upcomingWorkouts.get(position).mWaitingListCount));
-            holder.startTimeHour.setText(upcomingWorkouts.get(position).mStartTime.substring(11, 13));
-            holder.startTimeMinutes.setText(upcomingWorkouts.get(position).mStartTime.substring(14, 16));
-//            holder.activityDate.setText(upcomingWorkouts.get(position).mStartTime.substring(0, 10));
-            holder.activityDuration.setText(upcomingWorkouts.get(position).mDurationInMinutes + " min");
+            holder.workoutType.setText(activities.get(position).subType);
+//            holder.gymLocation.setText(activities.get(position).booking.center);
+            holder.gymLocation.setText("CenterName TODO");
+//            holder.instructorsName.setText(activities.get(position).booking.aClass.instructorId);
+            holder.instructorsName.setText("instructorName TODO");
+//            holder.positionInQueue.setText(Integer.toString(activities.get(position).booking.positionInQueue));
+            holder.positionInQueue.setText("PosInQueue TODO");
+            holder.startTimeHour.setText(activities.get(position).date.substring(11, 13));
+            holder.startTimeMinutes.setText(activities.get(position).date.substring(14, 16));
+//            holder.activityDate.setText(activities.get(position).startTime.substring(0, 10));
+            holder.activityDuration.setText(activities.get(position).durationInMinutes + " min");
 
             //Hide waiting list count img if no one in queue
-            if (upcomingWorkouts.get(position).mWaitingListCount == 0) {
-                holder.waitingListCount.setVisibility(View.GONE);
-                holder.waitingListImg.setVisibility(View.GONE);
+//            if (activities.get(position).booking.status.equals("QUEUED")) {
+//                holder.positionInQueue.setVisibility(View.GONE);
+//                holder.positionInQueueImg.setVisibility(View.GONE);
+//            }
+        if (activities.get(position).distanceInKm == 0) { // TODO
+                holder.positionInQueue.setVisibility(View.GONE);
+                holder.positionInQueueImg.setVisibility(View.GONE);
             }
 
         }
@@ -118,16 +124,16 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         } else {
             holder = (HeaderViewHolder) convertView.getTag();
         }
-//        mCalendar.setTimeInMillis(Long.parseLong(upcomingWorkouts.get(position).mStartTime));
+//        mCalendar.setTimeInMillis(Long.parseLong(Activity.get(position)startTime));
         String headerText = swedish_days[mCalendar.get(Calendar.DAY_OF_WEEK) - 1] + " " + mCalendar.get(Calendar.DAY_OF_MONTH) + " " + swedish_months[mCalendar.get(Calendar.MONTH)];
 
         holder.text.setText(headerText);
         return convertView;
     }
 
-    public static ArrayList<UpcomingWorkout> getList()
+    public static ArrayList<Activity> getList()
     {
-        return upcomingWorkouts;
+        return activities;
     }
 
     @Override

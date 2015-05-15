@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.joda.time.DateTime;
-import org.joda.time.format.ISODateTimeFormat;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -49,7 +48,7 @@ public class MainActivity extends ActionBarActivity
             public void onStickyHeaderChanged(StickyListHeadersListView stickyListHeadersListView, View header, int i, long l)
             {
                 TextView txt = (TextView) findViewById(R.id.date_header);
-                DateTime d = new DateTime(TrainingListAdapter.getList().get(i).mStartTime);
+                DateTime d = new DateTime(TrainingListAdapter.getList().get(i).date);
                 startEndDate = d.getMillis();
                 if (d.isBeforeNow()) {
                     txtStatus.setText("TIDIGARE TRÄNING");
