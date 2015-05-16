@@ -76,7 +76,7 @@ public class RequestJson {
     public static Activity getActivity(JSONObject activityJson) throws JSONException {
 
         Booking booking = null;
-        if (activityJson.has("booking")){
+        if (activityJson.has("bookingId")){
             booking = getBooking(activityJson);
         }
         final String comment = activityJson.getString("comment");

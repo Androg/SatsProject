@@ -1,6 +1,7 @@
 package se.tuppload.android.satstrainingapp;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
