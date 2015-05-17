@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">SATSTrainingApp</string>
-
     <string name="action_settings">Settings</string>
     <string name="refresh">refresh</string>
     <string name="action_menu">action_menu</string>
     <string name="sats_logo">sats_logo</string>
     <string name="button_cancel">Avboka</string>
+    <string name="details">details</string>
 </resources>

@@ -16,7 +16,7 @@ import java.util.Collections;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
-import se.tuppload.android.satstrainingapp.Holders.ViewHolder;
+import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
@@ -86,7 +86,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         View view = convertView;
         OwnViewHolder ownHolder;
         PreviousViewHolder previousHolder;
-        ViewHolder bookedHolder;
+        BookedViewHolder bookedHolder;
 
         int type = getItemViewType(position);
         switch (type) {
@@ -94,28 +94,33 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 if (view == null) {
                     view = inflater.inflate(R.layout.activity_previous, parent, false);
                     previousHolder = new PreviousViewHolder();
-                    previousHolder.previous = (TextView) view.findViewById(R.id.previous);
+                    previousHolder.type = (TextView) view.findViewById(R.id.previous_type);
+                    previousHolder.date = (TextView) view.findViewById(R.id.previous_date);
+                    previousHolder.typeImg = (ImageView) view.findViewById(R.id.previous_type_img);
                     view.setTag(previousHolder);
                 } else {
                     previousHolder = (PreviousViewHolder) view.getTag();
                 }
-                previousHolder.previous.setText("Previous " + position);
+                previousHolder.type.setText(activities.get(position).type);
+                previousHolder.date.setText(activities.get(position).date.substring(0,10));
                 break;
             case OWN:
                 if (view == null) {
                     view = inflater.inflate(R.layout.activity_own, parent, false);
                     ownHolder = new OwnViewHolder();
-                    ownHolder.own = (TextView) view.findViewById(R.id.own);
+                    ownHolder.type = (TextView) view.findViewById(R.id.own_type);
+                    ownHolder.duration = (TextView) view.findViewById(R.id.own_duration);
                     view.setTag(ownHolder);
                 } else {
                     ownHolder = (OwnViewHolder) view.getTag();
                 }
-                ownHolder.own.setText("Own " + position);
+                ownHolder.type.setText(activities.get(position).type);
+                ownHolder.duration.setText(Integer.toString(activities.get(position).durationInMinutes));
                 break;
             case BOOKED:
                 if (view == null) {
-                    view = inflater.inflate(R.layout.activity_adapter, parent, false);
-                    bookedHolder = new ViewHolder();
+                    view = inflater.inflate(R.layout.activity_booked, parent, false);
+                    bookedHolder = new BookedViewHolder();
                     bookedHolder.workoutType = (TextView) view.findViewById(R.id.pass);
                     bookedHolder.gymLocation = (TextView) view.findViewById(R.id.center);
                     bookedHolder.instructorsName = (TextView) view.findViewById(R.id.instructor);
@@ -127,7 +132,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     bookedHolder.positionInQueueImg = (ImageView) view.findViewById(R.id.img_participants);
                     view.setTag(bookedHolder);
                 } else {
-                    bookedHolder = (ViewHolder) view.getTag();
+                    bookedHolder = (BookedViewHolder) view.getTag();
                 }
                 bookedHolder.workoutType.setText(activities.get(position).subType);
                 bookedHolder.gymLocation.setText(activities.get(position).booking.center);
@@ -153,7 +158,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
         return view;
     }
-    
+
     @Override
     public View getHeaderView(int position, View convertView, ViewGroup parent) {
         HeaderViewHolder holder;
