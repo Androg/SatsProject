@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp;
+package se.tuppload.android.satstrainingapp.models;
 
 public class Center {
 

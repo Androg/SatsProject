@@ -10,22 +10,22 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
 import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
+import se.tuppload.android.satstrainingapp.models.Activity;
+import se.tuppload.android.satstrainingapp.models.Center;
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private static ArrayList<Activity> activities = new ArrayList<>();
     private HashMap<String, Center> centers = new HashMap<>();
     private LayoutInflater inflater;
-    private final String[] swedish_days = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
-    private final String[] swedish_months = {"", "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"};
+    private final String[] weekDay = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
+    private final String[] month = {"", "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"};
     private DateTime date;
     private DateTime currentDateTime = new DateTime();
     private DateTime activityDate;
@@ -33,7 +33,6 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private static final int PREVIOUS = 0;
     private static final int BOOKED = 1;
     private static final int OWN = 2;
-//    private static final int
 
 
     public TrainingListAdapter(MainActivity activity, ArrayList<Activity> activities, HashMap centers) {
@@ -84,6 +83,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         OwnViewHolder ownHolder;
         PreviousViewHolder previousHolder;
         BookedViewHolder bookedHolder;
+        date = DateTime.parse(getItem(position).date);
 
         int viewType = getItemViewType(position);
         switch (viewType) {
@@ -99,8 +99,9 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 } else {
                     previousHolder = (PreviousViewHolder) view.getTag();
                 }
-                previousHolder.type.setText(activities.get(position).subType);
-                previousHolder.date.setText(activities.get(position).date.substring(0,10));
+                previousHolder.type.setText(getItem(position).subType);
+                previousHolder.date.setText(weekDay[date.getDayOfWeek()] + " " + date.getDayOfMonth() + "/" + date.getMonthOfYear());
+
                 break;
             case OWN:
                 if (view == null) {
@@ -112,8 +113,8 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 } else {
                     ownHolder = (OwnViewHolder) view.getTag();
                 }
-                ownHolder.type.setText(activities.get(position).subType);
-                ownHolder.duration.setText(Integer.toString(activities.get(position).durationInMinutes));
+                ownHolder.type.setText(getItem(position).subType);
+                ownHolder.duration.setText(Integer.toString(getItem(position).durationInMinutes));
                 break;
             case BOOKED:
                 if (view == null) {
@@ -132,27 +133,22 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 } else {
                     bookedHolder = (BookedViewHolder) view.getTag();
                 }
-                bookedHolder.workoutType.setText(activities.get(position).subType);
-                bookedHolder.gymLocation.setText(centers.get(activities.get(position).booking.center).name);
-//                bookedHolder.gymLocation.setText("CenterName TODO");
-                bookedHolder.instructorsName.setText(activities.get(position).booking.aClass.instructorId);
-//                bookedHolder.instructorsName.setText("instructorName TODO");
-                bookedHolder.positionInQueue.setText(Integer.toString(activities.get(position).booking.positionInQueue));
-//                bookedHolder.positionInQueue.setText("PosInQueue TODO");
-                bookedHolder.startTimeHour.setText(activities.get(position).date.substring(11, 13));
-                bookedHolder.startTimeMinutes.setText(activities.get(position).date.substring(14, 16));
-//                bookedHolder.activityDate.setText(activities.get(position).date.substring(0, 10));
-                bookedHolder.activityDuration.setText(activities.get(position).durationInMinutes + " min");
+                bookedHolder.workoutType.setText(getItem(position).subType);
+                bookedHolder.gymLocation.setText(centers.get(getItem(position).booking.center).name);
+                bookedHolder.instructorsName.setText(getItem(position).booking.aClass.instructorId);
+                bookedHolder.positionInQueue.setText(Integer.toString(getItem(position).booking.positionInQueue));
+                bookedHolder.startTimeHour.setText(getItem(position).date.substring(11, 13));
+                bookedHolder.startTimeMinutes.setText(getItem(position).date.substring(14, 16));
+//                bookedHolder.activityDate.setText(getItem(position).date.substring(0, 10));
+                bookedHolder.activityDuration.setText(getItem(position).durationInMinutes + " min");
 
                 // Hide waiting list count img if no one in queue
-            if (activities.get(position).booking.positionInQueue == 0) {
+            if (getItem(position).booking.positionInQueue == 0) {
                 bookedHolder.positionInQueue.setVisibility(View.GONE);
                 bookedHolder.positionInQueueImg.setVisibility(View.GONE);
             }
                 break;
-
         }
-
 
         return view;
     }
@@ -177,7 +173,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         if (date.getDayOfYear() == currentDateTime.getDayOfYear()+1){
             extra = "Imorgon, ";
         }
-        String headerText = swedish_days[date.getDayOfWeek()] + " " + date.getDayOfMonth() + " " + swedish_months[date.getMonthOfYear()];
+        String headerText = weekDay[date.getDayOfWeek()] + " " + date.getDayOfMonth() + " " + month[date.getMonthOfYear()];
 
         holder.text.setText(extra + headerText);
         return convertView;
@@ -195,4 +191,5 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private class HeaderViewHolder {
         TextView text;
     }
+
 }

@@ -39,6 +39,8 @@ public class MainActivity extends ActionBarActivity
             {
                 RequestJson.getJsonData(listView, MainActivity.this);
                 im.startAnimation(animRot);
+
+
             }
         });
 
@@ -47,9 +49,7 @@ public class MainActivity extends ActionBarActivity
             @Override
             public void onStickyHeaderChanged(StickyListHeadersListView stickyListHeadersListView, View header, int i, long l)
             {
-                TextView txt = (TextView) findViewById(R.id.date_header);
                 DateTime d = new DateTime(TrainingListAdapter.getList().get(i).date);
-                startEndDate = d.getMillis();
                 if (d.isBeforeNow()) {
                     txtStatus.setText("TIDIGARE TRÄNING");
                 } else {
