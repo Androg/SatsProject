@@ -2,7 +2,8 @@ package se.tuppload.android.satstrainingapp;
 
 public class Center {
 
-    public boolean availableForOnlineBooking, isElixia;
+    public boolean availableForOnlineBooking;
+    public boolean isElixia;
     public String description;
     public String name;
     public String url;

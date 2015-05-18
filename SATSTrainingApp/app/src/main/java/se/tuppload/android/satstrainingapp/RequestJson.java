@@ -11,6 +11,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.TreeMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -26,6 +28,7 @@ public class RequestJson {
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
 
                 final ArrayList<Activity> activities = new ArrayList<>();
+                final HashMap<String, Center> centers = new HashMap<>();
 
                 try {
                     JSONArray resultArray = jsonResponse.getJSONArray("results");
@@ -35,33 +38,43 @@ public class RequestJson {
                         Log.d("resultlength ", "" + resultArray.length());
 
 
-//                            final String centerAbsoluteUrl = centerRelativeUrl + centerId;
-//                            SatsRestClient.get(centerAbsoluteUrl, null, new JsonHttpResponseHandler() {
-//
-//                                @Override
-//                                public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
-//
-//                                    try {
-//                                        JSONObject centerObject = jsonResponse.getJSONObject("center");
-//                                        String centerName = centerObject.getString("name");
-//                                        final Booking booking = new Booking(status, aClass, centerName, bookingId, positionInQueue);
-//                                        activities.add(new Activity(booking, instructorId, wor, durationInMinutes, waitingListCount, startTime));
-//                                        activities.add(new Activity(centerName, instructorId, workoutType, durationInMinutes, waitingListCount, startTime));
-//                                        Collections.sort(activities);
-//
-//                                        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);
-//                                        listView.setAdapter(adapter);
-//
-//                                    } catch (JSONException e) {
-//                                        Log.e("ERROR", "COULD NOT FIND CENTER-NAME");
-//                                    }
-//                                }
-//                            });
+                        if (activityJson.has("bookingId")) {
+                            final JSONObject bookingJson = activityJson.getJSONObject("bookingId");
+                            final String centerId = bookingJson.getString("center");
+                            SatsRestClient.getCenter(centerId, null, new JsonHttpResponseHandler() {
+
+                                @Override
+                                public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
+
+                                    try {
+                                        JSONObject centerObject = jsonResponse.getJSONObject("center");
+
+                                        final boolean availableForOnlineBooking = centerObject.getBoolean("availableForOnlineBooking");
+                                        final boolean isElixia = centerObject.getBoolean("isElixia");
+                                        final String description = centerObject.getString("description");
+                                        final String name = centerObject.getString("name");
+                                        final String url = centerObject.getString("url");
+                                        final String filterId = centerObject.getString("filterId");
+                                        final String centerId = centerObject.getString("id");
+                                        final String latitude = centerObject.getString("lat");
+                                        final String longitude = centerObject.getString("long");
+                                        final String regionId = centerObject.getString("regionId");
+
+                                        centers.put(centerId, new Center(availableForOnlineBooking, isElixia, description,
+                                                name, url, filterId, centerId, latitude, longitude, regionId));
+
+
+                                    } catch (JSONException e) {
+                                        Log.e("ERROR", "COULD NOT FIND CENTER-NAME");
+                                    }
+                                }
+                            });
+                        }
 
                         activities.add(getActivity(activityJson));
                         Collections.sort(activities);
 
-                        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);
+                        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities, centers);
                         listView.setAdapter(adapter);
 
                     }
@@ -92,8 +105,7 @@ public class RequestJson {
         return new Activity(booking, comment, date, distanceInKm, durationInMinutes, id, source, status, subType, type);
     }
 
-    public static Booking getBooking(JSONObject activityJson) throws JSONException {
-
+    public static Booking getBooking(final JSONObject activityJson) throws JSONException {
 
         final JSONObject bookingJson = activityJson.getJSONObject("bookingId");
         final String status = bookingJson.getString("status");
@@ -123,12 +135,5 @@ public class RequestJson {
         return new Class(centerId, classTypeId, durationInMinutes, id, instructorId, name, startTime,
                 bookedPersonsCount, maxPersonsCount, waitingListCount);
     }
-//    public static void makeActivity(Booking booking, final StickyListHeadersListView listView ,final MainActivity activity){
-//
-//        ArrayList<Activity> activities = new ArrayList<>();
-//        activities.add(new Activity(booking, ))
-//        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);
-//        listView.setAdapter(adapter);
-//    }
 
 }

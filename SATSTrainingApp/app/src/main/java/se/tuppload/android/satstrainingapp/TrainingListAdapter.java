@@ -12,6 +12,7 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
@@ -21,28 +22,24 @@ import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private static ArrayList<Activity> activities = new ArrayList<>();
+    private HashMap<String, Center> centers = new HashMap<>();
     private LayoutInflater inflater;
-    private android.app.Activity activity;
-    private final int numberOfPositions;
-    private Calendar mCalendar = Calendar.getInstance();
-    private final String[] swedish_days = {"Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
-    private final String[] swedish_months = {"Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"};
+    private final String[] swedish_days = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
+    private final String[] swedish_months = {"", "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"};
     private DateTime date;
+    private DateTime currentDateTime = new DateTime();
     private DateTime activityDate;
     private static final int VIEWTYPE_COUNT = 3;
     private static final int PREVIOUS = 0;
     private static final int BOOKED = 1;
     private static final int OWN = 2;
+//    private static final int
 
 
-    public TrainingListAdapter(android.app.Activity activity, ArrayList<Activity> activities) {
+    public TrainingListAdapter(MainActivity activity, ArrayList<Activity> activities, HashMap centers) {
         inflater = LayoutInflater.from(activity);
         this.activities = activities;
-        this.activity = activity;
-        inflater = activity.getLayoutInflater();
-        numberOfPositions = activities.size();
-        Collections.sort(activities);
-
+        this.centers = centers;
     }
 
     @Override
@@ -88,20 +85,21 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         PreviousViewHolder previousHolder;
         BookedViewHolder bookedHolder;
 
-        int type = getItemViewType(position);
-        switch (type) {
+        int viewType = getItemViewType(position);
+        switch (viewType) {
             case PREVIOUS:
                 if (view == null) {
                     view = inflater.inflate(R.layout.activity_previous, parent, false);
                     previousHolder = new PreviousViewHolder();
                     previousHolder.type = (TextView) view.findViewById(R.id.previous_type);
                     previousHolder.date = (TextView) view.findViewById(R.id.previous_date);
+//                    switch (type)
                     previousHolder.typeImg = (ImageView) view.findViewById(R.id.previous_type_img);
                     view.setTag(previousHolder);
                 } else {
                     previousHolder = (PreviousViewHolder) view.getTag();
                 }
-                previousHolder.type.setText(activities.get(position).type);
+                previousHolder.type.setText(activities.get(position).subType);
                 previousHolder.date.setText(activities.get(position).date.substring(0,10));
                 break;
             case OWN:
@@ -114,7 +112,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 } else {
                     ownHolder = (OwnViewHolder) view.getTag();
                 }
-                ownHolder.type.setText(activities.get(position).type);
+                ownHolder.type.setText(activities.get(position).subType);
                 ownHolder.duration.setText(Integer.toString(activities.get(position).durationInMinutes));
                 break;
             case BOOKED:
@@ -135,7 +133,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     bookedHolder = (BookedViewHolder) view.getTag();
                 }
                 bookedHolder.workoutType.setText(activities.get(position).subType);
-                bookedHolder.gymLocation.setText(activities.get(position).booking.center);
+                bookedHolder.gymLocation.setText(centers.get(activities.get(position).booking.center).name);
 //                bookedHolder.gymLocation.setText("CenterName TODO");
                 bookedHolder.instructorsName.setText(activities.get(position).booking.aClass.instructorId);
 //                bookedHolder.instructorsName.setText("instructorName TODO");
@@ -170,10 +168,18 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         } else {
             holder = (HeaderViewHolder) convertView.getTag();
         }
-//        mCalendar.setTimeInMillis(Long.parseLong(Activity.get(position)startTime));
-        String headerText = swedish_days[mCalendar.get(Calendar.DAY_OF_WEEK) - 1] + " " + mCalendar.get(Calendar.DAY_OF_MONTH) + " " + swedish_months[mCalendar.get(Calendar.MONTH)];
+        date = DateTime.parse(getItem(position).date);
+        String extra = "";
 
-        holder.text.setText(headerText);
+        if (date.getDayOfYear() == currentDateTime.getDayOfYear()){
+            extra = "Idag, ";
+        }
+        if (date.getDayOfYear() == currentDateTime.getDayOfYear()+1){
+            extra = "Imorgon, ";
+        }
+        String headerText = swedish_days[date.getDayOfWeek()] + " " + date.getDayOfMonth() + " " + swedish_months[date.getMonthOfYear()];
+
+        holder.text.setText(extra + headerText);
         return convertView;
     }
 

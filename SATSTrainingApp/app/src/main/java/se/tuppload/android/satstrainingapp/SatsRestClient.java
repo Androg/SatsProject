@@ -9,6 +9,7 @@ import com.loopj.android.http.RequestParams;
 
 public class SatsRestClient {
 
+    private static final String CENTER_URL = "https://api2.sats.com/v1.0/se/centers/";
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
@@ -16,6 +17,15 @@ public class SatsRestClient {
         client.addHeader("X-Parse-Application-Id", "23p8xhISFQKfAfDa0kdS8NYnuKwiXHolJmXWLMyi");
         client.addHeader("X-Parse-REST-API-Key", "fKgzdx8dze90xyzlMY8e5uLcry6bT131ixcPcUfr");
         client.get(url, params, responseHandler);
+    }
+
+    public static void getCenter(String centerId, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        client.addHeader("Content-Type", "application/json");
+        client.get(getCenterUrl(centerId), params, responseHandler);
+    }
+
+    private static String getCenterUrl(String centerId) {
+        return CENTER_URL + centerId;
     }
 
 }
