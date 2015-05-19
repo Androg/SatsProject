@@ -1,48 +1,85 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginLeft="-13dp"
-    android:background="@color/white"
-    android:baselineAligned="false"
-    android:gravity="top"
-    android:orientation="vertical"
-    tools:context=".se.tuppload.android.satstrainingapp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                tools:context=".MainActivity">
 
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:local="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentLeft="true">
 
-    <LinearLayout
-        android:id="@+id/graph_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical" />
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar"/>
 
-    <LinearLayout
-        android:id="@+id/list_view_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:orientation="vertical">
-
-
-        <TextView
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gray_light"
-            android:text="Kommande träning" />
+            android:layout_height="fill_parent"
+            android:id="@+id/main_content"
+            android:layout_below="@id/toolbar">
 
-        <ListView
-            android:id="@+id/list_view"
-            android:layout_width="wrap_content"
-            android:layout_height="260dp"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="8dp"
-            android:textSize="20sp" />
+            <com.sothree.slidinguppanel.SlidingUpPanelLayout
+                android:id="@+id/sliding_layout"
+                xmlns:sothree="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom"
+                sothree:umanoDragView="@+id/tidigare"
+                sothree:umanoOverlay="true"
+                sothree:umanoPanelHeight="300dp"
+                sothree:umanoParalaxOffset="100dp"
+                sothree:umanoShadowHeight="4dp">
+
+                <FrameLayout
+                    android:id="@+id/graph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="250dp"/>
+
+                <RelativeLayout
+                    android:id="@+id/my_training"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/tidigare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:gravity="center_vertical"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="12dp"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="9dp"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/drag_button_normal"
+                        android:layout_centerHorizontal="true"
+                        android:scaleX="0.50"
+                        android:scaleY="0.50"/>
 
 
-    </LinearLayout>
 
-</LinearLayout>
+
+                    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+                        android:id="@+id/listan"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tidigare"
+                        android:layout_marginTop="10dp"/>
+
+                </RelativeLayout>
+
+            </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

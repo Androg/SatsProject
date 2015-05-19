@@ -13,4 +13,5 @@
     <style name="MyCustomToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:textColorPrimary">#000000</item>
     </style>
+
 </resources>
