@@ -139,10 +139,8 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 bookedHolder.positionInQueue.setText(Integer.toString(getItem(position).booking.positionInQueue));
                 bookedHolder.startTimeHour.setText(getItem(position).date.substring(11, 13));
                 bookedHolder.startTimeMinutes.setText(getItem(position).date.substring(14, 16));
-//                bookedHolder.activityDate.setText(getItem(position).date.substring(0, 10));
                 bookedHolder.activityDuration.setText(getItem(position).durationInMinutes + " min");
 
-                // Hide waiting list count img if no one in queue
             if (getItem(position).booking.positionInQueue == 0) {
                 bookedHolder.positionInQueue.setVisibility(View.GONE);
                 bookedHolder.positionInQueueImg.setVisibility(View.GONE);
