@@ -20,7 +20,7 @@
         android:layout_marginBottom="10dp"
         android:gravity="top"
         android:layout_gravity="top"
-        android:background="@drawable/booking_layout_bg">
+        android:background="@drawable/booking_view">
 
         <RelativeLayout
             android:id="@+id/top_box"
@@ -114,7 +114,8 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/secondary_color"
-                        android:layout_marginLeft="5dp" />
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="-2dp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -271,7 +272,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Lägg till i kalender"
-                        android:layout_marginTop="4dp"
+                        android:layout_marginTop="2dp"
                         android:textSize="11dp" />
                 </LinearLayout>
 
@@ -299,8 +300,6 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:onClick="showInfo"
                     android:layout_centerInParent="true">
 
                     <ImageView
@@ -316,7 +315,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="Mer om passet"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="1dp"
                         android:textSize="11dp" />
                 </LinearLayout>
 

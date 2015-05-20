@@ -59,6 +59,7 @@ public class RequestJson {
 
                         TrainingListAdapter adapter = new TrainingListAdapter(activity, activities, centers);
                         listView.setAdapter(adapter);
+
                     }
 
                 } catch (JSONException e) {

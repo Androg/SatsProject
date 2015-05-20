@@ -17,7 +17,7 @@
         android:layout_marginLeft="3dp"
         android:layout_marginRight="3dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/booking_layout_bg"
+        android:background="@drawable/booking_view"
         android:gravity="top"
         android:orientation="vertical">
 
@@ -50,6 +50,7 @@
                         android:layout_marginLeft="8dp"
                         android:text="Type"
                         android:textSize="14dp"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:textStyle="bold" />
 
                 </LinearLayout>
