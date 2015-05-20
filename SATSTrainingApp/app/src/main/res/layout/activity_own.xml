@@ -50,7 +50,8 @@
                         android:layout_marginLeft="8dp"
                         android:text="Type"
                         android:textSize="14dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 </LinearLayout>
 

@@ -3,7 +3,9 @@
     xmlns:andriod="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:divider="@drawable/top_divider"
+    android:showDividers="end" >
 
     <RelativeLayout
         android:id="@+id/list_item1"
