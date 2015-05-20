@@ -59,7 +59,6 @@ public class RequestJson {
 
                         TrainingListAdapter adapter = new TrainingListAdapter(activity, activities, centers);
                         listView.setAdapter(adapter);
-
                     }
 
                 } catch (JSONException e) {
@@ -72,7 +71,7 @@ public class RequestJson {
     public static Activity getActivity(JSONObject activityJson) throws JSONException {
 
         Booking booking = null;
-        if (activityJson.has("bookingId")){
+        if (activityJson.has("bookingId")) {
             booking = getBooking(activityJson);
         }
         final String comment = activityJson.getString("comment");

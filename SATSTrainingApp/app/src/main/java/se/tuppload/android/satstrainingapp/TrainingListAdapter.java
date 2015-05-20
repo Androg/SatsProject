@@ -85,6 +85,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         BookedViewHolder bookedHolder;
         date = DateTime.parse(getItem(position).date);
 
+
         int viewType = getItemViewType(position);
         switch (viewType) {
             case PREVIOUS:
@@ -141,10 +142,10 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 bookedHolder.startTimeMinutes.setText(getItem(position).date.substring(14, 16));
                 bookedHolder.activityDuration.setText(getItem(position).durationInMinutes + " min");
 
-            if (getItem(position).booking.positionInQueue == 0) {
-                bookedHolder.positionInQueue.setVisibility(View.GONE);
-                bookedHolder.positionInQueueImg.setVisibility(View.GONE);
-            }
+                if (getItem(position).booking.positionInQueue == 0) {
+                    bookedHolder.positionInQueue.setVisibility(View.GONE);
+                    bookedHolder.positionInQueueImg.setVisibility(View.GONE);
+                }
                 break;
         }
 
@@ -154,6 +155,30 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     @Override
     public View getHeaderView(int position, View convertView, ViewGroup parent) {
         HeaderViewHolder holder;
+        int week = DateTime.parse(getItem(position).date).plusDays(1).getWeekOfWeekyear();
+        if (getItemViewType(position) == PREVIOUS) {
+            if (convertView == null) {
+                holder = new HeaderViewHolder();
+                convertView = inflater.inflate(R.layout.date_header, parent, false);
+                holder.text = (TextView) convertView.findViewById(R.id.date_header);
+                convertView.setTag(holder);
+            } else {
+                holder = (HeaderViewHolder) convertView.getTag();
+            }
+            DateTime date = new DateTime(getItem(position).date);
+            holder.text.setText(Integer.toString(date.getWeekOfWeekyear()));
+
+//            setHeaderByWeek(position, convertView, holder);
+
+            if (position < getCount()) {
+                int newWeek = DateTime.parse(getItem(position + 1).date).plusDays(1).getWeekOfWeekyear();
+                if (week == newWeek && getItemViewType(position+1) == PREVIOUS) {
+                    holder.text.setVisibility(convertView.GONE);
+                }
+            }
+            return convertView;
+        }
+
         if (convertView == null) {
             holder = new HeaderViewHolder();
             convertView = inflater.inflate(R.layout.date_header, parent, false);
@@ -162,13 +187,13 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         } else {
             holder = (HeaderViewHolder) convertView.getTag();
         }
-        date = DateTime.parse(getItem(position).date);
+//        date = DateTime.parse(getItem(position).date);
         String extra = "";
 
-        if (date.getDayOfYear() == currentDateTime.getDayOfYear()){
+        if (date.getDayOfYear() == currentDateTime.getDayOfYear()) {
             extra = "Idag, ";
         }
-        if (date.getDayOfYear() == currentDateTime.getDayOfYear()+1){
+        if (date.getDayOfYear() == currentDateTime.getDayOfYear() + 1) {
             extra = "Imorgon, ";
         }
         String headerText = weekDay[date.getDayOfWeek()] + " " + date.getDayOfMonth() + " " + month[date.getMonthOfYear()];
@@ -188,6 +213,20 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
     private class HeaderViewHolder {
         TextView text;
+    }
+
+    public static void setHeaderByWeek(int position, View view, HeaderViewHolder holder) {
+        DateTime date;
+        int week = DateTime.parse(activities.get(position).date).plusDays(1).getWeekOfWeekyear();
+        date = DateTime.parse(activities.get(position).date).plusDays(1);
+        if (position < activities.size() && position > 0) {
+            int newWeek = DateTime.parse(activities.get(position + 1).date).plusDays(1).getWeekOfWeekyear();
+            int previousWeek = DateTime.parse(activities.get(position - 1).date).plusDays(1).getWeekOfWeekyear();
+            if (week == newWeek) {
+                holder.text.setVisibility(view.GONE);
+            }
+        }
+
     }
 
 }

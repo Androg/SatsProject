@@ -15,9 +15,6 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 public class MainActivity extends ActionBarActivity
 {
 
-    StickyListHeadersListView listView = null;
-    long startEndDate = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -39,8 +36,6 @@ public class MainActivity extends ActionBarActivity
             {
                 RequestJson.getJsonData(listView, MainActivity.this);
                 im.startAnimation(animRot);
-
-
             }
         });
 
