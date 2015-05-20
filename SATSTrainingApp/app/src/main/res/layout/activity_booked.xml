@@ -115,7 +115,7 @@
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/secondary_color"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginTop="-1dp"/>
+                        android:layout_marginTop="-2dp"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -281,7 +281,7 @@
             <LinearLayout
                 android:id="@+id/divider"
                 android:orientation="horizontal"
-                android:layout_width="1dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/mid_divider"
                 android:layout_centerHorizontal="true"/>
@@ -300,8 +300,6 @@
                     android:orientation="horizontal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:onClick="showInfo"
                     android:layout_centerInParent="true">
 
                     <ImageView

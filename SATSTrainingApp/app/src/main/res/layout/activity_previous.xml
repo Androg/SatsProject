@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:andriod="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:divider="@drawable/top_divider"
-    android:showDividers="end" >
+    android:showDividers="end"
+    android:background="@color/gray_light"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/list_item1"
@@ -35,22 +35,22 @@
 
 
 
-                <TextView
-                    android:id="@+id/previous_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textColor="#000000"
-                    android:textStyle="bold"
-                    android:text="type" />
+            <TextView
+                android:id="@+id/previous_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:text="type" />
 
 
-                <TextView
-                    android:id="@+id/previous_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#868686"
-                    android:text="date" />
+            <TextView
+                android:id="@+id/previous_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#868686"
+                android:text="date" />
 
 
             <LinearLayout
@@ -79,7 +79,7 @@
         </LinearLayout>
 
         <CheckBox
-            android:id="@+id/checkbox1"
+            android:id="@+id/completedOrNot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="6dp"
@@ -89,8 +89,8 @@
             android:layout_centerVertical="true"
             android:button="@drawable/checkbox"
             android:paddingLeft="14dp"
-            android:checked="true"
-            android:text="Avklarat!"
+            android:checked="false"
+            android:text="Avklarat?"
             android:textSize="20dp"
             android:textAlignment="@integer/abc_max_action_buttons"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"

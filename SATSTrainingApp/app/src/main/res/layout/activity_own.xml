@@ -47,11 +47,11 @@
                         android:id="@+id/own_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
                         android:layout_marginLeft="8dp"
                         android:text="Type"
                         android:textSize="14dp"
-                        android:textStyle="bold"
-                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -67,9 +67,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
+                        android:layout_marginTop="2dp"
                         android:layout_weight="0"
-                        android:scaleX="0.50"
-                        android:scaleY="0.50"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
                         android:src="@drawable/booking_ic_time" />
 
                     <TextView
@@ -81,7 +82,7 @@
                         android:layout_weight="0.1"
                         android:textAlignment="inherit"
                         android:textColor="@color/secondary_color"
-                        android:textSize="10dp" />
+                        android:textSize="14dp" />
 
                 </LinearLayout>
 
@@ -89,7 +90,7 @@
                     android:id="@+id/small_info_trainig"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp">
+                    android:layout_marginLeft="2dp" >
 
                     <ImageView
                         android:id="@+id/class_comment_icon"
@@ -97,8 +98,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
                         android:layout_weight="0"
-                        android:scaleX="0.45"
-                        android:scaleY="0.45"
+                        android:scaleX="0.5"
+                        android:scaleY="0.5"
                         android:src="@drawable/ic_comment" />
 
                     <TextView
@@ -107,6 +108,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/hours_background"
                         android:layout_marginLeft="2dp"
+                        android:layout_marginTop="2dp"
                         android:layout_weight="0.1"
                         android:text="0 kommentar"
                         android:textAlignment="inherit"
@@ -129,7 +131,7 @@
                     android:background="@drawable/progressbar_nmi_primary"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="@string/details"
+                    android:text="detaljer"
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     android:textStyle="bold" />

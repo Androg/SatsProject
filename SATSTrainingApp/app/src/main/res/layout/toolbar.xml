@@ -5,14 +5,14 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="@color/white"
     android:minHeight="?attr/actionBarSize"
-    local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    local:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+    android:background="@color/white"
+    local:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+    local:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent" >
 
         <TextView
             android:id="@+id/text_title"
@@ -20,42 +20,41 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
             android:layout_toRightOf="@+id/logo_image"
             android:text="MIN TRÄNING"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:textColor="@color/black" />
 
         <ImageView
             android:id="@+id/logo_image"
+            android:src="@drawable/sats_logo"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:layout_toRightOf="@+id/logo_settings"
-            android:src="@drawable/sats_logo" />
+            android:layout_toRightOf="@+id/logo_settings"/>
 
         <ImageView
             android:id="@+id/logo_settings"
+            android:src="@drawable/meny_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="-5dp"
-            android:paddingRight="6dp"
             android:scaleType="centerInside"
-            android:src="@drawable/meny_icon" />
+            android:layout_alignParentStart="false"
+            android:layout_marginLeft="-5dp"
+            android:layout_alignParentLeft="true"
+            android:paddingRight="6dp"/>
 
         <ImageView
             android:id="@+id/refresh"
+            android:src="@drawable/refresh_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
             android:scaleX="0.60"
             android:scaleY="0.60"
-            android:src="@drawable/refresh_icon" />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"/>
 
     </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>
-

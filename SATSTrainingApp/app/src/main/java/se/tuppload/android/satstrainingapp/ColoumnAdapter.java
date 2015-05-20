@@ -1,7 +1,6 @@
 package se.tuppload.android.satstrainingapp;
 
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup.LayoutParams;
@@ -13,23 +12,24 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 
-public class CalendarAdapter extends PagerAdapter
+public class ColoumnAdapter extends PagerAdapter
 {
     static List<Integer> workoutsPerWeek = new ArrayList<Integer>();
     static Map<Integer, Integer> workoutPerWeekDone = new HashMap<>();
-    private View mCurrentView;
     DateTime dateToday = new DateTime();
     DateTime date = new DateTime();
-    DateTime date2 = new DateTime();
+    DateTime date2;
     public static float earlierPos = 0;
+    int prevCellPosition;
+    int nextCellPosition;
+    Calendar calendar = Calendar.getInstance();
 
     int NumberOfPages = 52;
 
@@ -56,7 +56,7 @@ public class CalendarAdapter extends PagerAdapter
         week.setBackgroundColor(container.getResources().getColor(R.color.white));
 
         //Get relative layout set parameters
-        RelativeLayout parent = (RelativeLayout) container.findViewById(R.id.relativeLayout);
+        RelativeLayout parent = (RelativeLayout) container.findViewById(R.id.my_training);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, week.getId());
@@ -70,8 +70,29 @@ public class CalendarAdapter extends PagerAdapter
         //Changes weekParams height
         weekParams.height = 95;
 
+        if(position != 0 && workoutPerWeekDone.containsKey(position - 1)) {
+            prevCellPosition = workoutPerWeekDone.get(position - 1);
+        } else {
+            prevCellPosition = -1;
+        }
+
+        Log.e("Position ------", String.valueOf(position));
+        if(position < 50 && workoutPerWeekDone.containsKey(position + 1)) {
+            nextCellPosition = workoutPerWeekDone.get(position + 1);
+        } else {
+            nextCellPosition = -1;
+        }
+
+//        getDate(position);
+
+        DateTime weekStartDate = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 6);
+        DateTime weekEndDate = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek());
+
         //Sets text day1 - day2 / day1month
-        week.setText(date.getDayOfMonth() + "-" + date2.getDayOfMonth() + "/" + date2.getMonthOfYear());
+//        week.setText();
+        week.setText(weekStartDate.getDayOfMonth() + "-" + weekEndDate.getDayOfMonth() + "/" +
+                weekStartDate.getMonthOfYear());
+
         //Moves week to center
         week.setGravity(Gravity.CENTER);
 
@@ -81,19 +102,22 @@ public class CalendarAdapter extends PagerAdapter
         //Paints out position
         if(position < dateToday.getWeekOfWeekyear() && workoutPerWeekDone.containsKey(position)) {
             // Context, Filled, Position
-            Calendar text = new Calendar(container.getContext(), true, workoutPerWeekDone.get(position));
+            Coloumn text = new Coloumn(container.getContext(), true, workoutPerWeekDone.get(position),
+                    nextCellPosition, position + 1 < dateToday.getWeekOfWeekyear(), prevCellPosition, true);
             viewContext.addView(text);
 
         } else if(position == dateToday.getWeekOfWeekyear()) {
 
             ImageView top = new ImageView(container.getContext());
             top.setImageResource(R.drawable.now_marker);
-            Calendar text = new Calendar(container.getContext(), false, workoutPerWeekDone.get(position));
+            Coloumn text = new Coloumn(container.getContext(), false, workoutPerWeekDone.get(position),
+                    nextCellPosition, false, prevCellPosition, false);
 
             //Scale current week banner
-            top.setScaleX(0.4f);
-            top.setScaleY(0.4f);
-            top.setPadding(65,-20,0,0);
+            top.setScaleX(0.7f);
+            top.setScaleY(0.7f);
+            top.setPadding(65, 0, 0, 0);
+            top.setY(-20);
 
             top.setScaleType(ImageView.ScaleType.CENTER);
 
@@ -101,7 +125,9 @@ public class CalendarAdapter extends PagerAdapter
             viewContext.addView(text);
 
         } else if(position > dateToday.getWeekOfWeekyear() && workoutPerWeekDone.containsKey(position)) {
-            Calendar text = new Calendar(container.getContext(), false, workoutPerWeekDone.get(position));
+            Coloumn text = new Coloumn(container.getContext(), false, workoutPerWeekDone.get(position),
+                    nextCellPosition, false, prevCellPosition, false);
+
             text.bringToFront();
             viewContext.addView(text);
         }
@@ -158,4 +184,11 @@ public class CalendarAdapter extends PagerAdapter
         }
 
     }
+
+//    public static int getDate(int position) {
+//
+//        Log.e("Hejsan hoppsan", workoutPerWeekDone.keySet().toString());
+//
+//        return 0;
+//    }
 }

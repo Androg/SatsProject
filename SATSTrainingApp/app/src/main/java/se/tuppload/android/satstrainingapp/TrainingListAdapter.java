@@ -1,6 +1,5 @@
 package se.tuppload.android.satstrainingapp;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,7 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
@@ -30,7 +28,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private LayoutInflater inflater;
     private final String[] weekDay = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
     private final String[] month = {"", "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"};
-    private DateTime currentDateTime = new DateTime();
+    private DateTime dateToday = new DateTime();
     private DateTime activityDate;
     private DateTime date;
     private DateTime date2;
@@ -99,7 +97,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     previousHolder = new PreviousViewHolder();
                     previousHolder.type = (TextView) view.findViewById(R.id.previous_type);
                     previousHolder.date = (TextView) view.findViewById(R.id.previous_date);
-                    previousHolder.checkBox = (CheckBox) view.findViewById(R.id.checkbox1);
+                    previousHolder.checkBox = (CheckBox) view.findViewById(R.id.completedOrNot);
                     previousHolder.typeImg = (ImageView) view.findViewById(R.id.previous_type_img);
                     view.setTag(previousHolder);
                 } else {
@@ -173,16 +171,20 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     @Override
     public View getHeaderView(int position, View convertView, ViewGroup parent) {
         HeaderViewHolder holder;
+        DateTime activityFullDate = new DateTime(activities.get(position).date);
+        DateTime activityWeek = new DateTime().withWeekOfWeekyear(activityFullDate.getDayOfMonth());
+        DateTime activityDateStart = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 8);
+        DateTime activityDateEnd = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 2);
 
         if(MainActivity.temp == false) {
             addToArrayList(activities);
-            CalendarAdapter.setArrayList(activitiesPerWeek);
+            ColoumnAdapter.setArrayList(activitiesPerWeek);
             MainActivity.temp = true;
         }
 
         if (getItemViewType(position) == PREVIOUS) {
-            if (convertView == null) {
 
+            if (convertView == null) {
                 holder = new HeaderViewHolder();
                 convertView = inflater.inflate(R.layout.date_header, parent, false);
                 holder.text = (TextView) convertView.findViewById(R.id.date_header);
@@ -190,16 +192,10 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
             } else {
                 holder = (HeaderViewHolder) convertView.getTag();
             }
-            date = DateTime.parse(getItem(position).date);
 
-            if (date.getDayOfYear() < currentDateTime.getDayOfYear()) {
-                int dateFormat;
+//            date = DateTime.parse(getItem(position).date);
 
-                if ((date.getDayOfMonth() + 6) >= 32) {
-                    dateFormat = (date.getDayOfMonth() + 5);
-                } else {
-                    dateFormat = (date.getDayOfMonth() + 6);
-                }
+            if (date.getDayOfYear() < dateToday.getDayOfYear()) {
 
                 date2 = DateTime.parse(getItem(position).date);
 
@@ -209,14 +205,14 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     int previousWeek = date2.getWeekOfWeekyear();
 
                     if (currentWeek == previousWeek) {
-                        holder.text.setVisibility(View.INVISIBLE);
+                        holder.text.setVisibility(View.GONE);
                     } else if(currentWeek != previousWeek){
-                        holder.text.setText("Vecka " + date.getWeekOfWeekyear() + " (" + date.getDayOfMonth() + "-" +
-                                dateFormat + "/" + date.getMonthOfYear() + ")");
+                        holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
+                                (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
                     }
                 } else {
-                    holder.text.setText("Vecka " + date.getWeekOfWeekyear() + " (" + date.getDayOfMonth() +
-                            "-" + dateFormat + "/" + date.getMonthOfYear() + ")");
+                    holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
+                            (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
                 }
             }
             return convertView;
@@ -231,7 +227,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
             }
             date = DateTime.parse(getItem(position).date);
 
-            if (date.getDayOfYear() > currentDateTime.getDayOfYear()) {
+            if (date.getDayOfYear() > dateToday.getDayOfYear()) {
                 String headerText = weekDay[date.getDayOfWeek()] + " " + date.getDayOfMonth() + " " + month[date.getMonthOfYear()];
                 holder.text.setText(headerText);
             }
