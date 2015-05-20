@@ -1,11 +1,11 @@
-package se.tuppload.android.satstrainingapp.Storage;
+package se.tuppload.android.satstrainingapp;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,17 +15,21 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 import se.tuppload.android.satstrainingapp.Models.Activity;
-import se.tuppload.android.satstrainingapp.R;
+import se.tuppload.android.satstrainingapp.Models.Center;
+
+import static se.tuppload.android.satstrainingapp.R.drawable.*;
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private static ArrayList<Activity> activities = new ArrayList<>();
+    private HashMap<String, Center> centers = new HashMap<>();
     private LayoutInflater inflater;
     private android.app.Activity activity;
     private final int numberOfPositions;
@@ -42,10 +46,11 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private static final int OWN = 2;
 
 
-    public TrainingListAdapter(android.app.Activity activity, ArrayList<Activity> activities) {
+    public TrainingListAdapter(android.app.Activity activity, ArrayList<Activity> activities, HashMap<String, Center> centers) {
         inflater = LayoutInflater.from(activity);
         this.activities = activities;
         this.activity = activity;
+        this.centers = centers;
         inflater = activity.getLayoutInflater();
         numberOfPositions = activities.size();
         Collections.sort(activities);
@@ -92,7 +97,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
         View view = convertView;
         OwnViewHolder ownHolder;
-        PreviousViewHolder previousHolder;
+        final PreviousViewHolder previousHolder;
         BookedViewHolder bookedHolder;
 
         int type = getItemViewType(position);
@@ -103,15 +108,47 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     previousHolder = new PreviousViewHolder();
                     previousHolder.type = (TextView) view.findViewById(R.id.previous_type);
                     previousHolder.date = (TextView) view.findViewById(R.id.previous_date);
+                    previousHolder.checkBox = (CheckBox) view.findViewById(R.id.completedOrNot);
                     previousHolder.typeImg = (ImageView) view.findViewById(R.id.previous_type_img);
                     view.setTag(previousHolder);
                 } else {
                     previousHolder = (PreviousViewHolder) view.getTag();
                 }
 
-                previousHolder.type.setText(activities.get(position).type);
+                previousHolder.type.setText(activities.get(position).subType);
                 previousHolder.date.setText(activities.get(position).date.substring(0, 10));
 
+                previousHolder.checkBox.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (previousHolder.checkBox.isChecked()) {
+                            previousHolder.checkBox.setText("Avklarat!");
+                        } else {
+                            previousHolder.checkBox.setText("Avklarat?");
+                        }
+                    }
+                });
+
+                switch (activities.get(position).type) {
+                    case "GYM":
+                        previousHolder.typeImg.setImageResource(strength_trainging_icon);
+                        break;
+                    case "OTHER":
+                        previousHolder.typeImg.setImageResource(all_training_icons);
+                        break;
+                    case "GROUP":
+                        previousHolder.typeImg.setImageResource(group_training_icon);
+                        break;
+                }
+
+                switch (activities.get(position).subType) {
+                    case "Jogging":
+                        previousHolder.typeImg.setImageResource(running_icon);
+                        break;
+                    case "Spinning":
+                        previousHolder.typeImg.setImageResource(cykling_icon);
+                        break;
+                }
 
                 break;
             case OWN:
@@ -126,6 +163,9 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 }
                 ownHolder.type.setText(activities.get(position).type);
                 ownHolder.duration.setText(Integer.toString(activities.get(position).durationInMinutes));
+
+
+
                 break;
             case BOOKED:
                 if (view == null) {
@@ -141,18 +181,14 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     bookedHolder.activityDate = (TextView) view.findViewById(R.id.date_header);
                     bookedHolder.positionInQueueImg = (ImageView) view.findViewById(R.id.img_participants);
 
-
                     view.setTag(bookedHolder);
                 } else {
                     bookedHolder = (BookedViewHolder) view.getTag();
                 }
                 bookedHolder.workoutType.setText(activities.get(position).subType);
-                bookedHolder.gymLocation.setText(activities.get(position).booking.center);
-//                bookedHolder.gymLocation.setText("CenterName TODO");
+                bookedHolder.gymLocation.setText(centers.get(getItem(position).booking.center).name);
                 bookedHolder.instructorsName.setText(activities.get(position).booking.aClass.instructorId);
-//                bookedHolder.instructorsName.setText("instructorName TODO");
                 bookedHolder.positionInQueue.setText(Integer.toString(activities.get(position).booking.positionInQueue));
-//                bookedHolder.positionInQueue.setText("PosInQueue TODO");
                 bookedHolder.startTimeHour.setText(activities.get(position).date.substring(11, 13));
                 bookedHolder.startTimeMinutes.setText(activities.get(position).date.substring(14, 16));
 //                bookedHolder.activityDate.setText(activities.get(position).date.substring(0, 10));
@@ -212,14 +248,14 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
                 date2 = DateTime.parse(getItem(position).date);
 
-                if(position > 0) {
+                if (position > 0) {
                     date2 = DateTime.parse(getItem(position - 1).date);
                     int currentWeek = date.getWeekOfWeekyear();
                     int previousWeek = date2.getWeekOfWeekyear();
 
                     if (currentWeek == previousWeek) {
                         holder.text.setVisibility(View.INVISIBLE);
-                    } else if(currentWeek != previousWeek){
+                    } else if (currentWeek != previousWeek) {
                         holder.text.setText("Vecka " + date.getWeekOfWeekyear() + " (" + date.getDayOfMonth() + "-" +
                                 dateFormat + "/" + date.getMonthOfYear() + ")");
                     }

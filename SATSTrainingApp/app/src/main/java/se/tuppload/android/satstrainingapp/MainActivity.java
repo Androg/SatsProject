@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp.Storage;
+package se.tuppload.android.satstrainingapp;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
-import se.tuppload.android.satstrainingapp.R;
 
 public class MainActivity extends ActionBarActivity
 {
@@ -47,11 +46,9 @@ public class MainActivity extends ActionBarActivity
             }
         });
 
-        im.setOnClickListener(new View.OnClickListener()
-        {
+        im.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 RequestJson.getJsonData(listView, MainActivity.this);
                 im.startAnimation(animRot);
             }

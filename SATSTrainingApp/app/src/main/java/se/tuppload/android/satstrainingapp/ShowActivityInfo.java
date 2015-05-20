@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp.Storage;
+package se.tuppload.android.satstrainingapp;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;

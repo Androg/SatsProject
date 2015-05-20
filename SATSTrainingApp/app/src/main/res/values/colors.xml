@@ -26,6 +26,7 @@
         <color name="gray">#ff888888</color>
         <color name="dark_gray">#ff444444</color>
         <color name="light_gray">#ffbbbbbb</color>
+        <color name="date_header_gray">#ffe1e1e1</color>
         <!--     <color name="section_header">#ffe8ebed</color> -->
         <color name="transparent">#00000000</color>
         <color name="calendar_item">#fffe6417</color>
