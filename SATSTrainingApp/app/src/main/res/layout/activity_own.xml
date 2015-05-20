@@ -129,7 +129,7 @@
                     android:background="@drawable/progressbar_nmi_primary"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="@string/details"
+                    android:text="detaljer"
                     android:textColor="@color/white"
                     android:textSize="12dp"
                     android:textStyle="bold" />

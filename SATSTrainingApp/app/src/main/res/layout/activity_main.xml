@@ -27,7 +27,6 @@
                 xmlns:sothree="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/gray_light"
                 android:gravity="bottom"
                 sothree:umanoDragView="@+id/tidigare"
                 sothree:umanoOverlay="true"
@@ -44,7 +43,7 @@
                     android:id="@+id/my_training"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/white">
+                    android:background="@color/gray_light">
 
                     <TextView
                         android:id="@+id/tidigare"
@@ -52,7 +51,7 @@
                         android:layout_height="wrap_content"
                         android:text=""
                         android:gravity="center_vertical"
-                        android:textColor="@color/dark_gray"
+                        android:background="@color/gray_light"
                         android:textSize="12dp"
                         android:layout_marginLeft="10dp"
                         android:textStyle="bold"
@@ -73,7 +72,6 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tidigare"
-                        android:background="@color/gray_light"
                         android:layout_marginTop="10dp"/>
 
                 </RelativeLayout>
