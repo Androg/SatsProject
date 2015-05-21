@@ -41,7 +41,6 @@ public class MainActivity extends ActionBarActivity
 
         graph = (ViewPager) findViewById(R.id.graph);
         graphAdapter = new ColoumnAdapter();
-        Log.e("Week week", String.valueOf(currentWeek.getWeekOfWeekyear()));
         graph.setAdapter(graphAdapter);
 
 
