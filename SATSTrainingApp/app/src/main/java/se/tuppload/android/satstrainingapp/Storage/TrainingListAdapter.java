@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,20 +14,28 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
+import java.util.Date;
+import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
+import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
+<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/TrainingListAdapter.java
 import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 import se.tuppload.android.satstrainingapp.Models.Activity;
 import se.tuppload.android.satstrainingapp.R;
+=======
+import se.tuppload.android.satstrainingapp.Model.*;
+>>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/TrainingListAdapter.java
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private static ArrayList<Activity> activities = new ArrayList<>();
+    private static ArrayList<Integer> activitiesPerWeek = new ArrayList<>();
+    private HashMap<String, Center> centers = new HashMap<>();
     private LayoutInflater inflater;
+<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/TrainingListAdapter.java
     private android.app.Activity activity;
     private final int numberOfPositions;
     private Calendar mCalendar = Calendar.getInstance();
@@ -35,21 +44,24 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private DateTime currentDateTime = new DateTime();
     private DateTime date;
     private DateTime date2;
+=======
+    private final String[] weekDay = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
+    private final String[] month = {"", "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"};
+    private DateTime dateToday = new DateTime();
+>>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/TrainingListAdapter.java
     private DateTime activityDate;
+    private DateTime date;
+    private DateTime date2;
     private static final int VIEWTYPE_COUNT = 3;
     private static final int PREVIOUS = 0;
     private static final int BOOKED = 1;
     private static final int OWN = 2;
 
 
-    public TrainingListAdapter(android.app.Activity activity, ArrayList<Activity> activities) {
+    public TrainingListAdapter(MainActivity activity, ArrayList<Activity> activities, HashMap centers) {
         inflater = LayoutInflater.from(activity);
         this.activities = activities;
-        this.activity = activity;
-        inflater = activity.getLayoutInflater();
-        numberOfPositions = activities.size();
-        Collections.sort(activities);
-
+        this.centers = centers;
     }
 
     @Override
@@ -92,17 +104,20 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
         View view = convertView;
         OwnViewHolder ownHolder;
-        PreviousViewHolder previousHolder;
+        final PreviousViewHolder previousHolder;
         BookedViewHolder bookedHolder;
+        date = DateTime.parse(getItem(position).date);
 
-        int type = getItemViewType(position);
-        switch (type) {
+
+        int viewType = getItemViewType(position);
+        switch (viewType) {
             case PREVIOUS:
                 if (view == null) {
                     view = inflater.inflate(R.layout.activity_previous, parent, false);
                     previousHolder = new PreviousViewHolder();
                     previousHolder.type = (TextView) view.findViewById(R.id.previous_type);
                     previousHolder.date = (TextView) view.findViewById(R.id.previous_date);
+                    previousHolder.checkBox = (CheckBox) view.findViewById(R.id.completedOrNot);
                     previousHolder.typeImg = (ImageView) view.findViewById(R.id.previous_type_img);
                     view.setTag(previousHolder);
                 } else {
@@ -112,6 +127,20 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 previousHolder.type.setText(activities.get(position).type);
                 previousHolder.date.setText(activities.get(position).date.substring(0, 10));
 
+<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/TrainingListAdapter.java
+=======
+                previousHolder.checkBox.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (previousHolder.checkBox.isChecked()) {
+                            previousHolder.checkBox.setText("Avklarat!");
+                        } else {
+                            previousHolder.checkBox.setText("Avklarat?");
+                        }
+                    }
+                });
+
+>>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/TrainingListAdapter.java
 
                 break;
             case OWN:
@@ -124,8 +153,8 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 } else {
                     ownHolder = (OwnViewHolder) view.getTag();
                 }
-                ownHolder.type.setText(activities.get(position).type);
-                ownHolder.duration.setText(Integer.toString(activities.get(position).durationInMinutes));
+                ownHolder.type.setText(getItem(position).subType);
+                ownHolder.duration.setText(Integer.toString(getItem(position).durationInMinutes));
                 break;
             case BOOKED:
                 if (view == null) {
@@ -146,6 +175,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 } else {
                     bookedHolder = (BookedViewHolder) view.getTag();
                 }
+<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/TrainingListAdapter.java
                 bookedHolder.workoutType.setText(activities.get(position).subType);
                 bookedHolder.gymLocation.setText(activities.get(position).booking.center);
 //                bookedHolder.gymLocation.setText("CenterName TODO");
@@ -176,9 +206,22 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 }
 
                 break;
+=======
+                bookedHolder.workoutType.setText(getItem(position).subType);
+                bookedHolder.gymLocation.setText(centers.get(getItem(position).booking.center).name);
+                bookedHolder.instructorsName.setText(getItem(position).booking.aClass.instructorId);
+                bookedHolder.positionInQueue.setText(Integer.toString(getItem(position).booking.positionInQueue));
+                bookedHolder.startTimeHour.setText(getItem(position).date.substring(11, 13));
+                bookedHolder.startTimeMinutes.setText(getItem(position).date.substring(14, 16));
+                bookedHolder.activityDuration.setText(getItem(position).durationInMinutes + " min");
+>>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/TrainingListAdapter.java
 
+                if (getItem(position).booking.positionInQueue == 0) {
+                    bookedHolder.positionInQueue.setVisibility(View.GONE);
+                    bookedHolder.positionInQueueImg.setVisibility(View.GONE);
+                }
+                break;
         }
-
 
         return view;
 
@@ -189,6 +232,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     @Override
     public View getHeaderView(int position, View convertView, ViewGroup parent) {
         HeaderViewHolder holder;
+<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/TrainingListAdapter.java
 
         if (getItemViewType(position) == PREVIOUS) {
             if (convertView == null) {
@@ -246,6 +290,68 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 holder.text.setText(headerText);
             }
 
+=======
+        DateTime activityFullDate = new DateTime(activities.get(position).date);
+        DateTime activityWeek = new DateTime().withWeekOfWeekyear(activityFullDate.getDayOfMonth());
+        DateTime activityDateStart = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 8);
+        DateTime activityDateEnd = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 2);
+
+        if(MainActivity.temp == false) {
+            addToArrayList(activities);
+            ColoumnAdapter.setArrayList(activitiesPerWeek);
+            MainActivity.temp = true;
+        }
+
+        if (getItemViewType(position) == PREVIOUS) {
+
+            if (convertView == null) {
+                holder = new HeaderViewHolder();
+                convertView = inflater.inflate(R.layout.date_header, parent, false);
+                holder.text = (TextView) convertView.findViewById(R.id.date_header);
+                convertView.setTag(holder);
+            } else {
+                holder = (HeaderViewHolder) convertView.getTag();
+            }
+
+//            date = DateTime.parse(getItem(position).date);
+
+            if (date.getDayOfYear() < dateToday.getDayOfYear()) {
+
+                date2 = DateTime.parse(getItem(position).date);
+
+                if(position > 0) {
+                    date2 = DateTime.parse(getItem(position - 1).date);
+                    int currentWeek = date.getWeekOfWeekyear();
+                    int previousWeek = date2.getWeekOfWeekyear();
+
+                    if (currentWeek == previousWeek) {
+                        holder.text.setVisibility(View.GONE);
+                    } else if(currentWeek != previousWeek){
+                        holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
+                                (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
+                    }
+                } else {
+                    holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
+                            (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
+                }
+            }
+            return convertView;
+        } else {
+            if (convertView == null) {
+                holder = new HeaderViewHolder();
+                convertView = inflater.inflate(R.layout.date_header, parent, false);
+                holder.text = (TextView) convertView.findViewById(R.id.date_header);
+                convertView.setTag(holder);
+            } else {
+                holder = (HeaderViewHolder) convertView.getTag();
+            }
+            date = DateTime.parse(getItem(position).date);
+
+            if (date.getDayOfYear() > dateToday.getDayOfYear()) {
+                String headerText = weekDay[date.getDayOfWeek()] + " " + date.getDayOfMonth() + " " + month[date.getMonthOfYear()];
+                holder.text.setText(headerText);
+            }
+>>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/TrainingListAdapter.java
             return convertView;
         }
     }
@@ -263,4 +369,14 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         TextView text;
     }
 
+<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/TrainingListAdapter.java
+=======
+    public void addToArrayList(ArrayList<Activity> temp) {
+        for(Activity tempInt : temp) {
+            date = DateTime.parse(tempInt.date);
+            activitiesPerWeek.add(Integer.valueOf(date.getWeekOfWeekyear()));
+        }
+
+    }
+>>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/TrainingListAdapter.java
 }

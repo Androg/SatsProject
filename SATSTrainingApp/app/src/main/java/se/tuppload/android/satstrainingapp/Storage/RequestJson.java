@@ -11,61 +11,59 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/RequestJson.java
 import se.tuppload.android.satstrainingapp.Models.*;
 import se.tuppload.android.satstrainingapp.Models.Class;
+=======
+import se.tuppload.android.satstrainingapp.Model.*;
+import se.tuppload.android.satstrainingapp.Model.Class;
+>>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/RequestJson.java
 
 public class RequestJson {
 
     public static void getJsonData(final StickyListHeadersListView listView, final MainActivity activity) {
-        final String classUrl = "https://api.parse.com/1/classes/activities?include=bookingId.class,subType";
-        final String centerRelativeUrl = "https://api2.sats.com/v1.0/se/centers/";
 
-        SatsRestClient.get(classUrl, null, new JsonHttpResponseHandler() {
+        SatsRestClient.get(new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
 
                 final ArrayList<Activity> activities = new ArrayList<>();
+                final HashMap<String, Center> centers = new HashMap<>();
 
                 try {
                     JSONArray resultArray = jsonResponse.getJSONArray("results");
 
                     for (int i = 0; i < resultArray.length(); i++) {
                         JSONObject activityJson = resultArray.getJSONObject(i);
-                        Log.d("resultlength ", "" + resultArray.length());
 
+                        if (activityJson.has("bookingId")) {
+                            final String centerId = activityJson.getJSONObject("bookingId").getString("center");
+                            if (!centers.containsKey(centerId)) {
+                                SatsRestClient.getCenter(centerId, new JsonHttpResponseHandler() {
 
-//                            final String centerAbsoluteUrl = centerRelativeUrl + centerId;
-//                            SatsRestClient.get(centerAbsoluteUrl, null, new JsonHttpResponseHandler() {
-//
-//                                @Override
-//                                public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
-//
-//                                    try {
-//                                        JSONObject centerObject = jsonResponse.getJSONObject("center");
-//                                        String centerName = centerObject.getString("name");
-//                                        final Booking booking = new Booking(status, aClass, centerName, bookingId, positionInQueue);
-//                                        activities.add(new Activity(booking, instructorId, wor, durationInMinutes, waitingListCount, startTime));
-//                                        activities.add(new Activity(centerName, instructorId, workoutType, durationInMinutes, waitingListCount, startTime));
-//                                        Collections.sort(activities);
-//
-//                                        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);
-//                                        listView.setAdapter(adapter);
-//
-//                                    } catch (JSONException e) {
-//                                        Log.e("ERROR", "COULD NOT FIND CENTER-NAME");
-//                                    }
-//                                }
-//                            });
+                                    @Override
+                                    public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
 
+                                        try {
+                                            centers.put(centerId, getCenter(jsonResponse));
+
+                                        } catch (JSONException e) {
+                                            Log.e("ERROR", "COULD NOT FIND CENTER-NAME");
+                                        }
+                                    }
+                                });
+                            }
+                        }
                         activities.add(getActivity(activityJson));
                         Collections.sort(activities);
 
-                        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);
-                        listView.setAdapter(adapter);
 
+                        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities, centers);
+                        listView.setAdapter(adapter);
                     }
 
                 } catch (JSONException e) {
@@ -78,7 +76,7 @@ public class RequestJson {
     public static Activity getActivity(JSONObject activityJson) throws JSONException {
 
         Booking booking = null;
-        if (activityJson.has("bookingId")){
+        if (activityJson.has("bookingId")) {
             booking = getBooking(activityJson);
         }
         final String comment = activityJson.getString("comment");
@@ -94,8 +92,7 @@ public class RequestJson {
         return new Activity(booking, comment, date, distanceInKm, durationInMinutes, id, source, status, subType, type);
     }
 
-    public static Booking getBooking(JSONObject activityJson) throws JSONException {
-
+    public static Booking getBooking(final JSONObject activityJson) throws JSONException {
 
         final JSONObject bookingJson = activityJson.getJSONObject("bookingId");
         final String status = bookingJson.getString("status");
@@ -103,13 +100,16 @@ public class RequestJson {
         final String bookingId = bookingJson.getString("objectId");
         final int positionInQueue = bookingJson.getInt("positionInQueue");
         final JSONObject classJson = bookingJson.getJSONObject("class");
+<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/RequestJson.java
         final se.tuppload.android.satstrainingapp.Models.Class aClass = getClass(classJson);
+=======
+        final se.tuppload.android.satstrainingapp.Model.Class aClass = getClass(classJson);
+>>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/RequestJson.java
 
         return new Booking(status, aClass, center, bookingId, positionInQueue);
     }
 
     public static Class getClass(JSONObject classJson) throws JSONException {
-
 
         final String centerId = classJson.getString("centerId");
         final String classTypeId = classJson.getString("classTypeId");
@@ -125,12 +125,23 @@ public class RequestJson {
         return new Class(centerId, classTypeId, durationInMinutes, id, instructorId, name, startTime,
                 bookedPersonsCount, maxPersonsCount, waitingListCount);
     }
-//    public static void makeActivity(Booking booking, final StickyListHeadersListView listView ,final MainActivity activity){
-//
-//        ArrayList<Activity> activities = new ArrayList<>();
-//        activities.add(new Activity(booking, ))
-//        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);
-//        listView.setAdapter(adapter);
-//    }
+
+    public static Center getCenter(JSONObject centerJson) throws JSONException {
+
+        JSONObject centerObject = centerJson.getJSONObject("center");
+        final boolean availableForOnlineBooking = centerObject.getBoolean("availableForOnlineBooking");
+        final boolean isElixia = centerObject.getBoolean("isElixia");
+        final String description = centerObject.getString("description");
+        final String name = centerObject.getString("name");
+        final String url = centerObject.getString("url");
+        final String filterId = centerObject.getString("filterId");
+        final String centerId = centerObject.getString("id");
+        final String latitude = centerObject.getString("lat");
+        final String longitude = centerObject.getString("long");
+        final String regionId = centerObject.getString("regionId");
+
+        return new Center(availableForOnlineBooking, isElixia, description,
+                name, url, filterId, centerId, latitude, longitude, regionId);
+    }
 
 }
