@@ -13,6 +13,8 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+import se.tuppload.android.satstrainingapp.Adapter.ColoumnAdapter;
+import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
 
 public class MainActivity extends ActionBarActivity
 {
@@ -47,19 +49,21 @@ public class MainActivity extends ActionBarActivity
 
             @Override
             public void onPageSelected(int page) {
-                Log.d("PAGE = " ,""+page);
+                Log.d("PAGE = ", "" + page);
                 for (int i = 0; i < TrainingListAdapter.getList().size(); i++) {
                     if ((page - 3) == DateTime.parse(TrainingListAdapter.getList().get(i).date).minusDays(1).getWeekOfWeekyear()) {
-                        listView.smoothScrollToPosition(i+1);
+                        listView.smoothScrollToPosition(i + 1);
                     }
                 }
             }
 
             @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) { }
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
 
             @Override
-            public void onPageScrollStateChanged(int arg0) { }
+            public void onPageScrollStateChanged(int arg0) {
+            }
         });
 
         im.setOnClickListener(new View.OnClickListener() {

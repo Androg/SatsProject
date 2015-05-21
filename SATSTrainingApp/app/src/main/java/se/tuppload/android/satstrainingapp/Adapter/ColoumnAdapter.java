@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp;
+package se.tuppload.android.satstrainingapp.Adapter;
 
 import android.os.Build;
 import android.support.v4.view.PagerAdapter;
@@ -18,6 +18,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import se.tuppload.android.satstrainingapp.Coloumn;
+import se.tuppload.android.satstrainingapp.R;
 
 
 public class ColoumnAdapter extends PagerAdapter

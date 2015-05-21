@@ -14,8 +14,9 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
-import se.tuppload.android.satstrainingapp.models.*;
-import se.tuppload.android.satstrainingapp.models.Class;
+import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
+import se.tuppload.android.satstrainingapp.Model.*;
+import se.tuppload.android.satstrainingapp.Model.Class;
 
 public class RequestJson {
 
@@ -95,7 +96,7 @@ public class RequestJson {
         final String bookingId = bookingJson.getString("objectId");
         final int positionInQueue = bookingJson.getInt("positionInQueue");
         final JSONObject classJson = bookingJson.getJSONObject("class");
-        final se.tuppload.android.satstrainingapp.models.Class aClass = getClass(classJson);
+        final se.tuppload.android.satstrainingapp.Model.Class aClass = getClass(classJson);
 
         return new Booking(status, aClass, center, bookingId, positionInQueue);
     }
