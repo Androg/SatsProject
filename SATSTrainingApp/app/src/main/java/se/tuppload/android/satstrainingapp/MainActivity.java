@@ -43,6 +43,24 @@ public class MainActivity extends ActionBarActivity
         graphAdapter = new ColoumnAdapter();
         graph.setAdapter(graphAdapter);
 
+        graph.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int page) {
+                Log.d("PAGE = " ,""+page);
+                for (int i = 0; i < TrainingListAdapter.getList().size(); i++) {
+                    if ((page - 3) == DateTime.parse(TrainingListAdapter.getList().get(i).date).minusDays(1).getWeekOfWeekyear()) {
+                        listView.smoothScrollToPosition(i+1);
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) { }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) { }
+        });
 
         im.setOnClickListener(new View.OnClickListener() {
             @Override
