@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp.Holders;
+package se.tuppload.android.satstrainingapp.holders;
 
 import android.widget.TextView;
 

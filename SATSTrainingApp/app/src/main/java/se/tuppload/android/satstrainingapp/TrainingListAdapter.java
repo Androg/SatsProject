@@ -11,14 +11,13 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
-import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
-import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
-import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
-import se.tuppload.android.satstrainingapp.Model.*;
+import se.tuppload.android.satstrainingapp.holders.BookedViewHolder;
+import se.tuppload.android.satstrainingapp.holders.OwnViewHolder;
+import se.tuppload.android.satstrainingapp.holders.PreviousViewHolder;
+import se.tuppload.android.satstrainingapp.models.*;
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 

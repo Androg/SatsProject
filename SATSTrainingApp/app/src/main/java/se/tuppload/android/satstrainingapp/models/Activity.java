@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp.Model;
+package se.tuppload.android.satstrainingapp.models;
 
 public final class Activity implements  Comparable<Activity> {
 
