@@ -10,8 +10,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 import se.tuppload.android.satstrainingapp.Model.*;
@@ -19,7 +21,29 @@ import se.tuppload.android.satstrainingapp.Model.Class;
 
 public class RequestJson {
 
+    private final static String CLASSTYPE_TAG = "classTypes";
+
+    private static HashMap<String, ClassType> classTypes = new HashMap<>();
+
     public static void getJsonData(final StickyListHeadersListView listView, final MainActivity activity) {
+
+        SatsRestClient.getClassTypes(new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    getClassTypes(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d(CLASSTYPE_TAG, "Could not get classTypes");
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.d(CLASSTYPE_TAG, "Could not get classTypes");
+            }
+        });
 
         SatsRestClient.get(new JsonHttpResponseHandler() {
 
@@ -133,6 +157,48 @@ public class RequestJson {
 
         return new Center(availableForOnlineBooking, isElixia, description,
                 name, url, filterId, centerId, latitude, longitude, regionId);
+    }
+
+    public static void getClassTypes(JSONObject classTypeJsonResult) throws JSONException {
+
+        JSONArray classTypeJsonJSONArray = classTypeJsonResult.getJSONArray("classTypes");
+
+        for (int i = 0; i < classTypeJsonJSONArray.length(); i++) {
+            JSONObject classTypeJson = classTypeJsonJSONArray.getJSONObject(i);
+
+            final String classCategoryIdsString = classTypeJson.getString("classCategories");
+            final List<String> classCategoryIds = Arrays.asList(classCategoryIdsString.split("\\s*,\\s*"));
+            final String description = classTypeJson.getString("description");
+            final String id = classTypeJson.getString("id");
+            final String name = classTypeJson.getString("name");
+            final String videoUrl = classTypeJson.getString("videoUrl");
+            final JSONArray profileJsonArray = classTypeJson.getJSONArray("profile");
+
+            final HashMap<String, Profile> profiles = getProfile(profileJsonArray);
+
+            ClassType classType = new ClassType(classCategoryIds, description, id, name, profiles, videoUrl);
+            classTypes.put(classType.id, classType);
+
+        }
+
+    }
+
+    public static HashMap<String, Profile> getProfile(JSONArray profileJsonArray) throws JSONException {
+        final HashMap<String, Profile> profiles = new HashMap<>();
+
+        for (int i = 0; i < profileJsonArray.length(); i++) {
+            final JSONObject profileJson = profileJsonArray.getJSONObject(i);
+
+            final String id = profileJson.getString("id");
+            final String name = profileJson.getString("name");
+            final int value = profileJson.getInt("value");
+
+            Profile profile = new Profile(id, name, value);
+            profiles.put(profile.id, profile);
+
+        }
+        return profiles;
+
     }
 
 }
