@@ -21,12 +21,12 @@ import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
 import se.tuppload.android.satstrainingapp.MainActivity;
 import se.tuppload.android.satstrainingapp.Model.*;
 import se.tuppload.android.satstrainingapp.R;
+import se.tuppload.android.satstrainingapp.RequestJson;
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private static ArrayList<Activity> activities = new ArrayList<>();
     private static ArrayList<Integer> activitiesPerWeek = new ArrayList<>();
-    private HashMap<String, Center> centers = new HashMap<>();
     private LayoutInflater inflater;
     private final String[] weekDay = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
     private final String[] month = {"", "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"};
@@ -40,10 +40,9 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private static final int OWN = 2;
 
 
-    public TrainingListAdapter(MainActivity activity, ArrayList<Activity> activities, HashMap centers) {
+    public TrainingListAdapter(MainActivity activity, ArrayList<Activity> activities) {
         inflater = LayoutInflater.from(activity);
         this.activities = activities;
-        this.centers = centers;
     }
 
     @Override
@@ -173,10 +172,11 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     bookedHolder = (BookedViewHolder) view.getTag();
                 }
                 bookedHolder.workoutType.setText(getItem(position).subType);
-                bookedHolder.gymLocation.setText(centers.get(getItem(position).booking.center).name);
-                bookedHolder.instructorsName.setText(getItem(position).booking.aClass.instructorId);
-                bookedHolder.positionInQueue.setText(Integer.toString(getItem(position).booking.positionInQueue));
-                bookedHolder.startTimeHour.setText(getItem(position).date.substring(11, 13));
+                bookedHolder.gymLocation.setText(RequestJson.centers.get(getItem(position).booking.center).name);
+//                bookedHolder.gymLocation.setText(RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("cardio").name); //TODO Exempel på hur vi får ut värde från classtype
+                bookedHolder.instructorsName.setText(getItem(position).booking.aClass.instructorId);                           //  .get("strength").id
+                bookedHolder.positionInQueue.setText(Integer.toString(getItem(position).booking.positionInQueue));             //  .get("flexibilty").name osv osv
+                bookedHolder.startTimeHour.setText(getItem(position).date.substring(11, 13));                                  
                 bookedHolder.startTimeMinutes.setText(getItem(position).date.substring(14, 16));
                 bookedHolder.activityDuration.setText(getItem(position).durationInMinutes + " min");
 
@@ -215,8 +215,6 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 holder = (HeaderViewHolder) convertView.getTag();
             }
 
-//            date = DateTime.parse(getItem(position).date);
-
             if (date.getDayOfYear() < dateToday.getDayOfYear()) {
 
                 date2 = DateTime.parse(getItem(position).date);
@@ -228,7 +226,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
                     if (currentWeek == previousWeek) {
                         holder.text.setVisibility(View.GONE);
-                    } else if(currentWeek != previousWeek){
+                    } else if(currentWeek != previousWeek){ //<--TODO why this?
                         holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
                                 (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
                     }
@@ -273,7 +271,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     public void addToArrayList(ArrayList<Activity> temp) {
         for(Activity tempInt : temp) {
             date = DateTime.parse(tempInt.date);
-            activitiesPerWeek.add(Integer.valueOf(date.getWeekOfWeekyear()));
+            activitiesPerWeek.add(date.getWeekOfWeekyear());
         }
 
     }
