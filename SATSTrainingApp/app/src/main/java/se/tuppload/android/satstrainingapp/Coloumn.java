@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
+import se.tuppload.android.satstrainingapp.Adapter.ColoumnAdapter;
+
 public class Coloumn extends View {
 
     Paint paint;
@@ -14,11 +16,11 @@ public class Coloumn extends View {
     public static final int radiusNotFilled = 30;
     int radius;
     int cellValue;
-    final int prevCellValue;
-    final int nextCellValue;
+    int prevCellValue;
+    int nextCellValue;
     final boolean drawToNext;
     final boolean drawToPrev;
-    final int[] yPositions = new int[]{73, 373, 298, 226, 150, 73};
+    final int[] yPositions = new int[]{73, 373, 298, 226, 150, 73, 430};
 
     public Coloumn(Context context, final boolean filled, final int cellValue, final int nextCellValue,
                    final boolean drawToNext, final int prevCellValue, final boolean drawToPrev) {
@@ -46,8 +48,25 @@ public class Coloumn extends View {
         paint.setColor(getResources().getColor(R.color.orange));
         paint.setStrokeWidth(11);
 
+        //Fix cellvalue height
         if (cellValue > 5) {
             cellValue = 0;
+        } else if(cellValue == 0) {
+            cellValue = 6;
+        }
+
+        //Fix prevCellValue height
+        if(prevCellValue > 5) {
+            prevCellValue = 0;
+        } else if(prevCellValue == 0) {
+            prevCellValue = 6;
+        }
+
+        //Fix nextCellValue height
+        if(nextCellValue > 5) {
+            nextCellValue = 0;
+        } else if(nextCellValue == 0) {
+            nextCellValue = 6;
         }
 
         if(prevCellValue != -1 && drawToPrev == true) {
@@ -62,6 +81,8 @@ public class Coloumn extends View {
 
         if(cellValue == 0) {
             writeText(102, yPositions[cellValue] + 11, "5+", canvas);
+        } else if(cellValue == 6) {
+            writeText(102, yPositions[cellValue] + 11, "0", canvas);
         } else {
             writeText(102, yPositions[cellValue] + 11, String.valueOf(cellValue), canvas);
         }

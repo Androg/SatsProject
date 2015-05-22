@@ -1,5 +1,6 @@
-package se.tuppload.android.satstrainingapp;
+package se.tuppload.android.satstrainingapp.Adapter;
 
+import android.os.Build;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,6 +18,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import se.tuppload.android.satstrainingapp.Coloumn;
+import se.tuppload.android.satstrainingapp.R;
 
 
 public class ColoumnAdapter extends PagerAdapter
@@ -70,19 +74,6 @@ public class ColoumnAdapter extends PagerAdapter
         //Changes weekParams height
         weekParams.height = 95;
 
-        if(position != 0 && workoutPerWeekDone.containsKey(position - 1)) {
-            prevCellPosition = workoutPerWeekDone.get(position - 1);
-        } else {
-            prevCellPosition = -1;
-        }
-
-        Log.e("Position ------", String.valueOf(position));
-        if(position < 50 && workoutPerWeekDone.containsKey(position + 1)) {
-            nextCellPosition = workoutPerWeekDone.get(position + 1);
-        } else {
-            nextCellPosition = -1;
-        }
-
 //        getDate(position);
 
         DateTime weekStartDate = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 6);
@@ -99,10 +90,34 @@ public class ColoumnAdapter extends PagerAdapter
         //Adds week to the views Context
         viewContext.addView(week);
 
+        int workoutsPerWeek;
+
+        if(!workoutPerWeekDone.containsKey(position)) {
+            workoutsPerWeek = 0;
+        } else {
+            workoutsPerWeek = workoutPerWeekDone.get(position);
+        }
+
+        if(position < 50 && !workoutPerWeekDone.containsKey(position + 1)) {
+            nextCellPosition = 0;
+        } else if(position < 50 && workoutPerWeekDone.containsKey(position + 1)){
+            nextCellPosition = workoutPerWeekDone.get(position + 1);
+        } else {
+            nextCellPosition = -1;
+        }
+
+        if(position != 0 &&!workoutPerWeekDone.containsKey(position - 1)) {
+            prevCellPosition = 0;
+        } else if(position < 50 && workoutPerWeekDone.containsKey(position - 1)) {
+            prevCellPosition = workoutPerWeekDone.get(position - 1);
+        } else {
+            prevCellPosition = 0;
+        }
+
         //Paints out position
-        if(position < dateToday.getWeekOfWeekyear() && workoutPerWeekDone.containsKey(position)) {
+        if(position < dateToday.getWeekOfWeekyear()) {
             // Context, Filled, Position
-            Coloumn text = new Coloumn(container.getContext(), true, workoutPerWeekDone.get(position),
+            Coloumn text = new Coloumn(container.getContext(), true, workoutsPerWeek,
                     nextCellPosition, position + 1 < dateToday.getWeekOfWeekyear(), prevCellPosition, true);
             viewContext.addView(text);
 
@@ -110,7 +125,7 @@ public class ColoumnAdapter extends PagerAdapter
 
             ImageView top = new ImageView(container.getContext());
             top.setImageResource(R.drawable.now_marker);
-            Coloumn text = new Coloumn(container.getContext(), false, workoutPerWeekDone.get(position),
+            Coloumn text = new Coloumn(container.getContext(), false, workoutsPerWeek,
                     nextCellPosition, false, prevCellPosition, false);
 
             //Scale current week banner
@@ -124,8 +139,8 @@ public class ColoumnAdapter extends PagerAdapter
             viewContext.addView(top);
             viewContext.addView(text);
 
-        } else if(position > dateToday.getWeekOfWeekyear() && workoutPerWeekDone.containsKey(position)) {
-            Coloumn text = new Coloumn(container.getContext(), false, workoutPerWeekDone.get(position),
+        } else if(position > dateToday.getWeekOfWeekyear()) {
+            Coloumn text = new Coloumn(container.getContext(), false, workoutsPerWeek,
                     nextCellPosition, false, prevCellPosition, false);
 
             text.bringToFront();
@@ -137,20 +152,16 @@ public class ColoumnAdapter extends PagerAdapter
         viewContext.setLayoutParams(x);
         layout.setLayoutParams(x);
 
-//        layout.setBackground(container.getResources().getDrawable(R.drawable.calendar_dark, null));
+        layout.setBackgroundResource(R.drawable.calendar_dark);
 
         layout.addView(viewContext);
 
 
         if(position % 2 == 0) {
-//            layout.setBackground(container.getResources().getDrawable(R.drawable.calendar_light, null));
-        }
-        if(position > 1) {
-
+            layout.setBackgroundResource(R.drawable.calendar_light);
         }
 
         final int page = position;
-
 
         container.addView(layout);
 
@@ -177,18 +188,6 @@ public class ColoumnAdapter extends PagerAdapter
         for(Integer key : workoutsPerWeek) {
             workoutPerWeekDone.put(key, Collections.frequency(workoutsPerWeek, key));
         }
-
-        //Prints out Key + Value for every week in workoutPerWeekDone
-        for(Map.Entry<Integer, Integer> key : workoutPerWeekDone.entrySet()) {
-            Log.e("TestingTesting", String.valueOf(key.getKey() + "--------" + key.getValue()));
-        }
-
     }
 
-//    public static int getDate(int position) {
-//
-//        Log.e("Hejsan hoppsan", workoutPerWeekDone.keySet().toString());
-//
-//        return 0;
-//    }
 }

@@ -20,7 +20,7 @@
         android:layout_marginBottom="10dp"
         android:gravity="top"
         android:layout_gravity="top"
-        android:background="@drawable/booking_layout_bg">
+        android:background="@drawable/booking_view">
 
         <RelativeLayout
             android:id="@+id/top_box"

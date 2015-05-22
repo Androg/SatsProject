@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp;
+package se.tuppload.android.satstrainingapp.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +11,16 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
+import se.tuppload.android.satstrainingapp.Adapter.ColoumnAdapter;
 import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
+import se.tuppload.android.satstrainingapp.MainActivity;
 import se.tuppload.android.satstrainingapp.Model.*;
+import se.tuppload.android.satstrainingapp.R;
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
@@ -118,6 +120,26 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     }
                 });
 
+                switch (activities.get(position).type) {
+                    case "GYM":
+                        previousHolder.typeImg.setImageResource(R.drawable.strength_trainging_icon);
+                        break;
+                    case "OTHER":
+                        previousHolder.typeImg.setImageResource(R.drawable.all_training_icons);
+                        break;
+                    case "GROUP":
+                        previousHolder.typeImg.setImageResource(R.drawable.group_training_icon);
+                        break;
+                }
+
+                switch (activities.get(position).subType) {
+                    case "Jogging":
+                        previousHolder.typeImg.setImageResource(R.drawable.running_icon);
+                        break;
+                    case "Spinning":
+                        previousHolder.typeImg.setImageResource(R.drawable.cykling_icon);
+                        break;
+                }
 
                 break;
             case OWN:
