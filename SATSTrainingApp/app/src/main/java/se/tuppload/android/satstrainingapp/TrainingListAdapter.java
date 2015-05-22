@@ -17,8 +17,8 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
-import se.tuppload.android.satstrainingapp.models.Activity;
-import se.tuppload.android.satstrainingapp.models.Center;
+import se.tuppload.android.satstrainingapp.Model.Activity;
+import se.tuppload.android.satstrainingapp.Model.Center;
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 

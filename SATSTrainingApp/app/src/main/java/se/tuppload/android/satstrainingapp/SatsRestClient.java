@@ -11,6 +11,7 @@ public class SatsRestClient {
 
     private static final String DB_URL = "https://api.parse.com/1/classes/activities";
     private static final String CENTER_URL = "https://api2.sats.com/v1.0/se/centers/";
+    private static final String CLASSSTYPE_URL = "https://api2.sats.com/v1.0/se/classTypes";
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(AsyncHttpResponseHandler responseHandler) {
@@ -25,6 +26,10 @@ public class SatsRestClient {
     public static void getCenter(String centerId, AsyncHttpResponseHandler responseHandler) {
         client.addHeader("Content-Type", "application/json");
         client.get(getCenterUrl(centerId), responseHandler);
+    }
+    public static void getClassTypes(AsyncHttpResponseHandler responseHandler){
+        client.addHeader("Content-Type", "application/json");
+        client.get(CLASSSTYPE_URL, responseHandler);
     }
 
     private static String getCenterUrl(String centerId) {
