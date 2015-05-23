@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="se.tuppload.android.satstrainingapp.MoreInfoActivity"
+            android:label="Moreinfo">
+
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 

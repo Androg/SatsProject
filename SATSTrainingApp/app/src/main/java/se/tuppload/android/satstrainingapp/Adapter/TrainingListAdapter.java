@@ -176,7 +176,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 //                bookedHolder.gymLocation.setText(RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("cardio").name); //TODO Exempel på hur vi får ut värde från classtype
                 bookedHolder.instructorsName.setText(getItem(position).booking.aClass.instructorId);                           //  .get("strength").id
                 bookedHolder.positionInQueue.setText(Integer.toString(getItem(position).booking.positionInQueue));             //  .get("flexibilty").name osv osv
-                bookedHolder.startTimeHour.setText(getItem(position).date.substring(11, 13));                                  
+                bookedHolder.startTimeHour.setText(getItem(position).date.substring(11, 13));
                 bookedHolder.startTimeMinutes.setText(getItem(position).date.substring(14, 16));
                 bookedHolder.activityDuration.setText(getItem(position).durationInMinutes + " min");
 
