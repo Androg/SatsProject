@@ -24,8 +24,10 @@ public class RequestJson {
 
     private final static String CLASSTYPES = "classTypes";
     private final static String CENTERS = "centers";
+    private final static String INSTRUCTORS = "instructors";
     public final static HashMap<String, ClassType> classTypes = new HashMap<>();
     public final static HashMap<String, Center> centers = new HashMap<>();
+    public final static HashMap<String, Instructor> instructors = new HashMap<>();
 
 
     public static void getJsonData(final StickyListHeadersListView listView, final MainActivity activity) {
@@ -36,7 +38,7 @@ public class RequestJson {
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
 
                 try {
-                    getCenter(jsonResponse);
+                    getCenters(jsonResponse);
                 } catch (JSONException e) {
                     Log.e(CENTERS, "Could not add centers");
                 }
@@ -67,6 +69,24 @@ public class RequestJson {
             }
         });
 
+        SatsRestClient.get(INSTRUCTORS, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                try {
+                    getInstructors(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d(INSTRUCTORS, "Could not add classTypes");
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.d(INSTRUCTORS, "Could not get classTypes");
+            }
+        });
+
         SatsRestClient.get(new JsonHttpResponseHandler() {
             private final ArrayList<Activity> activities = new ArrayList<>();
 
@@ -81,11 +101,11 @@ public class RequestJson {
                         JSONObject activityJson = resultArray.getJSONObject(i);
 
                         activities.add(getActivity(activityJson));
-                        Collections.sort(activities);
 
-                        TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);
-                        listView.setAdapter(adapter);
                     }
+                    Collections.sort(activities);
+                    TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);
+                    listView.setAdapter(adapter);
 
                 } catch (JSONException e) {
                     Log.e("ERROR", "COULD NOT FIND ANY RESULTS");
@@ -158,7 +178,7 @@ public class RequestJson {
             final String videoUrl = classTypeJson.getString("videoUrl");
             final JSONArray profileJsonArray = classTypeJson.getJSONArray("profile");
 
-            final HashMap<String, Profile> profiles = getProfile(profileJsonArray);
+            final HashMap<String, Profile> profiles = getProfiles(profileJsonArray);
 
             ClassType classType = new ClassType(classCategoryIds, description, id, name, profiles, videoUrl);
             classTypes.put(classType.id, classType);
@@ -166,7 +186,7 @@ public class RequestJson {
         }
     }
 
-    public static void getCenter(JSONObject centerJson) throws JSONException {
+    public static void getCenters(JSONObject centerJson) throws JSONException {
 
         JSONArray centerRegionsJson = centerJson.getJSONArray("regions");
 
@@ -196,7 +216,7 @@ public class RequestJson {
         }
     }
 
-    public static HashMap<String, Profile> getProfile(JSONArray profileJsonArray) throws JSONException {
+    public static HashMap<String, Profile> getProfiles(JSONArray profileJsonArray) throws JSONException {
         final HashMap<String, Profile> profiles = new HashMap<>();
 
         for (int i = 0; i < profileJsonArray.length(); i++) {
@@ -212,6 +232,22 @@ public class RequestJson {
         }
         return profiles;
 
+    }
+
+    public static HashMap<String, Instructor> getInstructors(JSONObject instructorJson) throws JSONException {
+
+        final JSONArray instructorJsonArray = instructorJson.getJSONArray("instructors");
+
+        for (int i = 0; i < instructorJsonArray.length(); i++) {
+            final JSONObject instructorJsonObject = instructorJsonArray.getJSONObject(i);
+
+            final String id = instructorJsonObject.getString("id");
+            final String name = instructorJsonObject.getString("name");
+
+            Instructor instructor = new Instructor(id, name);
+            instructors.put(instructor.id, instructor);
+        }
+        return instructors;
     }
 
 }
