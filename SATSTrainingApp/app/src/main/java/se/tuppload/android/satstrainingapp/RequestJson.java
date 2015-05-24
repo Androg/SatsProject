@@ -90,7 +90,6 @@ public class RequestJson {
         SatsRestClient.get(new JsonHttpResponseHandler() {
             private final ArrayList<Activity> activities = new ArrayList<>();
 
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
 

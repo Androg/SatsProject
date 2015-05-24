@@ -120,7 +120,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/instructor"
+                        android:id="@+id/class_view_instructor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Annika Bottne"/>
@@ -145,11 +145,21 @@
                         android:text="Kondition"
                         android:textStyle="bold"/>
 
+
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:orientation="horizontal">
+
+                        <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:id="@+id/fitness_bar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:max="100"
+                            android:background="@drawable/progress_bg"
+                            android:progressDrawable="@drawable/progress_primary"/>
 
                         <ImageView
                             android:id="@+id/fitness_bar_block1"
