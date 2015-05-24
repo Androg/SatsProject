@@ -1,7 +1,4 @@
-package se.tuppload.android.satstrainingapp.Storage;
-
-import android.content.Context;
-import android.util.Log;
+package se.tuppload.android.satstrainingapp;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;

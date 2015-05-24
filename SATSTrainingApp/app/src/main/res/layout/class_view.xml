@@ -126,21 +126,12 @@
                         android:text="Annika Bottne"/>
                 </LinearLayout>
                 <TextView
-<<<<<<< HEAD
-                android:id="@+id/class_information"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="20dp"
-                android:paddingTop="10dp"
-                android:text="Latinamerikanska rytmer och rörelseglädje karaktärer denna heta dansklass. Join the Party!"/>
-=======
                     android:id="@+id/class_information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="20dp"
                     android:paddingTop="10dp"
                     android:text="Latinamerikanska rytmer och rörelseglädje karaktärer denna heta dansklass. Join the Party!"/>
->>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

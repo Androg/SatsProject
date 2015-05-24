@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp.Storage;
+package se.tuppload.android.satstrainingapp;
 
 import android.util.Log;
 
@@ -14,13 +14,8 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
-<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/RequestJson.java
-import se.tuppload.android.satstrainingapp.Models.*;
-import se.tuppload.android.satstrainingapp.Models.Class;
-=======
-import se.tuppload.android.satstrainingapp.Model.*;
-import se.tuppload.android.satstrainingapp.Model.Class;
->>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/RequestJson.java
+import se.tuppload.android.satstrainingapp.model.*;
+import se.tuppload.android.satstrainingapp.model.Class;
 
 public class RequestJson {
 
@@ -100,11 +95,7 @@ public class RequestJson {
         final String bookingId = bookingJson.getString("objectId");
         final int positionInQueue = bookingJson.getInt("positionInQueue");
         final JSONObject classJson = bookingJson.getJSONObject("class");
-<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/RequestJson.java
-        final se.tuppload.android.satstrainingapp.Models.Class aClass = getClass(classJson);
-=======
-        final se.tuppload.android.satstrainingapp.Model.Class aClass = getClass(classJson);
->>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/RequestJson.java
+        final se.tuppload.android.satstrainingapp.model.Class aClass = getClass(classJson);
 
         return new Booking(status, aClass, center, bookingId, positionInQueue);
     }

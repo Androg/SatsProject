@@ -1,9 +1,8 @@
-package se.tuppload.android.satstrainingapp.Storage;
+package se.tuppload.android.satstrainingapp;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -12,8 +11,8 @@ import android.widget.TextView;
 
 import org.joda.time.DateTime;
 
+
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
-import se.tuppload.android.satstrainingapp.R;
 
 public class MainActivity extends ActionBarActivity
 {
@@ -40,8 +39,6 @@ public class MainActivity extends ActionBarActivity
         final StickyListHeadersListView listView = (StickyListHeadersListView) findViewById(R.id.listan);
         RequestJson.getJsonData(listView, this);
 
-<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/MainActivity.java
-=======
         graph = (ViewPager) findViewById(R.id.graph);
         graphAdapter = new ColoumnAdapter();
         graph.setAdapter(graphAdapter);
@@ -55,7 +52,6 @@ public class MainActivity extends ActionBarActivity
             }
         });
 
->>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/MainActivity.java
         listView.setOnStickyHeaderChangedListener(new StickyListHeadersListView.OnStickyHeaderChangedListener() {
             @Override
             public void onStickyHeaderChanged(StickyListHeadersListView stickyListHeadersListView, View header, int i, long l) {
@@ -69,20 +65,6 @@ public class MainActivity extends ActionBarActivity
                 }
             }
         });
-<<<<<<< HEAD:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/Storage/MainActivity.java
-
-        im.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                RequestJson.getJsonData(listView, MainActivity.this);
-                im.startAnimation(animRot);
-            }
-        });
-    }
-=======
->>>>>>> 1854c0d03c7b0f9af84fb1bf35223ef0c4d46494:SATSTrainingApp/app/src/main/java/se/tuppload/android/satstrainingapp/MainActivity.java
 
         graph.postDelayed(new Runnable() {
             @Override
@@ -90,24 +72,6 @@ public class MainActivity extends ActionBarActivity
                 graph.setCurrentItem(currentWeek.getWeekOfWeekyear() - 2);
             }
         }, 1500);
-
-//        graph.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//
-//            @Override
-//            public void onPageSelected(int page) {
-//                //page changed
-//                listView.smoothScrollToPosition(page);
-//            }
-//
-//            @Override
-//            public void onPageScrolled(int arg0, float arg1, int arg2) {
-//                listView.smoothScrollToPosition(arg0);
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int arg0) {
-//            }
-//        });
 
     }
 }
