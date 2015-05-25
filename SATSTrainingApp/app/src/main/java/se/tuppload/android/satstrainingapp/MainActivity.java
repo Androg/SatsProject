@@ -3,6 +3,7 @@ package se.tuppload.android.satstrainingapp;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -13,6 +14,8 @@ import org.joda.time.DateTime;
 
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
+import se.tuppload.android.satstrainingapp.Adapter.ColoumnAdapter;
+import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
 
 public class MainActivity extends ActionBarActivity
 {
@@ -43,6 +46,26 @@ public class MainActivity extends ActionBarActivity
         graphAdapter = new ColoumnAdapter();
         graph.setAdapter(graphAdapter);
 
+        graph.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int page) {
+                Log.d("PAGE = ", "" + page);
+                for (int i = 0; i < TrainingListAdapter.getList().size(); i++) {
+                    if ((page - 3) == DateTime.parse(TrainingListAdapter.getList().get(i).date).minusDays(1).getWeekOfWeekyear()) {
+                        listView.smoothScrollToPosition(i + 1);
+                    }
+                }
+            }
+
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
 
         im.setOnClickListener(new View.OnClickListener() {
             @Override

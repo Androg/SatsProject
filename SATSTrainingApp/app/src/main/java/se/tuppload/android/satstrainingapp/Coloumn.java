@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.View;
 
+import se.tuppload.android.satstrainingapp.Adapter.ColoumnAdapter;
+
 public class Coloumn extends View {
 
     Paint paint;

@@ -16,8 +16,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".Storage.ShowActivityInfo"
             android:label="Sats2" />
+=======
+
+        <activity
+            android:name="se.tuppload.android.satstrainingapp.MoreInfoActivity"
+            android:label="Moreinfo">
+
+        </activity>
+>>>>>>> 00226c1384ba45e8053fc769fb317d435e5ba469
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 

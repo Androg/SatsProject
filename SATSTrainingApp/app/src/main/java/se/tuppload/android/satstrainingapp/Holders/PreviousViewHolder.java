@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp.holders;
+package se.tuppload.android.satstrainingapp.Holders;
 
 import android.widget.CheckBox;
 import android.widget.ImageView;

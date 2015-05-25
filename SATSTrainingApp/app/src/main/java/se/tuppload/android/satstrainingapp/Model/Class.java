@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp.model;
+package se.tuppload.android.satstrainingapp.Model;
 
 public class Class {
 

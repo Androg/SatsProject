@@ -1,4 +1,4 @@
-package se.tuppload.android.satstrainingapp.model;
+package se.tuppload.android.satstrainingapp.Model;
 
 public class Center {
 
@@ -8,12 +8,12 @@ public class Center {
     public String url;
     public String filterId;
     public String centerId;
-    public String latitude;
-    public String longitude;
+    public Long latitude;
+    public Long longitude;
     public String regionId;
 
     public Center(boolean availableForOnlineBooking, boolean isElixia, String description, String name,
-                  String url, String filterId, String centerId, String latitude, String longitude, String regionId) {
+                  String url, String filterId, String centerId, Long latitude, Long longitude, String regionId) {
 
         this.availableForOnlineBooking = availableForOnlineBooking;
         this.isElixia = isElixia;
