@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="se.tuppload.android.satstrainingapp" >
+    package="se.tuppload.android.satstrainingapp">
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".Storage.ShowActivityInfo"
-            android:label="Sats2" />
-=======
 
         <activity
-            android:name="se.tuppload.android.satstrainingapp.MoreInfoActivity"
-            android:label="Moreinfo">
-
-        </activity>
->>>>>>> 00226c1384ba45e8053fc769fb317d435e5ba469
+            android:name=".ShowActivityInfo"
+            android:label="Moreinfo" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

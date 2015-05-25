@@ -18,15 +18,17 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
-import se.tuppload.android.satstrainingapp.Model.*;
 import se.tuppload.android.satstrainingapp.MainActivity;
+import se.tuppload.android.satstrainingapp.Model.*;
 import se.tuppload.android.satstrainingapp.R;
 import se.tuppload.android.satstrainingapp.RequestJson;
+import se.tuppload.android.satstrainingapp.ShowActivityInfo;
 
 public class TrainingListAdapter extends BaseAdapter implements StickyListHeadersAdapter {
 
     private static ArrayList<Activity> activities = new ArrayList<>();
     private static ArrayList<Integer> activitiesPerWeek = new ArrayList<>();
+    private android.app.Activity activity;
     private LayoutInflater inflater;
     private final String[] weekDay = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
     private final String[] month = {"", "Januari", "Februari", "Mars", "April", "Maj", "Juni", "Juli", "Augusti", "September", "Oktober", "November", "December"};
@@ -34,15 +36,15 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private DateTime activityDate;
     private DateTime date;
     private DateTime date2;
-    private android.app.Activity activity;
     private static final int VIEWTYPE_COUNT = 3;
     private static final int PREVIOUS = 0;
     private static final int BOOKED = 1;
     private static final int OWN = 2;
 
 
-    public TrainingListAdapter(MainActivity activity, ArrayList<Activity> activities) {
+    public TrainingListAdapter(android.app.Activity activity, ArrayList<Activity> activities) {
         inflater = LayoutInflater.from(activity);
+        this.activity = activity;
         this.activities = activities;
     }
 
@@ -82,12 +84,12 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
         OwnViewHolder ownHolder;
         final PreviousViewHolder previousHolder;
-        BookedViewHolder bookedHolder;
+        final BookedViewHolder bookedHolder;
         date = DateTime.parse(getItem(position).date);
 
 
@@ -106,8 +108,9 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     previousHolder = (PreviousViewHolder) view.getTag();
                 }
 
-                previousHolder.type.setText(activities.get(position).subType);
+                previousHolder.type.setText(activities.get(position).type);
                 previousHolder.date.setText(activities.get(position).date.substring(0, 10));
+
                 previousHolder.checkBox.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -167,8 +170,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     bookedHolder.activityDuration = (TextView) view.findViewById(R.id.class_time);
                     bookedHolder.activityDate = (TextView) view.findViewById(R.id.date_header);
                     bookedHolder.positionInQueueImg = (ImageView) view.findViewById(R.id.img_participants);
-
-
+                    bookedHolder.activityInfo = (LinearLayout) view.findViewById(R.id.right_inner_box);
                     view.setTag(bookedHolder);
                 } else {
                     bookedHolder = (BookedViewHolder) view.getTag();
@@ -182,30 +184,43 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 bookedHolder.startTimeMinutes.setText(getItem(position).date.substring(14, 16));
                 bookedHolder.activityDuration.setText(getItem(position).durationInMinutes + " min");
 
-                // Hide waiting list count img if no one in queue
-                if (activities.get(position).booking.positionInQueue == 0) {
+
+                bookedHolder.activityInfo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent moreInfo = new Intent(activity, ShowActivityInfo.class);
+
+                        moreInfo.putExtra("CLASSTYPE", bookedHolder.workoutType.getText().toString());
+                        moreInfo.putExtra("DURATION", bookedHolder.activityDuration.getText().toString());
+                        moreInfo.putExtra("CENTER", bookedHolder.gymLocation.getText().toString());
+                        moreInfo.putExtra("INSTRUCTOR", bookedHolder.instructorsName.getText().toString());
+
+                        DateTime dateTime = new DateTime(getItem(position).date);
+                        String dateTimeFormatted = "" + weekDay[dateTime.getMonthOfYear()] + " " + dateTime.getDayOfMonth() + " "
+                                + month[dateTime.getMonthOfYear()] + " " + dateTime.getHourOfDay() + ":" + dateTime.getMinuteOfHour();
+                        moreInfo.putExtra("DATE", dateTimeFormatted);
+                        moreInfo.putExtra("INSTRUCTOR", bookedHolder.instructorsName.getText().toString());
+                        moreInfo.putExtra("DESCRIPTION", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).description);
+                        moreInfo.putExtra("CARDIO", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("cardio").value);
+                        moreInfo.putExtra("STRENGTH", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("strength").value);
+                        moreInfo.putExtra("FLEXIBILITY", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("flexibility").value);
+                        moreInfo.putExtra("BALANCE", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("balance").value);
+                        moreInfo.putExtra("AGILITY", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("agility").value);
+
+
+                        activity.startActivity(moreInfo);
+                    }
+                });
+
+                if (getItem(position).booking.positionInQueue == 0) {
                     bookedHolder.positionInQueue.setVisibility(View.GONE);
                     bookedHolder.positionInQueueImg.setVisibility(View.GONE);
-
-                    LinearLayout lay = (LinearLayout) view.findViewById(R.id.right_inner_box);
-
-                    lay.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent moreInfo = new Intent(TrainingListAdapter.this.activity, se.tuppload.android.satstrainingapp.ShowActivityInfo.class);
-                            TrainingListAdapter.this.activity.startActivity(moreInfo);
-                        }
-                    });
                 }
-
                 break;
         }
 
         return view;
-
-
     }
-
 
     @Override
     public View getHeaderView(int position, View convertView, ViewGroup parent) {
@@ -288,7 +303,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     public void addToArrayList(ArrayList<Activity> temp) {
         for(Activity tempInt : temp) {
             date = DateTime.parse(tempInt.date);
-            activitiesPerWeek.add(date.getWeekOfWeekyear());
+            activitiesPerWeek.add(date.minusDays(1).getWeekOfWeekyear());
         }
 
     }
