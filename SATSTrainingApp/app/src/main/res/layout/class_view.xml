@@ -6,7 +6,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+        layout="@layout/toolbar" />
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -19,14 +19,14 @@
             android:layout_height="fill_parent"
             android:layout_below="@id/toolbar"
             android:orientation="vertical"
+            android:paddingBottom="20dp"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp">
+            android:paddingTop="20dp">
 
             <LinearLayout
                 android:id="@+id/class_info"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingBottom="10dp">
@@ -38,59 +38,103 @@
                     android:paddingRight="5dp"
                     android:text="Zumba"
                     android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/class_duration_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/class_name"
-                    android:text="45min"/>
+                    android:text="45min" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:id="@+id/img_participants_class_info"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/people_icon" />
+
+                    <TextView
+                        android:id="@+id/number_participants_class_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/pink"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/workout"/>
+                android:background="@drawable/workout" />
 
             <LinearLayout
                 android:id="@+id/class_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/view_round_edges"
                 android:orientation="vertical"
-                >
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-                <RatingBar
-                    android:id="@+id/sats_rating"
-                    style="@style/satsRatingBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:stepSize="1" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <RatingBar
+                        android:id="@+id/sats_rating"
+                        style="@style/satsRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="20dp"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:stepSize="1" />
+
+                    <TextView
+                        android:id="@+id/bookedPersonCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:text="25"
+/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Center: "
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/center_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SATS Bromma"/>
+                        android:text="SATS Bromma" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -102,13 +146,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Datum: "
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Torsdag 12 November"/>
+                        android:text="Torsdag 12 November" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -120,21 +164,22 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Instruktör: "
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/class_view_instructor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Annika Bottne"/>
+                        android:text="Annika Bottne" />
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/class_information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="20dp"
                     android:paddingTop="10dp"
-                    android:text="Latinamerikanska rytmer och rörelseglädje karaktärer denna heta dansklass. Join the Party!"/>
+                    android:text="Latinamerikanska rytmer och rörelseglädje karaktärer denna heta dansklass. Join the Party!" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -147,7 +192,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="Kondition"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
 
                     <LinearLayout
@@ -156,8 +201,9 @@
                         android:layout_alignParentRight="true"
                         android:orientation="horizontal">
 
-                        <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                        <ProgressBar
                             android:id="@+id/fitness_bar_cardio"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:max="100"
@@ -170,8 +216,8 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="7dp">
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp">
 
                     <TextView
                         android:id="@+id/fitnessStrength"
@@ -179,7 +225,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="Styrka"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
 
                     <LinearLayout
@@ -188,8 +234,9 @@
                         android:layout_alignParentRight="true"
                         android:orientation="horizontal">
 
-                        <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                        <ProgressBar
                             android:id="@+id/fitness_bar_strength"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:max="100"
@@ -202,8 +249,8 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="7dp">
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp">
 
                     <TextView
                         android:id="@+id/fitnessFlexibility"
@@ -211,22 +258,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="Rörlighet"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
-                    <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-                        android:id="@+id/fitness_bar_flexibility"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:max="100"
-                        android:progress="0"
-                        android:layout_gravity="left"
-                        android:progressDrawable="@drawable/customprogressbar"/>
+                        <ProgressBar
+                            android:id="@+id/fitness_bar_flexibility"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:max="100"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/customprogressbar" />
 
                     </LinearLayout>
                 </RelativeLayout>
@@ -235,15 +283,15 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="7dp">
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="7dp">
 
                     <TextView
                         android:id="@+id/balance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Balans"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
 
                     <LinearLayout
@@ -252,8 +300,9 @@
                         android:layout_alignParentRight="true"
                         android:orientation="horizontal">
 
-                        <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                        <ProgressBar
                             android:id="@+id/fitness_bar_balance"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:max="100"
@@ -266,15 +315,15 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="7dp">
 
                     <TextView
                         android:id="@+id/agility"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Spänst"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
 
                     <LinearLayout
@@ -283,8 +332,9 @@
                         android:layout_alignParentRight="true"
                         android:orientation="horizontal">
 
-                        <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                        <ProgressBar
                             android:id="@+id/fitness_bar_agility"
+                            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:max="100"
