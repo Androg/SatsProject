@@ -1,7 +1,6 @@
 package se.tuppload.android.satstrainingapp.Model;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +14,7 @@ public class ClassType {
     public final String videoUrl;
 
     public ClassType(List<String> classCategoryIds, String description, String id, String name, HashMap<String, Profile> profile, String videoUrl) {
+
         this.classCategoryIds = classCategoryIds;
         this.description = description;
         this.id = id;

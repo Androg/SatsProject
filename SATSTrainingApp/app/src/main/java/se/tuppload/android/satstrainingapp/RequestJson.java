@@ -16,9 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
-import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
 import se.tuppload.android.satstrainingapp.Model.*;
 import se.tuppload.android.satstrainingapp.Model.Class;
+import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
 
 public class RequestJson {
 

@@ -3,9 +3,12 @@ package se.tuppload.android.satstrainingapp;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import java.util.Random;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -33,6 +36,11 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         YouTubePlayerView YouTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         YouTubePlayerView.initialize(GOOGLE_API_KEY, this);
 
+        int min = 0;
+        int max = 5;
+        int randNumber = min + new Random().nextInt(max - min + 1);
+
+
         TextView className = (TextView) findViewById(R.id.class_name);
         TextView duration = (TextView) findViewById(R.id.class_duration_time);
         TextView center = (TextView) findViewById(R.id.center_name);
@@ -40,7 +48,13 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         TextView instructor = (TextView) findViewById(R.id.class_view_instructor);
         TextView description = (TextView) findViewById(R.id.class_information);
 
-        ProgressBar cardio = (ProgressBar) findViewById(R.id.fitness_bar);
+        ProgressBar cardio = (ProgressBar) findViewById(R.id.fitness_bar_cardio);
+        ProgressBar strength = (ProgressBar) findViewById(R.id.fitness_bar_strength);
+        ProgressBar flexibility = (ProgressBar) findViewById(R.id.fitness_bar_flexibility);
+        ProgressBar balance = (ProgressBar) findViewById(R.id.fitness_bar_balance);
+        ProgressBar agility = (ProgressBar) findViewById(R.id.fitness_bar_agility);
+
+        RatingBar ratingBar = (RatingBar) findViewById(R.id.sats_rating);
 
         className.setText(extras.getString("CLASSTYPE"));
         duration.setText(extras.getString("DURATION"));
@@ -50,7 +64,12 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         description.setText(extras.getString("DESCRIPTION"));
 
         cardio.setProgress(extras.getInt("CARDIO"));
+        strength.setProgress(extras.getInt("STRENGTH"));
+        flexibility.setProgress(extras.getInt("FLEXIBILITY"));
+        balance.setProgress(extras.getInt("BALANCE"));
+        agility.setProgress(extras.getInt("AGILITY"));
 
+        ratingBar.setRating(randNumber);
 
     }
 

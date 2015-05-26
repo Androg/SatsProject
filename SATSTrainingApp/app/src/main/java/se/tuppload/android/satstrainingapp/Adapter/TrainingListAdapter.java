@@ -1,7 +1,6 @@
 package se.tuppload.android.satstrainingapp.Adapter;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,8 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
-import se.tuppload.android.satstrainingapp.Adapter.ColoumnAdapter;
 import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
@@ -205,6 +202,10 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                         moreInfo.putExtra("INSTRUCTOR", bookedHolder.instructorsName.getText().toString());
                         moreInfo.putExtra("DESCRIPTION", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).description);
                         moreInfo.putExtra("CARDIO", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("cardio").value);
+                        moreInfo.putExtra("STRENGTH", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("strength").value);
+                        moreInfo.putExtra("FLEXIBILITY", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("flexibility").value);
+                        moreInfo.putExtra("BALANCE", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("balance").value);
+                        moreInfo.putExtra("AGILITY", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("agility").value);
 
                         activity.startActivity(moreInfo);
                     }
