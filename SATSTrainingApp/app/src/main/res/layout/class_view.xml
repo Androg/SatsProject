@@ -39,6 +39,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"/>
 
+
                 <TextView
                     android:id="@+id/class_duration_time"
                     android:layout_width="wrap_content"
@@ -48,10 +49,18 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/workout"/>
+
+            <com.google.android.youtube.player.YouTubePlayerView
+                android:id="@+id/youtube_view"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/workout"/>-->
 
             <LinearLayout
                 android:id="@+id/class_context"

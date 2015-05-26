@@ -206,7 +206,6 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                         moreInfo.putExtra("DESCRIPTION", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).description);
                         moreInfo.putExtra("CARDIO", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("cardio").value);
 
-
                         activity.startActivity(moreInfo);
                     }
                 });
