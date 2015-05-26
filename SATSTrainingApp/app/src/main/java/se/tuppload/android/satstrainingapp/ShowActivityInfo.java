@@ -48,6 +48,8 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         TextView date = (TextView) findViewById(R.id.date);
         TextView instructor = (TextView) findViewById(R.id.class_view_instructor);
         TextView description = (TextView) findViewById(R.id.class_information);
+        TextView positionInQue = (TextView) findViewById(R.id.number_participants_class_info);
+        TextView bookedPersonCount = (TextView) findViewById(R.id.bookedPersonCount);
 
         ProgressBar cardio = (ProgressBar) findViewById(R.id.fitness_bar_cardio);
         ProgressBar strength = (ProgressBar) findViewById(R.id.fitness_bar_strength);
@@ -63,6 +65,8 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         date.setText(extras.getString("DATE"));
         instructor.setText(extras.getString("INSTRUCTOR"));
         description.setText(extras.getString("DESCRIPTION"));
+        positionInQue.setText(extras.getString("POSITIONQUE"));
+        bookedPersonCount.setText("" + extras.getInt("PARTICIPANTS") + " anmälda av");
 
         cardio.setProgress(extras.getInt("CARDIO"));
         strength.setProgress(extras.getInt("STRENGTH"));
