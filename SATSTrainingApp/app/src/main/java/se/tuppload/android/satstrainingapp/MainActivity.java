@@ -22,7 +22,6 @@ import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
 import static se.tuppload.android.satstrainingapp.R.layout.my_training_listview;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
-    public static boolean temp = false;
     long startEndDate = 4;
     final DateTime currentWeek = new DateTime();
     public int currentPage = currentWeek.getWeekOfWeekyear();

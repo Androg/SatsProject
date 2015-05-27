@@ -29,6 +29,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
     private static ArrayList<Activity> activities = new ArrayList<>();
     private static ArrayList<Integer> activitiesPerWeek = new ArrayList<>();
+    private boolean onlyRunOnce = false;
     private android.app.Activity activity;
     private LayoutInflater inflater;
     private final String[] weekDay = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
@@ -235,10 +236,10 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         DateTime activityDateStart = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 8);
         DateTime activityDateEnd = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 2);
 
-        if (MainActivity.temp == false) {
+        if (onlyRunOnce == false) {
             addToArrayList(activities);
             ColoumnAdapter.setArrayList(activitiesPerWeek);
-            MainActivity.temp = true;
+            onlyRunOnce = true;
         }
 
         if (getItemViewType(position) == PREVIOUS) {
