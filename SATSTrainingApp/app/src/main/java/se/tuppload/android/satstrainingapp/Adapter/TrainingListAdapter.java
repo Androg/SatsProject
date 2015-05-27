@@ -233,7 +233,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         DateTime activityDateStart = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 8);
         DateTime activityDateEnd = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 2);
 
-        if(MainActivity.temp == false) {
+        if (MainActivity.temp == false) {
             addToArrayList(activities);
             ColoumnAdapter.setArrayList(activitiesPerWeek);
             MainActivity.temp = true;
@@ -254,14 +254,14 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
                 date2 = DateTime.parse(getItem(position).date);
 
-                if(position > 0) {
+                if (position > 0) {
                     date2 = DateTime.parse(getItem(position - 1).date);
                     int currentWeek = date.getWeekOfWeekyear();
                     int previousWeek = date2.getWeekOfWeekyear();
 
                     if (currentWeek == previousWeek) {
                         holder.text.setVisibility(View.GONE);
-                    } else if(currentWeek != previousWeek) {
+                    } else if (currentWeek != previousWeek) {
                         holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
                                 (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
                     }
@@ -304,7 +304,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     }
 
     public void addToArrayList(ArrayList<Activity> temp) {
-        for(Activity tempInt : temp) {
+        for (Activity tempInt : temp) {
             date = DateTime.parse(tempInt.date);
             activitiesPerWeek.add(date.minusDays(1).getWeekOfWeekyear());
         }

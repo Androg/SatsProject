@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="5dp"
-                    android:text="Zumba"
+                    android:text="@string/zumba"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold" />
 
@@ -71,7 +71,6 @@
                         android:layout_marginLeft="2dp"
                         android:layout_marginBottom="2dp"
                         android:layout_marginRight="3dp"
-                        android:text="0"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/pink"
                         android:textSize="20dp"
@@ -132,7 +131,6 @@
                             android:layout_height="wrap_content"
                             android:layout_alignEnd="@+id/sats_rating"
                             android:layout_gravity="right"
-                            android:text="25"
                             android:textSize="16dp" />
 
                     </LinearLayout>
@@ -148,14 +146,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Center: "
+                        android:text="@string/center"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/center_name"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="SATS Bromma" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -166,14 +163,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Datum: "
+                        android:text="@string/datum"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/date"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Torsdag 12 November" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -184,14 +180,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Instruktör: "
+                        android:text="@string/instructor"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/class_view_instructor"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Annika Bottne" />
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <TextView
@@ -199,9 +194,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="20dp"
-                    android:paddingTop="10dp"
-                    android:text="Latinamerikanska rytmer och rörelseglädje karaktärer denna heta dansklass. Join the Party!" />
-
+                    android:paddingTop="10dp" />
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -212,7 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Kondition"
+                        android:text="@string/cardio"
                         android:textStyle="bold" />
 
 
@@ -245,7 +238,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Styrka"
+                        android:text="@string/strength"
                         android:textStyle="bold" />
 
 
@@ -278,7 +271,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:text="Rörlighet"
+                        android:text="@string/flexibility"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -311,7 +304,7 @@
                         android:id="@+id/balance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Balans"
+                        android:text="@string/balance"
                         android:textStyle="bold" />
 
 
@@ -343,7 +336,7 @@
                         android:id="@+id/agility"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Spänst"
+                        android:text="@string/agility"
                         android:textStyle="bold" />
 
 

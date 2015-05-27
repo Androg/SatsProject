@@ -9,7 +9,6 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import java.util.Random;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -24,7 +23,6 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
     public YouTubePlayer player;
     public static final String GOOGLE_API_KEY = "AIzaSyDOdUDNDMIYt1Br8g-T4_hzU2YMcNfPQok";
 
-    //http://youtu.be/<VIDEO_ID>
 
     public static final String VIDEO_ID = "4GBrCy1Uolo";
 
@@ -70,7 +68,7 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         positionInQue.setText(extras.getString("POSITIONQUE"));
         bookedPersonCount.setText("" + extras.getInt("PARTICIPANTS") + " deltagare av max " + extras.getInt("MAXPARTICIPANTS"));
 
-        if(positionInQue.getText().equals("0")) {
+        if (positionInQue.getText().equals("0")) {
             positionInQue.setVisibility(View.GONE);
             positionQueImage.setVisibility(View.GONE);
         }
@@ -107,12 +105,9 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         player.setPlaybackEventListener(playbackEventListener);
 
         //Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
-        {
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             player.setFullscreen(false);
-        }
-        else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-        {
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             player.setFullscreen(true);
         }
     }
