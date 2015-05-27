@@ -81,7 +81,7 @@ public class MainActivity extends ActionBarActivity
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                listView.smoothScrollToPosition(currentPage - 11);
+                listView.smoothScrollToPosition(currentPage - 12);
             }
         });
 
@@ -116,6 +116,13 @@ public class MainActivity extends ActionBarActivity
             public void onClick(View view) {
                 RequestJson.getJsonData(listView, MainActivity.this);
                 im.startAnimation(animRot);
+                graph.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        graph.setAdapter(new ColoumnAdapter());
+                        graph.setCurrentItem(currentWeek.getWeekOfWeekyear() - 2);
+                    }
+                }, 1500);
             }
         });
 

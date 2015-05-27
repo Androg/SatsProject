@@ -64,6 +64,21 @@
                         android:layout_alignParentLeft="true"
                         android:src="@drawable/back_to_now"/>
 
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="125dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/calendet_mark_right" />
+
+                    <ImageView
+                        android:id="@+id/shadow"
+                        android:layout_width="20dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="215dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/calendet_mark_left" />
+
                 </RelativeLayout>
 
                 <RelativeLayout
