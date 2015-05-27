@@ -193,6 +193,7 @@
                         android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_gravity="right"
                         android:gravity="right"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="8dp">
@@ -271,7 +272,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Lägg till i kalender"
+                        android:text="@string/add_to_calendar"
                         android:layout_marginTop="2dp"
                         android:textSize="11sp" />
                 </LinearLayout>
@@ -314,7 +315,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="Mer om passet"
+                        android:text="@string/class_info"
                         android:layout_marginTop="1dp"
                         android:textSize="11sp" />
                 </LinearLayout>

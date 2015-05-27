@@ -23,7 +23,7 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_toRightOf="@+id/logo_image"
-            android:text="MIN TRÄNING"
+            android:text="@string/my_training"
             android:textColor="@color/black" />
 
         <ImageView

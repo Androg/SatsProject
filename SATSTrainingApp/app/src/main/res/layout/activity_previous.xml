@@ -42,7 +42,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000000"
                 android:textStyle="bold"
-                android:text="type" />
+                android:text="@string/type" />
 
 
             <TextView
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#868686"
-                android:text="date" />
+                android:text="@string/class_date" />
 
 
             <LinearLayout
@@ -71,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="2dp"
-                    android:text="Lägg till kommentar"
+                    android:text="@string/add_comment"
                     android:textSize="10dp"
                     android:textColor="#a8a8a8"/>
             </LinearLayout>
@@ -90,7 +90,7 @@
             android:button="@drawable/checkbox"
             android:paddingLeft="14dp"
             android:checked="false"
-            android:text="Avklarat?"
+            android:text="@string/completed_or_not"
             android:textSize="20dp"
             android:textAlignment="@integer/abc_max_action_buttons"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
