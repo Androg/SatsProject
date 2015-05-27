@@ -21,7 +21,8 @@
             android:orientation="vertical"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
-            android:paddingTop="20dp">
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
             <LinearLayout
                 android:id="@+id/class_info"
@@ -39,6 +40,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textStyle="bold"/>
 
+
                 <TextView
                     android:id="@+id/class_duration_time"
                     android:layout_width="wrap_content"
@@ -48,34 +50,44 @@
 
             </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/workout"/>
+
+            <com.google.android.youtube.player.YouTubePlayerView
+                android:id="@+id/youtube_view"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/workout"/>-->
 
             <LinearLayout
                 android:id="@+id/class_context"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:paddingLeft="10dp"
-                android:paddingRight="10dp">
+                android:paddingRight="10dp"
+                android:orientation="vertical"
+                >
 
                 <RatingBar
                     android:id="@+id/sats_rating"
+                    style="@style/satsRatingBar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="1dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     android:isIndicator="true"
                     android:numStars="5"
-                    android:progressDrawable="@drawable/star_off"
                     android:stepSize="1" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -135,16 +147,16 @@
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="7dp">
 
                     <TextView
-                        android:id="@+id/fitness"
+                        android:id="@+id/fitnessCardio"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:text="Kondition"
                         android:textStyle="bold"/>
-
 
 
                     <LinearLayout
@@ -154,103 +166,141 @@
                         android:orientation="horizontal">
 
                         <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
-                            android:id="@+id/fitness_bar"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/fitness_bar_cardio"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:max="100"
-                            android:background="@drawable/progress_bg"
-                            android:progressDrawable="@drawable/progress_primary"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block1"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block2"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block3"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block4"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block5"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block6"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block7"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block8"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block9"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
-
-                        <ImageView
-                            android:id="@+id/fitness_bar_block10"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/progress_bg"/>
+                            android:progressDrawable="@drawable/customprogressbar" />
 
                     </LinearLayout>
                 </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/strength"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Styrka"
-                    android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/flexibility"
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rörlighet"
-                    android:textStyle="bold"/>
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp">
 
-                <TextView
-                    android:id="@+id/balance"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Balans"
-                    android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/fitnessStrength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="Styrka"
+                        android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/elasticity"
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+
+                        <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:id="@+id/fitness_bar_strength"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:max="100"
+                            android:progressDrawable="@drawable/customprogressbar" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Spänst"
-                    android:textStyle="bold"/>
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp">
+
+                    <TextView
+                        android:id="@+id/fitnessFlexibility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="Rörlighet"
+                        android:textStyle="bold"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal" >
+
+                    <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                        android:id="@+id/fitness_bar_flexibility"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:progress="0"
+                        android:layout_gravity="left"
+                        android:progressDrawable="@drawable/customprogressbar"/>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp">
+
+                    <TextView
+                        android:id="@+id/balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Balans"
+                        android:textStyle="bold"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+
+                        <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:id="@+id/fitness_bar_balance"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:max="100"
+                            android:progressDrawable="@drawable/customprogressbar" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:id="@+id/agility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Spänst"
+                        android:textStyle="bold"/>
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+
+                        <ProgressBar style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                            android:id="@+id/fitness_bar_agility"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:max="100"
+                            android:progressDrawable="@drawable/customprogressbar" />
+
+                    </LinearLayout>
+                </RelativeLayout>
 
             </LinearLayout>
 

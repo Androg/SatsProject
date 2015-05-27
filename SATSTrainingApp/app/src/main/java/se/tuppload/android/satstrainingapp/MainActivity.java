@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import org.joda.time.DateTime;
 
+
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 import se.tuppload.android.satstrainingapp.Adapter.ColoumnAdapter;
 import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
@@ -138,24 +139,6 @@ public class MainActivity extends ActionBarActivity
                 graph.setCurrentItem(currentWeek.getWeekOfWeekyear() - 2);
             }
         }, 1500);
-
-//        graph.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//
-//            @Override
-//            public void onPageSelected(int page) {
-//                //page changed
-//                listView.smoothScrollToPosition(page);
-//            }
-//
-//            @Override
-//            public void onPageScrolled(int arg0, float arg1, int arg2) {
-//                listView.smoothScrollToPosition(arg0);
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int arg0) {
-//            }
-//        });
 
     }
 }
