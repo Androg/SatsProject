@@ -8,12 +8,12 @@ public class Center {
     public String url;
     public String filterId;
     public String centerId;
-    public Long latitude;
-    public Long longitude;
+    public Double latitude;
+    public Double longitude;
     public String regionId;
 
     public Center(boolean availableForOnlineBooking, boolean isElixia, String description, String name,
-                  String url, String filterId, String centerId, Long latitude, Long longitude, String regionId) {
+                  String url, String filterId, String centerId, Double latitude, Double longitude, String regionId) {
 
         this.availableForOnlineBooking = availableForOnlineBooking;
         this.isElixia = isElixia;

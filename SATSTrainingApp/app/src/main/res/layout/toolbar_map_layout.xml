@@ -2,7 +2,7 @@
 
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/toolbar"
+    android:id="@+id/toolbar_map"
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:minHeight="?attr/actionBarSize"
@@ -23,45 +23,28 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_toRightOf="@+id/logo_image"
-            android:text="MIN TRÄNING"
+            android:text="HITTA CENTER"
             android:textColor="@color/black" />
 
         <ImageView
             android:id="@+id/logo_image"
             android:src="@drawable/sats_logo"
             android:layout_width="65dp"
+            android:layout_marginLeft="17dp"
             android:layout_height="65dp"
             android:layout_toRightOf="@+id/logo_settings"/>
 
         <ImageView
-            android:id="@+id/logo_settings"
-            android:src="@drawable/meny_icon"
-            android:layout_width="20dp"
+            android:id="@+id/back_icon"
+            android:src="@drawable/back_icon"
+            android:layout_width="27dp"
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:scaleType="centerInside"
             android:layout_alignParentStart="false"
             android:layout_marginLeft="-5dp"
             android:layout_alignParentLeft="true"
-            android:paddingRight="6dp"/>
-
-        <ImageView
-            android:id="@+id/location_arrow"
-            android:layout_width="15dp"
-            android:layout_height="23dp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/location_arrow"/>
-
-        <ImageView
-            android:id="@+id/refresh"
-            android:src="@drawable/refresh_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:scaleX="0.60"
-            android:scaleY="0.60"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"/>
+            android:paddingRight="6dp" />
 
     </RelativeLayout>
 

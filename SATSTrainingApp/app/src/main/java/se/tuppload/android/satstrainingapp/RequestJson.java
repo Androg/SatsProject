@@ -203,8 +203,8 @@ public class RequestJson {
                 final String url = centerJsonObject.getString("url");
                 final String filterId = centerJsonObject.getString("filterId");
                 final String centerId = centerJsonObject.getString("id");
-                final Long latitude = centerJsonObject.getLong("lat");
-                final Long longitude = centerJsonObject.getLong("long");
+                final Double latitude = centerJsonObject.getDouble("lat");
+                final Double longitude = centerJsonObject.getDouble("long");
                 final String regionId = centerJsonObject.getString("regionId");
 
                 Center center = new Center(availableForOnlineBooking, isElixia, description,

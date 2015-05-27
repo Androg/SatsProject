@@ -1,5 +1,6 @@
 package se.tuppload.android.satstrainingapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -20,8 +21,7 @@ import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
 
 import static se.tuppload.android.satstrainingapp.R.layout.my_training_listview;
 
-public class MainActivity extends ActionBarActivity
-{
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
     public static boolean temp = false;
     long startEndDate = 4;
     final DateTime currentWeek = new DateTime();
@@ -40,9 +40,12 @@ public class MainActivity extends ActionBarActivity
         final StickyListHeadersListView listView = (StickyListHeadersListView) findViewById(R.id.listan);
         final ImageView left = (ImageView) this.findViewById(R.id.back_to_now_left);
         final ImageView right = (ImageView) this.findViewById(R.id.back_to_now_right);
+        final ImageView view = (ImageView)findViewById(R.id.location_arrow);
 
         RequestJson.getJsonData(listView, this);
         graph.setAdapter(new ColoumnAdapter());
+
+        view.setOnClickListener(this);
 
         //Hide Back To Now Markers
         left.setVisibility(View.GONE);
@@ -135,6 +138,19 @@ public class MainActivity extends ActionBarActivity
             }
         }, 1500);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.location_arrow:
+                buttonClick();
+                break;
+        }
+    }
+
+    private void buttonClick() {
+        startActivity(new Intent(".ShowMapActivity"));
     }
 }
 
