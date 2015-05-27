@@ -257,7 +257,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
                     if (currentWeek == previousWeek) {
                         holder.text.setVisibility(View.GONE);
-                    } else if(currentWeek != previousWeek){ //<--TODO why this?
+                    } else if(currentWeek != previousWeek) {
                         holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
                                 (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
                     }
