@@ -37,6 +37,7 @@
                 sothree:umanoPanelHeight="345dp"
                 sothree:umanoParalaxOffset="100dp"
                 sothree:umanoShadowHeight="4dp">
+                <!--sothree:umanoPanelHeight="395dp"-->
 
                 <RelativeLayout
                     android:id="@+id/relativeLayout"
@@ -54,9 +55,7 @@
                         android:layout_height="150dp"
                         android:layout_marginLeft="125dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/calendet_mark_right"
-
-                        />
+                        android:src="@drawable/calendet_mark_right" />
 
                     <ImageView
                         android:id="@+id/shadow"

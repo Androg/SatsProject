@@ -2,6 +2,7 @@ package se.tuppload.android.satstrainingapp;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -9,6 +10,8 @@ import android.widget.Toast;
 
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -22,10 +25,11 @@ import static se.tuppload.android.satstrainingapp.R.layout.class_view;
 public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializedListener {
     public YouTubePlayer player;
     public static final String GOOGLE_API_KEY = "AIzaSyDOdUDNDMIYt1Br8g-T4_hzU2YMcNfPQok";
+    public static String youTubeId = null;
 
     //http://youtu.be/<VIDEO_ID>
 
-    public static final String VIDEO_ID = "4GBrCy1Uolo";
+//    public static final String VIDEO_ID = "4GBrCy1Uolo";
 
 
     @Override
@@ -41,6 +45,8 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         int max = 5;
         int randNumber = min + new Random().nextInt(max - min + 1);
 
+        String videoUrl = extras.getString("VIDEOURL");
+        youTubeId = extractYouTubeId(videoUrl);
 
         TextView className = (TextView) findViewById(R.id.class_name);
         TextView duration = (TextView) findViewById(R.id.class_duration_time);
@@ -78,59 +84,20 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
 
     }
 
-//    @Override
-//    public void onInitializationFailure(YouTubePlayer.Provider provider,
-//                                        YouTubeInitializationResult errorReason) {
-//        if (errorReason.isUserRecoverableError()) {
-//            errorReason.getErrorDialog(this, RECOVERY_DIALOG_REQUEST).show();
-//        } else {
-//            String errorMessage = String.format(
-//                    "There was an error initializing the YouTubePlayer",
-//                    errorReason.toString());
-//            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
-//        }
-//    }
-
-//    public void onInitializationSuccess(Provider provider, YouTubePlayer player,boolean wasRestored)
-//    {
-//        if (!wasRestored)
-//        {
-//            player.loadVideo(VIDEO_ID);
-//            player.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
-//            player.setShowFullscreenButton(false);
-//            player.setManageAudioFocus(false);
-//            player.setFullscreen(true);
-//        }
-//    }
-
-
-//    @Override
-//    public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
-//
-//        /** add listeners to YouTubePlayer instance **/
-//        player.setPlayerStateChangeListener(playerStateChangeListener);
-//        player.setPlaybackEventListener(playbackEventListener);
-//
-//        player.loadVideo(VIDEO_ID);
-//
-//
-//        /** Start buffering **/
-//        if (!wasRestored) {
-//            player.cueVideo(VIDEO_ID);
-//        }
-//    }
 
     @Override
     public void onInitializationFailure(Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-        Toast.makeText(this, "Failured to Initialize!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Failed to Initialize!", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onInitializationSuccess(Provider provider,
                                         YouTubePlayer player, boolean wasRestored) {
         this.player = player;
-        if (!wasRestored) {
-            player.cueVideo(VIDEO_ID);
+        if (youTubeId != null) {
+            if (!wasRestored) {
+                player.cueVideo(youTubeId);
+            }
         }
     }
 
@@ -142,12 +109,9 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         player.setPlaybackEventListener(playbackEventListener);
 
         //Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT)
-        {
+        if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             player.setFullscreen(false);
-        }
-        else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
-        {
+        } else if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             player.setFullscreen(true);
         }
     }
@@ -203,4 +167,15 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         public void onVideoStarted() {
         }
     };
+
+    public static String extractYouTubeId(String ytUrl) {
+        String vId = null;
+        Pattern pattern = Pattern.compile(".*(?:youtu.be\\/|v\\/|e\\/|u\\/\\w\\/|embed\\/|watch\\?v=|\\?v=|v=)([\\w\\-]{11,}).*");
+        Matcher matcher = pattern.matcher(ytUrl);
+        if (matcher.matches()) {
+            vId = matcher.group(1);
+        }
+        return vId;
+    }
+
 }
