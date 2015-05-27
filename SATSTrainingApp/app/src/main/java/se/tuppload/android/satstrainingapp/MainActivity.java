@@ -30,33 +30,27 @@ public class MainActivity extends ActionBarActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        final ViewPager graph;
-        ColoumnAdapter graphAdapter;
-
         super.onCreate(savedInstanceState);
         setContentView(my_training_listview);
 
+        final ViewPager graph = (ViewPager) findViewById(R.id.graph);;
         final TextView txtStatus = (TextView) findViewById(R.id.activity_status);
         final ImageView im = (ImageView) findViewById(R.id.refresh);
         final Animation animRot = AnimationUtils.loadAnimation(this, R.anim.refresh);
         final StickyListHeadersListView listView = (StickyListHeadersListView) findViewById(R.id.listan);
-
-        RequestJson.getJsonData(listView, this);
-
-        graph = (ViewPager) findViewById(R.id.graph);
-        graph.setAdapter(new ColoumnAdapter());
-
         final ImageView left = (ImageView) this.findViewById(R.id.back_to_now_left);
         final ImageView right = (ImageView) this.findViewById(R.id.back_to_now_right);
 
+        RequestJson.getJsonData(listView, this);
+        graph.setAdapter(new ColoumnAdapter());
+
+        //Hide Back To Now Markers
         left.setVisibility(View.GONE);
         right.setVisibility(View.GONE);
 
         graph.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
 
             @Override
             public void onPageSelected(int position) {
@@ -75,17 +69,11 @@ public class MainActivity extends ActionBarActivity
                 } else if(!(currentPage <= currentWeek.getWeekOfWeekyear() - 3)) {
                     right.setVisibility(View.GONE);
                 }
-
-                listView.smoothScrollToPosition(currentPage - 11);
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
-                listView.smoothScrollToPosition(currentPage - 12);
-            }
+            public void onPageScrollStateChanged(int state) { }
         });
-
-
 
 //        Log.e("CURRENT", String.valueOf(currentPage));
 //
