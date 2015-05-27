@@ -1,9 +1,7 @@
 package se.tuppload.android.satstrainingapp.Adapter;
 
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,23 +13,19 @@ import org.joda.time.DateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import se.tuppload.android.satstrainingapp.Coloumn;
-import se.tuppload.android.satstrainingapp.MainActivity;
+import se.tuppload.android.satstrainingapp.Model.Coloumn;
 import se.tuppload.android.satstrainingapp.R;
 
 
-public class ColoumnAdapter extends PagerAdapter
-{
-    static List<Integer> workoutsPerWeek = new ArrayList<Integer>();
-    static Map<Integer, Integer> workoutPerWeekDone = new HashMap<>();
-    DateTime dateToday = new DateTime();
+public class ColoumnAdapter extends PagerAdapter {
+    private static Map<Integer, Integer> workoutPerWeekMap = new HashMap<>();
+    private final DateTime dateToday = new DateTime();
     public static float earlierPos = 0;
-    int prevCellPosition;
-    int nextCellPosition;
-    int numberOfPages = 52;
+    private int prevCellPosition;
+    private int nextCellPosition;
+    private final int numberOfPages = 52;
 
     @Override
     public int getCount() {
@@ -68,12 +62,12 @@ public class ColoumnAdapter extends PagerAdapter
         //Changes weekParams height
         weekParams.height = 95;
 
-//      getDate(position);
+        //getDate(position);
         DateTime weekStartDate = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 6);
         DateTime weekEndDate = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek());
 
         //Sets text day1 - day2 / day1month
-//        week.setText();
+        //week.setText();
         week.setText(weekStartDate.getDayOfMonth() + "-" + weekEndDate.getDayOfMonth() + "/" +
                 weekStartDate.getMonthOfYear());
 
@@ -85,32 +79,30 @@ public class ColoumnAdapter extends PagerAdapter
 
         int workoutsPerWeek;
 
-        if(!workoutPerWeekDone.containsKey(position)) {
+        if(!workoutPerWeekMap.containsKey(position)) {
             workoutsPerWeek = 0;
         } else {
-            workoutsPerWeek = workoutPerWeekDone.get(position);
+            workoutsPerWeek = workoutPerWeekMap.get(position);
         }
 
-        if(position < 50 && !workoutPerWeekDone.containsKey(position + 1)) {
+        if(position < 50 && !workoutPerWeekMap.containsKey(position + 1)) {
             nextCellPosition = 0;
-        } else if(position < 50 && workoutPerWeekDone.containsKey(position + 1)){
-            nextCellPosition = workoutPerWeekDone.get(position + 1);
+        } else if(position < 50 && workoutPerWeekMap.containsKey(position + 1)){
+            nextCellPosition = workoutPerWeekMap.get(position + 1);
         } else {
             nextCellPosition = -1;
         }
 
-        if(position != 0 &&!workoutPerWeekDone.containsKey(position - 1)) {
+        if(position != 0 &&!workoutPerWeekMap.containsKey(position - 1)) {
             prevCellPosition = 0;
-        } else if(position < 50 && workoutPerWeekDone.containsKey(position - 1)) {
-            prevCellPosition = workoutPerWeekDone.get(position - 1);
+        } else if(position < 50 && workoutPerWeekMap.containsKey(position - 1)) {
+            prevCellPosition = workoutPerWeekMap.get(position - 1);
         } else {
             prevCellPosition = 0;
         }
 
         //Paints out position
         if(position < dateToday.getWeekOfWeekyear()) {
-
-            // Context, Filled, Position
             Coloumn text = new Coloumn(container.getContext(), true, workoutsPerWeek, nextCellPosition,
                     position + 1 < dateToday.getWeekOfWeekyear(), prevCellPosition, true);
             viewContext.addView(text);
@@ -146,9 +138,7 @@ public class ColoumnAdapter extends PagerAdapter
         layout.setLayoutParams(x);
 
         layout.setBackgroundResource(R.drawable.calendar_dark);
-
         layout.addView(viewContext);
-
 
         if(position % 2 == 0) {
             layout.setBackgroundResource(R.drawable.calendar_light);
@@ -170,15 +160,8 @@ public class ColoumnAdapter extends PagerAdapter
     }
 
     public static void setArrayList(ArrayList<Integer> array) {
-        workoutsPerWeek = array;
-        Collections.sort(workoutsPerWeek);
-        countArrayListPerWeek();
-    }
-
-    public static void countArrayListPerWeek() {
-        for(Integer key : workoutsPerWeek) {
-            workoutPerWeekDone.put(key, Collections.frequency(workoutsPerWeek, key));
+        for(Integer key : array) {
+            workoutPerWeekMap.put(key, Collections.frequency(array, key));
         }
     }
-
 }

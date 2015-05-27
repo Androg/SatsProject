@@ -33,10 +33,8 @@ public class RequestJson {
     public static void getJsonData(final StickyListHeadersListView listView, final MainActivity activity) {
 
         SatsRestClient.get(CENTERS, new JsonHttpResponseHandler() {
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
-
                 try {
                     getCenters(jsonResponse);
                 } catch (JSONException e) {
@@ -92,15 +90,12 @@ public class RequestJson {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonResponse) {
-
                 try {
                     JSONArray resultArray = jsonResponse.getJSONArray("results");
 
                     for (int i = 0; i < resultArray.length(); i++) {
                         JSONObject activityJson = resultArray.getJSONObject(i);
-
                         activities.add(getActivity(activityJson));
-
                     }
                     Collections.sort(activities);
                     TrainingListAdapter adapter = new TrainingListAdapter(activity, activities);

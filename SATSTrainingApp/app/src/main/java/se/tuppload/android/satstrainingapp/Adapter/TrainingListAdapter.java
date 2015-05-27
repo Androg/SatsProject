@@ -19,7 +19,6 @@ import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.tuppload.android.satstrainingapp.Holders.BookedViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.OwnViewHolder;
 import se.tuppload.android.satstrainingapp.Holders.PreviousViewHolder;
-import se.tuppload.android.satstrainingapp.MainActivity;
 import se.tuppload.android.satstrainingapp.Model.*;
 import se.tuppload.android.satstrainingapp.R;
 import se.tuppload.android.satstrainingapp.RequestJson;
@@ -29,7 +28,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
     private static ArrayList<Activity> activities = new ArrayList<>();
     private static ArrayList<Integer> activitiesPerWeek = new ArrayList<>();
-    private boolean onlyRunOnce = false;
+    private boolean hasRun = false;
     private android.app.Activity activity;
     private LayoutInflater inflater;
     private final String[] weekDay = {"", "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag"};
@@ -39,6 +38,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     private DateTime date;
     private DateTime date2;
     private static final int VIEWTYPE_COUNT = 3;
+    //Different types of training
     private static final int PREVIOUS = 0;
     private static final int BOOKED = 1;
     private static final int OWN = 2;
@@ -236,10 +236,10 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         DateTime activityDateStart = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 8);
         DateTime activityDateEnd = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 2);
 
-        if (onlyRunOnce == false) {
+        if (hasRun == false) {
             addToArrayList(activities);
             ColoumnAdapter.setArrayList(activitiesPerWeek);
-            onlyRunOnce = true;
+            hasRun = true;
         }
 
         if (getItemViewType(position) == PREVIOUS) {
@@ -295,9 +295,9 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         TextView text;
     }
 
-    public void addToArrayList(ArrayList<Activity> temp) {
-        for (Activity tempInt : temp) {
-            date = DateTime.parse(tempInt.date);
+    public void addToArrayList(ArrayList<Activity> arrayList) {
+        for (Activity activity : arrayList) {
+            date = DateTime.parse(activity.date);
             activitiesPerWeek.add(date.minusDays(1).getWeekOfWeekyear());
         }
     }

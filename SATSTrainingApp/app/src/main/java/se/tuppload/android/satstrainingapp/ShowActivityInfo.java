@@ -24,10 +24,9 @@ import static com.google.android.youtube.player.YouTubePlayer.*;
 
 public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializedListener {
 
-    public YouTubePlayer player;
-    public static final String GOOGLE_API_KEY = "AIzaSyDOdUDNDMIYt1Br8g-T4_hzU2YMcNfPQok";
-    public static final String VIDEO_ID = "4GBrCy1Uolo";
-    public static String youTubeUrl = null;
+    private YouTubePlayer player;
+    private static final String GOOGLE_API_KEY = "AIzaSyDOdUDNDMIYt1Br8g-T4_hzU2YMcNfPQok";
+    private static String youTubeUrl = null;
 
 
     @Override
@@ -38,11 +37,6 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
 
         YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_view);
         youTubePlayerView.initialize(GOOGLE_API_KEY, this);
-
-        int min = 0;
-        int max = 5;
-        int randNumber = min + new Random().nextInt(max - min + 1);
-
 
         TextView className = (TextView) findViewById(R.id.class_name);
         TextView duration = (TextView) findViewById(R.id.class_duration_time);
@@ -85,7 +79,7 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
 
         youTubeUrl = extras.getString("VIDEO_URL");
 
-        ratingBar.setRating(randNumber);
+        ratingBar.setRating(1 + new Random().nextInt(5));
 
     }
 

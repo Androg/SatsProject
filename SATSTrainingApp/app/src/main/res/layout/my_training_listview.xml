@@ -55,14 +55,16 @@
                         android:layout_height="60px"
                         android:layout_alignParentRight="true"
                         android:rotationY="180"
-                        android:src="@drawable/back_to_now"/>
+                        android:src="@drawable/back_to_now"
+                        android:visibility="gone"/>
 
                     <ImageView
                         android:id="@+id/back_to_now_left"
                         android:layout_width="75px"
                         android:layout_height="60px"
                         android:layout_alignParentLeft="true"
-                        android:src="@drawable/back_to_now"/>
+                        android:src="@drawable/back_to_now"
+                        android:visibility="gone"/>
 
                     <ImageView
                         android:layout_width="20dp"

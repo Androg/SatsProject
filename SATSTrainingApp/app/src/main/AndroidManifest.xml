@@ -22,14 +22,14 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Moreinfo" />
 
-        <activity android:name=".ShowMapActivity">
+        <activity android:name=".ShowMap">
             <intent-filter>
                 <action android:name=".ShowMapActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ShowWebActivity">
+        <activity android:name=".ShowWeb">
             <intent-filter>
                 <action android:name=".ShowWebActivity" />
                 <category android:name="android.intent.category.DEFAULT" />
