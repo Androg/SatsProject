@@ -36,8 +36,8 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         setContentView(R.layout.class_view);
         Bundle extras = getIntent().getExtras();
 
-        YouTubePlayerView YouTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-        YouTubePlayerView.initialize(GOOGLE_API_KEY, this);
+        YouTubePlayerView youTubePlayerView = (YouTubePlayerView) findViewById(R.id.youtube_view);
+        youTubePlayerView.initialize(GOOGLE_API_KEY, this);
 
         int min = 0;
         int max = 5;
@@ -64,9 +64,9 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
 
         className.setText(extras.getString("CLASS_TYPE"));
         duration.setText(extras.getString("DURATION"));
-        center.setText(extras.getString("CENTER"));
-        date.setText(extras.getString("DATE"));
-        instructor.setText(extras.getString("INSTRUCTOR"));
+        center.setText(" " + extras.getString("CENTER"));
+        date.setText(" " + extras.getString("DATE"));
+        instructor.setText(" " + extras.getString("INSTRUCTOR"));
         description.setText(extras.getString("DESCRIPTION"));
         positionInQue.setText(extras.getString("POSITIONQUE"));
         bookedPersonCount.setText("" + extras.getInt("PARTICIPANTS") + " deltagare av max " + extras.getInt("MAXPARTICIPANTS"));
@@ -97,9 +97,13 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
     @Override
     public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
         this.player = player;
-        Log.d("VIDEO ID: ", extractYouTubeId(youTubeUrl));
         if (!wasRestored) {
-            player.cueVideo(extractYouTubeId(youTubeUrl));
+            String yUrl = extractYouTubeId(youTubeUrl);
+            if(yUrl == null) {
+
+            } else {
+                player.cueVideo(extractYouTubeId(youTubeUrl));
+            }
         }
     }
 
@@ -172,10 +176,14 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
 
     public static String extractYouTubeId(String ytUrl) {
         String vId = null;
-        Pattern pattern = Pattern.compile(".*(?:youtu.be\\/|v\\/|e\\/|u\\/\\w\\/|embed\\/|watch\\?v=|\\?v=|v=)([\\w\\-]{11,}).*");
-        Matcher matcher = pattern.matcher(ytUrl);
-        if (matcher.matches()){
-            vId = matcher.group(1);
+        if(ytUrl.contains("embed/?modestbranding")) {
+            vId = null;
+        } else {
+            Pattern pattern = Pattern.compile(".*(?:youtu.be\\/|v\\/|e\\/|u\\/\\w\\/|embed\\/|watch\\?v=|\\?v=|v=)([\\w\\-]{11,}).*");
+            Matcher matcher = pattern.matcher(ytUrl);
+            if (matcher.matches()){
+                vId = matcher.group(1);
+            }
         }
         return vId;
     }

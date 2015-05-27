@@ -84,6 +84,12 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
         return position;
     }
 
+    public int getItemWeek(int position) {
+        DateTime itemDate = new DateTime(getItem(position).date);
+        int week = itemDate.minusDays(1).getWeekOfWeekyear();
+        return week;
+    }
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
 
@@ -178,9 +184,8 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 }
                 bookedHolder.workoutType.setText(getItem(position).subType);
                 bookedHolder.gymLocation.setText(RequestJson.centers.get(getItem(position).booking.center).name);
-//                bookedHolder.gymLocation.setText(RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("cardio").name); //TODO Exempel på hur vi får ut värde från classtype
-                bookedHolder.instructorsName.setText(getItem(position).booking.aClass.instructorId);                           //  .get("strength").id
-                bookedHolder.positionInQueue.setText(Integer.toString(getItem(position).booking.positionInQueue));             //  .get("flexibilty").name osv osv
+                bookedHolder.instructorsName.setText(getItem(position).booking.aClass.instructorId);
+                bookedHolder.positionInQueue.setText(Integer.toString(getItem(position).booking.positionInQueue));
                 bookedHolder.startTimeHour.setText(getItem(position).date.substring(11, 13));
                 bookedHolder.startTimeMinutes.setText(getItem(position).date.substring(14, 16));
                 bookedHolder.activityDuration.setText(getItem(position).durationInMinutes + " min");
@@ -195,10 +200,6 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                         moreInfo.putExtra("DURATION", bookedHolder.activityDuration.getText().toString());
                         moreInfo.putExtra("CENTER", bookedHolder.gymLocation.getText().toString());
                         moreInfo.putExtra("INSTRUCTOR", bookedHolder.instructorsName.getText().toString());
-                        moreInfo.putExtra("POSITIONQUE", bookedHolder.positionInQueue.getText().toString());
-
-                        moreInfo.putExtra("PARTICIPANTS", getItem(position).booking.aClass.bookedPersonsCount);
-                        moreInfo.putExtra("MAXPARTICIPANTS", getItem(position).booking.aClass.maxPersonsCount);
 
                         DateTime dateTime = new DateTime(getItem(position).date);
                         String dateTimeFormatted = "" + weekDay[dateTime.getMonthOfYear()] + " " + dateTime.getDayOfMonth() + " "
@@ -231,8 +232,6 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
     @Override
     public View getHeaderView(int position, View convertView, ViewGroup parent) {
         HeaderViewHolder holder;
-        DateTime activityFullDate = new DateTime(activities.get(position).date);
-        DateTime activityWeek = new DateTime().withWeekOfWeekyear(activityFullDate.getDayOfMonth());
         DateTime activityDateStart = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 8);
         DateTime activityDateEnd = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 2);
 
@@ -253,26 +252,15 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                 holder = (HeaderViewHolder) convertView.getTag();
             }
 
-            if (date.getDayOfYear() < dateToday.getDayOfYear()) {
-
-                date2 = DateTime.parse(getItem(position).date);
-
-                if (position > 0) {
-                    date2 = DateTime.parse(getItem(position - 1).date);
-                    int currentWeek = date.getWeekOfWeekyear();
-                    int previousWeek = date2.getWeekOfWeekyear();
-
-                    if (currentWeek == previousWeek) {
-                        holder.text.setVisibility(View.GONE);
-                    } else if (currentWeek != previousWeek) {
-                        holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
-                                (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
-                    }
-                } else {
-                    holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
-                            (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
+            holder.text.setText("Vecka " + getItemWeek(position) + " (" + (activityDateStart.getDayOfMonth()) + "-" +
+                    (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
+            holder.text.setVisibility(View.GONE);
+            if (position > 0 && position < getCount()) {
+                if (getItemWeek(position) != getItemWeek(position + 1) || getItemWeek(position) != getItemWeek(position - 1)) {
+                    holder.text.setVisibility(View.VISIBLE);
                 }
             }
+
             return convertView;
         } else {
             if (convertView == null) {
@@ -311,6 +299,5 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
             date = DateTime.parse(tempInt.date);
             activitiesPerWeek.add(date.minusDays(1).getWeekOfWeekyear());
         }
-
     }
 }
