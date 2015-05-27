@@ -4,12 +4,15 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -20,11 +23,11 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import static com.google.android.youtube.player.YouTubePlayer.*;
 
 public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializedListener {
+
     public YouTubePlayer player;
     public static final String GOOGLE_API_KEY = "AIzaSyDOdUDNDMIYt1Br8g-T4_hzU2YMcNfPQok";
-
-
     public static final String VIDEO_ID = "4GBrCy1Uolo";
+    public static String youTubeUrl = null;
 
 
     @Override
@@ -59,7 +62,7 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
 
         RatingBar ratingBar = (RatingBar) findViewById(R.id.sats_rating);
 
-        className.setText(extras.getString("CLASSTYPE"));
+        className.setText(extras.getString("CLASS_TYPE"));
         duration.setText(extras.getString("DURATION"));
         center.setText(extras.getString("CENTER"));
         date.setText(extras.getString("DATE"));
@@ -79,21 +82,24 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         balance.setProgress(extras.getInt("BALANCE"));
         agility.setProgress(extras.getInt("AGILITY"));
 
+
+        youTubeUrl = extras.getString("VIDEO_URL");
+
         ratingBar.setRating(randNumber);
 
     }
 
     @Override
     public void onInitializationFailure(Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-        Toast.makeText(this, "Failured to Initialize!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Failed to Initialize!", Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void onInitializationSuccess(Provider provider,
-                                        YouTubePlayer player, boolean wasRestored) {
+    public void onInitializationSuccess(Provider provider, YouTubePlayer player, boolean wasRestored) {
         this.player = player;
+        Log.d("VIDEO ID: ", extractYouTubeId(youTubeUrl));
         if (!wasRestored) {
-            player.cueVideo(VIDEO_ID);
+            player.cueVideo(extractYouTubeId(youTubeUrl));
         }
     }
 
@@ -163,4 +169,14 @@ public class ShowActivityInfo extends YouTubeBaseActivity implements OnInitializ
         public void onVideoStarted() {
         }
     };
+
+    public static String extractYouTubeId(String ytUrl) {
+        String vId = null;
+        Pattern pattern = Pattern.compile(".*(?:youtu.be\\/|v\\/|e\\/|u\\/\\w\\/|embed\\/|watch\\?v=|\\?v=|v=)([\\w\\-]{11,}).*");
+        Matcher matcher = pattern.matcher(ytUrl);
+        if (matcher.matches()){
+            vId = matcher.group(1);
+        }
+        return vId;
+    }
 }
