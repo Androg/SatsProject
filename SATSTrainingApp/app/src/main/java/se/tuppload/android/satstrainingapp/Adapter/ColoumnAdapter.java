@@ -1,9 +1,9 @@
 package se.tuppload.android.satstrainingapp.Adapter;
 
-import android.os.Build;
 import android.support.v4.view.PagerAdapter;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.ViewGroup.LayoutParams;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +13,13 @@ import android.widget.TextView;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import se.tuppload.android.satstrainingapp.Coloumn;
+import se.tuppload.android.satstrainingapp.MainActivity;
 import se.tuppload.android.satstrainingapp.R;
 
 
@@ -28,20 +28,15 @@ public class ColoumnAdapter extends PagerAdapter
     static List<Integer> workoutsPerWeek = new ArrayList<Integer>();
     static Map<Integer, Integer> workoutPerWeekDone = new HashMap<>();
     DateTime dateToday = new DateTime();
-    DateTime date = new DateTime();
-    DateTime date2;
     public static float earlierPos = 0;
     int prevCellPosition;
     int nextCellPosition;
-    Calendar calendar = Calendar.getInstance();
-
-    int NumberOfPages = 52;
-
+    int numberOfPages = 52;
 
     @Override
     public int getCount() {
 
-        return NumberOfPages;
+        return numberOfPages;
     }
 
     @Override
@@ -53,7 +48,6 @@ public class ColoumnAdapter extends PagerAdapter
     public Object instantiateItem(ViewGroup container, int position) {
         //Gets the context for calendar
         RelativeLayout viewContext = new RelativeLayout(container.getContext());
-//        ViewPager calenderPager = (ViewPager) container.findViewById(R.id.graph);
 
         //TextView week Displays dates in the week
         TextView week = new TextView(container.getContext());
@@ -74,8 +68,7 @@ public class ColoumnAdapter extends PagerAdapter
         //Changes weekParams height
         weekParams.height = 95;
 
-//        getDate(position);
-
+//      getDate(position);
         DateTime weekStartDate = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek() + 6);
         DateTime weekEndDate = new DateTime().withWeekOfWeekyear(position + 1).minusDays(dateToday.getDayOfWeek());
 
@@ -116,9 +109,10 @@ public class ColoumnAdapter extends PagerAdapter
 
         //Paints out position
         if(position < dateToday.getWeekOfWeekyear()) {
+
             // Context, Filled, Position
-            Coloumn text = new Coloumn(container.getContext(), true, workoutsPerWeek,
-                    nextCellPosition, position + 1 < dateToday.getWeekOfWeekyear(), prevCellPosition, true);
+            Coloumn text = new Coloumn(container.getContext(), true, workoutsPerWeek, nextCellPosition,
+                    position + 1 < dateToday.getWeekOfWeekyear(), prevCellPosition, true);
             viewContext.addView(text);
 
         } else if(position == dateToday.getWeekOfWeekyear()) {
@@ -142,7 +136,6 @@ public class ColoumnAdapter extends PagerAdapter
         } else if(position > dateToday.getWeekOfWeekyear()) {
             Coloumn text = new Coloumn(container.getContext(), false, workoutsPerWeek,
                     nextCellPosition, false, prevCellPosition, false);
-
             text.bringToFront();
             viewContext.addView(text);
         }
@@ -160,8 +153,6 @@ public class ColoumnAdapter extends PagerAdapter
         if(position % 2 == 0) {
             layout.setBackgroundResource(R.drawable.calendar_light);
         }
-
-        final int page = position;
 
         container.addView(layout);
 

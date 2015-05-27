@@ -211,7 +211,6 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                         moreInfo.putExtra("BALANCE", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("balance").value);
                         moreInfo.putExtra("AGILITY", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("agility").value);
 
-
                         activity.startActivity(moreInfo);
                     }
                 });
@@ -262,7 +261,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
 
                     if (currentWeek == previousWeek) {
                         holder.text.setVisibility(View.GONE);
-                    } else if(currentWeek != previousWeek){ //<--TODO why this?
+                    } else if(currentWeek != previousWeek) {
                         holder.text.setText("Vecka " + activityFullDate.getWeekOfWeekyear() + " (" + (activityDateStart.getDayOfMonth()) + "-" +
                                 (activityDateEnd.getDayOfMonth()) + "/" + activityDate.getMonthOfYear() + ")");
                     }

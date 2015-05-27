@@ -19,6 +19,7 @@
 
         <activity
             android:name=".ShowActivityInfo"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="Moreinfo" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
