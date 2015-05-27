@@ -1,6 +1,7 @@
 package se.tuppload.android.satstrainingapp.Adapter;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -190,7 +191,7 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                     public void onClick(View v) {
                         Intent moreInfo = new Intent(activity, ShowActivityInfo.class);
 
-                        moreInfo.putExtra("CLASSTYPE", bookedHolder.workoutType.getText().toString());
+                        moreInfo.putExtra("CLASS_TYPE", bookedHolder.workoutType.getText().toString());
                         moreInfo.putExtra("DURATION", bookedHolder.activityDuration.getText().toString());
                         moreInfo.putExtra("CENTER", bookedHolder.gymLocation.getText().toString());
                         moreInfo.putExtra("INSTRUCTOR", bookedHolder.instructorsName.getText().toString());
@@ -206,6 +207,8 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                         moreInfo.putExtra("FLEXIBILITY", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("flexibility").value);
                         moreInfo.putExtra("BALANCE", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("balance").value);
                         moreInfo.putExtra("AGILITY", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).profile.get("agility").value);
+                        moreInfo.putExtra("VIDEO_URL", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).videoUrl);
+                        Log.d("VIDEO URL : ", RequestJson.classTypes.get(getItem(position).booking.aClass.classTypeId).videoUrl);
 
                         activity.startActivity(moreInfo);
                     }
