@@ -26,7 +26,6 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.7'
     compile 'com.sothree.slidinguppanel:library:3.0.0'
     compile 'se.emilsjolander:stickylistheaders:2.6.0'
-//    compile 'com.koushikdutta.ion:ion:2.+'
     compile 'net.danlew:android.joda:2.7.2'
 
 }

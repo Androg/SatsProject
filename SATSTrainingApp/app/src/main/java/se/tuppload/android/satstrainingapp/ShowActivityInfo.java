@@ -2,15 +2,14 @@ package se.tuppload.android.satstrainingapp;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.Random;
 
-import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
-import se.tuppload.android.satstrainingapp.Model.ClassType;
 
 import static se.tuppload.android.satstrainingapp.R.layout.class_view;
 
@@ -34,6 +33,7 @@ public class ShowActivityInfo extends ActionBarActivity {
         TextView description = (TextView) findViewById(R.id.class_information);
         TextView positionInQue = (TextView) findViewById(R.id.number_participants_class_info);
         TextView bookedPersonCount = (TextView) findViewById(R.id.bookedPersonCount);
+        ImageView positionQueImage = (ImageView) findViewById(R.id.img_participants_class_info);
 
         ProgressBar cardio = (ProgressBar) findViewById(R.id.fitness_bar_cardio);
         ProgressBar strength = (ProgressBar) findViewById(R.id.fitness_bar_strength);
@@ -50,7 +50,12 @@ public class ShowActivityInfo extends ActionBarActivity {
         instructor.setText(extras.getString("INSTRUCTOR"));
         description.setText(extras.getString("DESCRIPTION"));
         positionInQue.setText(extras.getString("POSITIONQUE"));
-        bookedPersonCount.setText("" + extras.getInt("PARTICIPANTS") + " anmälda av");
+        bookedPersonCount.setText("" + extras.getInt("PARTICIPANTS") + " deltagare av max " + extras.getInt("MAXPARTICIPANTS"));
+
+        if(positionInQue.getText().equals("0")) {
+            positionInQue.setVisibility(View.GONE);
+            positionQueImage.setVisibility(View.GONE);
+        }
 
         cardio.setProgress(extras.getInt("CARDIO"));
         strength.setProgress(extras.getInt("STRENGTH"));
