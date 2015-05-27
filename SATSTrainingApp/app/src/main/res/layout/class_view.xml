@@ -53,11 +53,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="right"
-                    android:gravity="right">
+                    android:gravity="right"
+                    android:weightSum="1">
 
                     <ImageView
                         android:id="@+id/img_participants_class_info"
-                        android:layout_width="18dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="23dp"
                         android:layout_marginTop="2dp"
                         android:layout_marginRight="3dp"
@@ -67,19 +68,23 @@
                         android:id="@+id/number_participants_class_info"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:layout_marginLeft="2dp"
                         android:layout_marginBottom="2dp"
                         android:layout_marginRight="3dp"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/pink"
-                        android:textSize="20dp"
+                        android:textSize="22dp"
+                        android:text="0"
                         android:textStyle="bold" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_horizontal" />
 
             <com.google.android.youtube.player.YouTubePlayerView
                 android:id="@+id/youtube_view"
@@ -163,7 +168,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/datum"
+                        android:text="@string/date"
                         android:textStyle="bold" />
 
                     <TextView
