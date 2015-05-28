@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import se.tuppload.android.satstrainingapp.Model.Coloumn;
+import se.tuppload.android.satstrainingapp.Coloumn;
 import se.tuppload.android.satstrainingapp.R;
 
 
