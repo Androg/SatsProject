@@ -5,6 +5,7 @@ import android.util.Log;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 import org.apache.http.Header;
+import org.joda.time.DateTime;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,9 +23,11 @@ import se.tuppload.android.satstrainingapp.Adapter.TrainingListAdapter;
 
 public class RequestJson {
 
-    private final static String CLASSTYPES = "classTypes";
-    private final static String CENTERS = "centers";
-    private final static String INSTRUCTORS = "instructors";
+    private final static String CLASSTYPES = "/classTypes";
+    private final static String CENTERS = "/centers";
+    private final static String INSTRUCTORS = "/instructors";
+    private final static String DB_QUERY_PARAM = "?include=bookingId.class,subType";
+    private final static String DB_DATE_PARAM = dateToParam();
     public final static HashMap<String, ClassType> classTypes = new HashMap<>();
     public final static HashMap<String, Center> centers = new HashMap<>();
     public final static HashMap<String, Instructor> instructors = new HashMap<>();
@@ -85,7 +88,7 @@ public class RequestJson {
             }
         });
 
-        SatsRestClient.get(new JsonHttpResponseHandler() {
+        SatsRestClient.getActivities(DB_QUERY_PARAM + DB_DATE_PARAM, new JsonHttpResponseHandler() {
             private final ArrayList<Activity> activities = new ArrayList<>();
 
             @Override
@@ -242,6 +245,14 @@ public class RequestJson {
             instructors.put(instructor.id, instructor);
         }
         return instructors;
+    }
+
+    // This beautiful query parameter is for querying activities from a specific date span. Due to the nature of Parse.com.
+    // Injecting the dates, in this case 6 months back in time and 6 months ahead. Counting from current date.
+    public static String dateToParam() {
+        DateTime dateFrom = new DateTime().minusMonths(6);
+        DateTime dateTo = new DateTime().plusMonths(6);
+        return "&where={\"date\":{\"$gte\":{\"__type\":\"Date\",\"iso\":\"" + dateFrom + "\"},\"$lte\":{\"__type\":\"Date\",\"iso\":\"" + dateTo + "\"}}}";
     }
 
 }

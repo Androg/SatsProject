@@ -9,6 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import org.joda.time.DateTime;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
@@ -22,8 +23,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public int currentPage = currentWeek.getWeekOfWeekyear();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(my_training_listview);
 
@@ -34,7 +34,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         final StickyListHeadersListView listView = (StickyListHeadersListView) findViewById(R.id.listan);
         final ImageView left = (ImageView) this.findViewById(R.id.back_to_now_left);
         final ImageView right = (ImageView) this.findViewById(R.id.back_to_now_right);
-        final ImageView view = (ImageView)findViewById(R.id.location_arrow);
+        final ImageView view = (ImageView) findViewById(R.id.location_arrow);
         final int distanceFromCenter = 3;
 
         RequestJson.getJsonData(listView, this);
@@ -51,6 +51,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             public void onPageSelected(int position) {
                 currentPage = position + 2;
 
+                for (int i = 0; i < TrainingListAdapter.getList().size(); i++) {
+                    if (currentPage == DateTime.parse(TrainingListAdapter.getList().get(i).date).minusDays(1).getWeekOfWeekyear()) {
+                        listView.smoothScrollToPosition(i);
+                    }
+                }
+
                 if (currentPage >= currentWeek.getWeekOfWeekyear() + distanceFromCenter) {
                     left.setVisibility(View.VISIBLE);
                     right.setVisibility(View.GONE);
@@ -64,6 +70,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 } else if (!(currentPage <= currentWeek.getWeekOfWeekyear() - distanceFromCenter)) {
                     right.setVisibility(View.GONE);
                 }
+
             }
 
             @Override
@@ -109,7 +116,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(v.getId() == R.id.location_arrow) {
+        if (v.getId() == R.id.location_arrow) {
             showMapActivity();
         }
     }
