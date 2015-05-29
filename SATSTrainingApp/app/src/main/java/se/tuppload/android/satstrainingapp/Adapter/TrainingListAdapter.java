@@ -202,6 +202,11 @@ public class TrainingListAdapter extends BaseAdapter implements StickyListHeader
                         moreInfo.putExtra("CENTER", bookedHolder.gymLocation.getText().toString());
                         moreInfo.putExtra("INSTRUCTOR", bookedHolder.instructorsName.getText().toString());
 
+                        moreInfo.putExtra("POSITIONQUE", bookedHolder.positionInQueue.getText().toString());
+
+                        moreInfo.putExtra("PARTICIPANTS", getItem(position).booking.aClass.bookedPersonsCount);
+                        moreInfo.putExtra("MAXPARTICIPANTS", getItem(position).booking.aClass.maxPersonsCount);
+
                         DateTime dateTime = new DateTime(getItem(position).date);
                         String dateTimeFormatted = "" + weekDay[dateTime.getMonthOfYear()] + " " + dateTime.getDayOfMonth() + " "
                                 + month[dateTime.getMonthOfYear()] + " " + dateTime.getHourOfDay() + ":" + dateTime.getMinuteOfHour();
